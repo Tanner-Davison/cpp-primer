@@ -21,6 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_add_item.txt" />
+    <Text Include="output.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sales_item.h">

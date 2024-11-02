@@ -1,4 +1,6 @@
 #pragma once
+#ifndef SALES_DATA_H
+#define SALES_DATA_H
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -36,9 +38,6 @@ struct Sales_data {
 			<< "Time recorded: "
 			<< std::put_time(&timeinfo, "%Y-%m-%d %H:%M:%S")
 			<< "\n=========================\n";
-
-		// Print sales report
-		printSalesReport(out);
 	}
 	Sales_data& operator =(const Sales_data& rhs) {
 		item_id = rhs.item_id;
@@ -62,3 +61,5 @@ inline std::istream& operator>>(std::istream& in, Sales_data& data) {
 	data.revenue = price * data.units_sold;
 	return in;
 }
+
+#endif
