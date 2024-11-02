@@ -8,7 +8,7 @@
 
 
 int main() {
-	Sales_data curr_id, next_id, data1, data2;
+	Sales_data curr_id, next_id;
 
 	double price = 0;
 
