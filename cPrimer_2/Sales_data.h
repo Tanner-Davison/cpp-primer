@@ -1,6 +1,5 @@
 #pragma once
-#ifndef SALES_DATA_H
-#define SALES_DATA_H
+
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -62,4 +61,3 @@ inline std::istream& operator>>(std::istream& in, Sales_data& data) {
 	return in;
 }
 
-#endif
