@@ -1,4 +1,13 @@
 
+=========================
+Time recorded: 2024-11-02 02:10:33
+=========================
+
+
+Items sold: 	0
+Total revenue: 	$0
+ASP: $0		(No Items Sold)
+
 0-201-78345-X
 Items sold: 	9
 Total revenue: 	$225
@@ -10,7 +19,6 @@ Total revenue: 	$825
 ASP: $55
 
 tanner
-Items sold: 	0
-Total revenue: 	$0
-ASP: $0
-		(No Items Sold)
+Items sold: 	227
+Total revenue: 	$340625
+ASP: $1500.55

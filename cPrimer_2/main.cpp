@@ -6,11 +6,13 @@
 
 
 
+
 int main() {
 	Sales_data curr_id, next_id, data1, data2;
 
 	double price = 0;
 
+	curr_id.logTime(std::cout);
 	if (std::cin >> curr_id) {
 		Sales_data same_id;
 		unsigned asp;
@@ -22,24 +24,17 @@ int main() {
 				curr_id.revenue += same_id.revenue;
 			}
 			else {
-				asp = curr_id.revenue / curr_id.units_sold;
-				std::cout << "\n" << curr_id.item_id
-					<< "\nItems sold: \t" << curr_id.units_sold
-					<< "\nTotal revenue: \t$" << curr_id.revenue
-					<< "\nASP: $" << asp << std::endl;
-				asp == 0 && std::cout << "(No Items Sold)" << std::endl;
-				curr_id = same_id;
+				curr_id.printSalesReport(std::cout);
 
+				curr_id = same_id;
 			}
 		}
-		asp = curr_id.revenue / curr_id.units_sold;
-		std::cout << "\n" << curr_id.item_id
-			<< "\nItems sold: \t" << curr_id.units_sold
-			<< "\nTotal revenue: \t$" << curr_id.revenue
-			<< "\nASP: $" << asp << std::endl;
+		curr_id.printSalesReport(std::cout);
 
-		asp == 0 && std::cout << "\t\t(No Items Sold)" << std::endl;
 	}
+
+
+
 	return 0;
 
 
