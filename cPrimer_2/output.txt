@@ -1,0 +1,16 @@
+
+0-201-78345-X
+Items sold: 	9
+Total revenue: 	$225
+ASP: $25
+
+0-201-78346-X
+Items sold: 	15
+Total revenue: 	$825
+ASP: $55
+
+tanner
+Items sold: 	0
+Total revenue: 	$0
+ASP: $0
+		(No Items Sold)
