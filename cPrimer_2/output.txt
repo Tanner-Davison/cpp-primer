@@ -1,2 +1,20 @@
-37 Puncuations found!
-In Order of appearance: [* , & , % , @ , ! , # , $ , - , - , - , . , - , - , - , . , - , - , - , . , - , - , - , . , - , - , - , . , - , - , - , . , - , - , - , . , . , . , ]
+TESTING to capatalize first word
+
+THIS is a new string
+
+ECT ect ect...
+
+HELLO moto how are you
+
+*&%@! #2$5
+0-201-78345-X 8 25.00
+
+0-201-78345-X 1 25.00 
+0-201-78346-X 3 25.00
+0-201-78346-X 3 25.00
+
+0-201-78346-X 3 75.00
+0-201-78346-X 1 75.00
+0-201-78346-X 5 75.00
+TANNER 42 8000.00
+TANNER 185 25.00

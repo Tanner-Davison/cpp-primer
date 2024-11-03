@@ -9,7 +9,7 @@ hello moto how are you
 *&%@! #2$5
 0-201-78345-X 8 25.00
 
-0-201-78345-X 1 25.00 making the size greater than 80 so that hopefully it will print
+0-201-78345-X 1 25.00 
 0-201-78346-X 3 25.00
 0-201-78346-X 3 25.00
 

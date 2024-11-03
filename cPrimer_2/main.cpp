@@ -5,34 +5,21 @@ using std::cin, std::cout, std::endl;
 #include <string>
 using std::string;
 #include <cctype>
-using std::toupper, std::tolower, std::ispunct;
+using std::toupper, std::tolower, std::ispunct, std::isspace;
 #include <vector>
 using std::vector;
 
 int main() {
 
 	string line;
-	vector<char> punc_symbols;
-	decltype(line.size()) punct_cnt = 0;
+	decltype(line.size()) index;
 
 	while (getline(cin, line)) {
-		if (!line.empty()) {
-			for (auto c : line) {
-				if (ispunct(c)) {
-					punc_symbols.push_back(c);
-					++punct_cnt;
-				}
-			}
+		for (index = 0; index < line.size() && !isspace(line[index]); ++index) {
+			line[index] = toupper(line[index]);
 		}
+		cout << line << endl;
 	}
-	cout << punct_cnt << " Puncuations found!"
-		<< "\nIn Order of appearance: [";
-
-	for (auto p : punc_symbols) {
-		cout << p << " , ";
-	}
-
-	cout << "]";
 
 	return 0;
 
