@@ -9,6 +9,8 @@ using std::toupper;
 using std::string;
 
 
+using  std::cout, std::endl, std::cin;
+
 int main() {
 	const string hexdigits = "0123456789ABCDEF";
 	string result;
@@ -57,6 +59,10 @@ int main() {
 		}
 		curr_id.printSalesReport(cout);
 		cout << "\n\t Items accounted: " << ++total_item_count;
-		return 0;
 	}
+
+
+	return 0;
+
+
 }

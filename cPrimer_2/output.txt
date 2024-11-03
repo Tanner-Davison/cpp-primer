@@ -1,0 +1,13 @@
+Enter a series of numbers from 0-15
+Separated by ' [spaces] ' Hit [enter] when finished.
+
+20E38C
+58CE13
+2468A
+1B307B4
+96172BC
+
+
+=========================
+Time recorded: 2024-11-03 16:32:56
+=========================

@@ -21,7 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_add_item.txt" />
-    <Text Include="output.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sales_item.h">
@@ -33,5 +32,8 @@
     <ClInclude Include="Sales_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
   </ItemGroup>
 </Project>
