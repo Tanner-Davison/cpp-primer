@@ -12,8 +12,8 @@ using std::vector;
 int main() {
 
 	string line;
-	decltype(line.size()) punct_cnt = 0;
 	vector<char> punc_symbols;
+	decltype(line.size()) punct_cnt = 0;
 
 	while (getline(cin, line)) {
 		if (!line.empty()) {
@@ -25,11 +25,15 @@ int main() {
 			}
 		}
 	}
-	cout << punct_cnt << " Puncuations found!" << "\nIn Order of appearance: [";
+	cout << punct_cnt << " Puncuations found!"
+		<< "\nIn Order of appearance: [";
+
 	for (auto p : punc_symbols) {
 		cout << p << " , ";
 	}
+
 	cout << "]";
+
 	return 0;
 
 
