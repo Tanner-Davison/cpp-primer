@@ -1,1 +1,1 @@
-2.5
+HELLO is greater than MOTO by: 1 characters
