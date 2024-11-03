@@ -1,1 +1,6 @@
-HELLO is greater than MOTO by: 1 characters
+Enter a series of numbers from 0-15
+Separated by ' [spaces] ' Hit [enter] when finished.
+
+1E38C
+58CE
+2468A

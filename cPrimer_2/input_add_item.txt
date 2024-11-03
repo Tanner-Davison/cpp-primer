@@ -1,14 +1,3 @@
-hello moto how are you
-
-
-0-201-78345-X 8 25.00
-
-0-201-78345-X 1 25.00 making the size greater than 80 so that hopefully it will print
-0-201-78346-X 3 25.00
-0-201-78346-X 3 25.00
-
-0-201-78346-X 3 75.00
-0-201-78346-X 1 75.00
-0-201-78346-X 5 75.00
-tanner 42 8000.00
-tanner 185 25.00
+1 14 3 8 12
+5 8 12 14 19
+2 4 6 8 10
