@@ -4,17 +4,19 @@
 #include <string>
 
 
+using  cout, endl, cin;
+
 int main() {
 	Sales_data curr_id, next_id;
 
 	double price = 0;
 
-	curr_id.logTime(std::cout);
-	if (std::cin >> curr_id) {
+	curr_id.logTime(cout);
+	if (cin >> curr_id) {
 		Sales_data same_id;
 		unsigned asp;
 		int total_item_count = 0;
-		while (std::cin >> same_id) {
+		while (cin >> same_id) {
 
 			if (curr_id.item_id == same_id.item_id) {
 
@@ -24,12 +26,12 @@ int main() {
 			}
 			else {
 				total_item_count++;
-				curr_id.printSalesReport(std::cout);
+				curr_id.printSalesReport(cout);
 				curr_id = same_id;
 			}
 		}
-		curr_id.printSalesReport(std::cout);
-		std::cout << "\n\t Items accounted: " << ++total_item_count;
+		curr_id.printSalesReport(cout);
+		cout << "\n\t Items accounted: " << ++total_item_count;
 	}
 
 
