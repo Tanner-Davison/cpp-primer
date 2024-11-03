@@ -3,44 +3,33 @@ using std::cin, std::cout, std::endl;
 #include "Sales_item.h"
 #include "Sales_data.h"
 #include <string>
-
-using std::toupper;
 using std::string;
-
+#include <cctype>
+using std::toupper, std::tolower, std::ispunct;
+#include <vector>
+using std::vector;
 
 int main() {
 
-	string str1, str2;
+	string line;
+	decltype(line.size()) punct_cnt = 0;
+	vector<char> punc_symbols;
 
-	decltype(str1.size()) str1Cnt = 0; //best practice to ensure length when counting;
-	decltype(str2.size()) str2Cnt = 0;//dont use size_t for strings;
-
-	cin >> str1;
-	cin >> str2;
-
-	for (auto& c : str1) {
-		c = toupper(c);
-		++str1Cnt;
-	}
-	for (auto& c : str2) {
-		c = toupper(c);
-		++str2Cnt;
-	}
-	if (str1Cnt == str2Cnt) {
-		cout << str1 << " count: " << str1Cnt
-			<< " is equal to "
-			<< str2 << " count: " << str2Cnt << endl;
-	}
-	else {
-		if (str1Cnt > str2Cnt) {
-			cout << str1 << " is greater than " << str2 << " by: "
-				<< (str1Cnt - str2Cnt) << " characters" << endl;
-		}
-		else {
-			cout << str2 << " is greater than " << str1 << " by: "
-				<< (str2Cnt - str1Cnt) << " characters" << endl;
+	while (getline(cin, line)) {
+		if (!line.empty()) {
+			for (auto c : line) {
+				if (ispunct(c)) {
+					punc_symbols.push_back(c);
+					++punct_cnt;
+				}
+			}
 		}
 	}
+	cout << punct_cnt << " Puncuations found!" << "\nIn Order of appearance: [";
+	for (auto p : punc_symbols) {
+		cout << p << " , ";
+	}
+	cout << "]";
 	return 0;
 
 
