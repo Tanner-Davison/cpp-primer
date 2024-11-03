@@ -4,7 +4,7 @@
 #include <string>
 
 
-using  cout, endl, cin;
+using  std::cout, std::endl, std::cin;
 
 int main() {
 	Sales_data curr_id, next_id;
