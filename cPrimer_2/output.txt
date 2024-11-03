@@ -1,13 +1,39 @@
-Enter a series of numbers from 0-15
+Enter a series test of numbers from 0-15
 Separated by ' [spaces] ' Hit [enter] when finished.
 
-20E38C
-58CE13
-2468A
-1B307B4
-96172BC
-
+B43AFC
+FC846
+5DC96F91
+1736624BF
+F2142554EC20F
 
 =========================
-Time recorded: 2024-11-03 16:32:56
+Time recorded: 2024-11-03 16:56:04
 =========================
+
+0-201-70353-X
+Items sold: 	4
+Total revenue: 	$99.96
+ASP: $24.99
+
+0-201-82470-1
+Items sold: 	4
+Total revenue: 	$181.56
+ASP: $45.39
+
+0-201-88954-4
+Items sold: 	16
+Total revenue: 	$198
+ASP: $12.375
+
+0-399-82477-1
+Items sold: 	5
+Total revenue: 	$226.95
+ASP: $45.39
+
+0-201-78345-X
+Items sold: 	5
+Total revenue: 	$110
+ASP: $22
+
+	 Items accounted: 10
