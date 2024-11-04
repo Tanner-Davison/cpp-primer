@@ -1,24 +1,17 @@
 #include <iostream>
 using std::cin, std::cout, std::endl;
-#include "Sales_item.h"
-#include "Sales_data.h"
-#include<sstream>
-using std::istringstream;
 #include <string>
-using std::tolower, std::isalpha, std::isspace;
 using std::string, std::erase;
 #include <fstream>
+using std::ifstream;
 
 int main() {
-	std::ifstream inFile("erase_puncs.txt");
+	ifstream inFile("erase_puncs.txt");
 
 	string result;
 
-	cout << "Enter a series test of numbers from 0-15\n"
-		"Separated by ' [spaces] ' Hit [enter] when finished.\n" << endl;
 
-	//open file from ifstream
-	if (!inFile) {
+	if (!inFile) {//check if file from ifstream is open;
 		cout << "Error opening file" << std::endl;
 		return 1;
 	}	if (!inFile) {
@@ -32,15 +25,12 @@ int main() {
 		for (n = 0; n < result.size(); ++n) {
 			if (ispunct(result[n])) {
 				result.erase(n, 1); // erase 1 char at element result[n];
-				--n;
+				--n;				// go back 1;
 			}
 		}
 		cout << result;
 	}
 	inFile.close();
-
-
-
 
 	return 0;
 
