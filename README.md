@@ -55,4 +55,4 @@
 |----------|-------------|----------|-------------|
 | **getline()**   | Get line from stream | **swap()**      | Swap contents |
 | **.str()**      | Get/set content     | **.rdbuf()**    | Get buffer |
-**------------------------------**
+
