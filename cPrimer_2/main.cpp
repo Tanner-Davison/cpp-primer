@@ -14,9 +14,6 @@ int main() {
 	if (!inFile) {//check if file from ifstream is open;
 		cout << "Error opening file" << std::endl;
 		return 1;
-	}	if (!inFile) {
-		cout << "Error opening file" << std::endl;
-		return 1;
 	}
 
 	while (getline(inFile, result)) {
