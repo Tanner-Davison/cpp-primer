@@ -31,15 +31,17 @@ int main() {
 		}
 	}
 	int count = 0;
+	cout << "\n\t  Range   #" << " % \n"
+		<< "\t  -----   -" << " - " << endl;
 	for (auto& score : clusters) {
 		if (count >= 100) {
-			cout << "[  " << count << "+ ] ";
+			cout << "\t[  " << count << "+ ] ";
 		}
 		else if (count < 10) {
-			cout << "[0" << count << " - 0" << (count + 9) << "] ";
+			cout << "\t[0" << count << " - 0" << (count + 9) << "] ";
 		}
 		else {
-			cout << "[" << count << " - " << (count + 9) << "] ";
+			cout << "\t[" << count << " - " << (count + 9) << "] ";
 		}
 		cout << score << " ";
 		if (score == 0) {
