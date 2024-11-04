@@ -20,9 +20,8 @@ int main() {
 	}
 
 	while (getline(inFile, result)) {
-		decltype(result.size()) n;
 
-		for (n = 0; n < result.size(); ++n) {
+		for (decltype(result.size()) n = 0; n < result.size(); ++n) {
 			if (ispunct(result[n])) {
 				result.erase(n, 1); // erase 1 char at element result[n];
 				--n;				// go back 1;
