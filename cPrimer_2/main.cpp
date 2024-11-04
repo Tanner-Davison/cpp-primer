@@ -11,9 +11,6 @@ using std::istringstream;
 using std::string;
 using std::getline;
 
-
-
-
 int main() {
 
 	ifstream inFile("input_add_item.txt");
