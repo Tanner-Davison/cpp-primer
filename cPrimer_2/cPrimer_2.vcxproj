@@ -148,6 +148,7 @@
   <ItemGroup>
     <Text Include="erase_puncs.txt" />
     <Text Include="hextest.txt" />
+    <Text Include="inputs.txt" />
     <Text Include="input_add_item.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,34 +1,40 @@
 #include <iostream>
-using std::cin, std::cout, std::endl;
+#include <vector>
+using std::vector;
 #include <string>
-using std::string, std::erase;
+using std::string;
+#include <sstream>
+using std::istringstream;
 #include <fstream>
-using std::ifstream;
+using std::ifstream, std::getline;
+using std::cout, std::endl;
+
+
 
 int main() {
-	ifstream inFile("erase_puncs.txt");
+	ifstream inFile("inputs.txt");
+	string line;
+	if (!inFile) cout << "No file exists" << endl;
 
-	string result;
+	vector<int> ivec;
 
+	while (getline(inFile, line)) {
+		istringstream iss(line);
+		int word;
+		while (iss >> word) {
+			ivec.push_back(word);
+		}
+	}
 
-	if (!inFile) {//check if file from ifstream is open;
-		cout << "Error opening file" << std::endl;
+	if (ivec.empty()) {
+		cout << "Vector is empty" << endl;
 		return 1;
 	}
-
-	while (getline(inFile, result)) {
-
-		for (decltype(result.size()) n = 0; n < result.size(); ++n) {
-			if (ispunct(result[n])) {
-				result.erase(n, 1); // erase 1 char at element result[n];
-				--n;				// go back 1;
-			}
+	else {
+		for (int& word : ivec) {
+			unsigned long long wordl{ static_cast<unsigned long long>(word) * 80 };
+			cout << word << " * 80 = " << wordl << endl;
 		}
-		cout << result;
 	}
-	inFile.close();
-
 	return 0;
-
-
 }
