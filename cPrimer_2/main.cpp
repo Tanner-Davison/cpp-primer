@@ -1,37 +1,38 @@
 #include <iostream>
-using std::cin, std::cout, std::endl;
 #include "Sales_item.h"
 #include "Sales_data.h"
 #include<sstream>
-using std::istringstream;
 #include <string>
-using std::toupper;
-using std::string;
 #include <fstream>
 
-using  std::cout, std::endl, std::cin;
+using namespace std;
+
+const string hexdigits = "0123456789ABCDEF";
 
 void printHex(int n) {
-	const string hexdigits = "0123456789ABCDEF";
+
 	if (n >= 16) {
-		printHex(n / 16);  // recursively handle larger numbers
+		printHex(n / 16);  // recursively handles larger numbers
 	}
-	cout << hexdigits[n % 16];
+	cout << hexdigits[n % 16]; // hexdigits are global
 }
 
 int main() {
-	const string hexdigits = "0123456789ABCDEF";
 	string result;
 	decltype(result.size()) n;
+
 	cout << "Enter a series test of numbers from 0-15\n"
-		"Separated by ' [spaces] ' Hit [enter] when finished.\n" << endl;
-	std::ifstream inFile("hextest.txt");
+		"Separated by ' [spaces] ' Hit [enter] when finished.\n"
+		<< endl;
+
+	ifstream inFile("hextest.txt");
+
 	if (!inFile) {
-		std::cout << "Error opening file" << std::endl;
+		cout << "Error opening file" << endl;
 		return 1;
 	}
 	while (getline(inFile, result)) {
-		std::istringstream iss(result);
+		istringstream iss(result);
 		while (iss >> n) {
 			if (n < hexdigits.size()) {
 				cout << hexdigits[n];
@@ -46,9 +47,12 @@ int main() {
 
 	Sales_data curr_id, next_id;
 
-	double price = 0;
 
-	curr_id.logTime(cout);
+
+	curr_id.logTime(cout); //log time
+
+	double price = 0; //set initial price
+
 	if (cin >> curr_id) {
 		Sales_data same_id;
 		unsigned asp;
