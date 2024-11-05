@@ -36,5 +36,6 @@
   <ItemGroup>
     <Text Include="input_add_item.txt" />
     <Text Include="hextest.txt" />
+    <Text Include="add_ints.txt" />
   </ItemGroup>
 </Project>

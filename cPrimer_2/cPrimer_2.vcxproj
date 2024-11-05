@@ -146,6 +146,7 @@
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="add_ints.txt" />
     <Text Include="hextest.txt" />
     <Text Include="input_add_item.txt" />
   </ItemGroup>
