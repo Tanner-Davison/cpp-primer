@@ -3,11 +3,9 @@ using std::cin, std::cout, std::endl;
 #include "Sales_item.h"
 #include "Sales_data.h"
 #include <string>
-using std::string;
 #include <cctype>
-using std::toupper, std::tolower, std::ispunct, std::isspace;
 #include <vector>
-using std::vector;
+using std::toupper, std::tolower, std::ispunct, std::isspace, std::string, std::vector;
 
 int main() {
 
@@ -15,8 +13,8 @@ int main() {
 	decltype(line.size()) index;
 
 	while (getline(cin, line)) {
-		for (index = 0; index < line.size() && !isspace(line[index]); ++index) {
-			line[index] = toupper(line[index]);
+		for (auto it = line.begin(); it != line.end() && !isspace(*it); ++it) {
+			*it = toupper(*it);
 		}
 		cout << line << endl;
 	}
