@@ -148,6 +148,7 @@
   <ItemGroup>
     <Text Include="hextest.txt" />
     <Text Include="input_add_item.txt" />
+    <Text Include="opposite_pairs.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
