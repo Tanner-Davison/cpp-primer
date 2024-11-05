@@ -18,12 +18,16 @@ int main() {
 	vector<unsigned>clusters(11, 0);
 	double test_count = 0;
 	while (getline(inFile, line)) {
+
 		istringstream iss(line);
 		unsigned score;
+
 		while (iss >> score) {
 			if (score <= 100) {
+
 				++test_count;
-				++clusters[score / 10]; //adding 1 to custers at index score/10;
+				//adding 1 to custers at index score/10;
+				++clusters[score / 10];
 			}
 		}
 	}
