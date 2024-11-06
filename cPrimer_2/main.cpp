@@ -49,8 +49,8 @@ int main() {
 			cout << " -";
 		}
 		else {
-			cout << fixed << setprecision(2)
-				<< ((static_cast<double>(score) / test_count) * 100)
+			cout
+				<< ((score / test_count) * 100)
 				<< "%";
 		}
 		cout << endl;
