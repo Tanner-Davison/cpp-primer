@@ -4,77 +4,54 @@
 #include<sstream>
 #include <string>
 #include <fstream>
-
+#include <algorithm>
 using namespace std;
 
-const string hexdigits = "0123456789ABCDEF";
-
-void printHex(int n) {
-
-	if (n >= 16) {
-		printHex(n / 16);  // recursively handles larger numbers
-	}
-	cout << hexdigits[n % 16]; // hexdigits are global
-}
-
 int main() {
-	string result;
-	decltype(result.size()) n;
 
-	cout << "Enter a series test of numbers from 0-15\n"
-		"Separated by ' [spaces] ' Hit [enter] when finished.\n"
-		<< endl;
+	fstream inFile("input_add_item.txt");
 
-	ifstream inFile("hextest.txt");
+	//check to ensure input file exist.
+	if (!inFile) cout << "No file found!" << endl;
 
-	if (!inFile) {
-		cout << "Error opening file" << endl;
-		return 1;
-	}
-	while (getline(inFile, result)) {
-		istringstream iss(result);
-		while (iss >> n) {
-			if (n < hexdigits.size()) {
-				cout << hexdigits[n];
+	//create vector container;
+	vector<string> vec1;
+	//type to read;
+	string line;
+
+	string sought = "hello";
+
+	while (getline(inFile, line)) {
+		if (!line.empty()) {
+			string temp;
+			auto sbeg = line.begin(), send = line.end();
+			for (auto it = sbeg; it != send && !isspace(*it); ++it) {
+				temp += *it;
 			}
-			else {
-				printHex(n);
-			}
+			vec1.emplace_back(temp);
 		}
-		cout << endl;
 	}
-	inFile.close();
+	//first sort the vector; binary search only works on sorted data;
+	sort(vec1.begin(), vec1.end());
+	//setup iterators;
+	auto beg = vec1.begin(), end = vec1.end();
+	auto mid = beg + (end - beg) / 2;
 
-	Sales_data curr_id, next_id;
-
-
-
-	curr_id.logTime(cout); //log time
-
-	double price = 0; //set initial price
-
-	if (cin >> curr_id) {
-		Sales_data same_id;
-		unsigned asp;
-		int total_item_count = 0;
-		while (cin >> same_id) {
-
-			if (curr_id.item_id == same_id.item_id) {
-
-				curr_id.units_sold += same_id.units_sold;
-				curr_id.revenue += same_id.revenue;
-				total_item_count++;
-			}
-			else {
-				total_item_count++;
-				curr_id.printSalesReport(cout);
-				curr_id = same_id;
-			}
+	while (mid != end && *mid != sought) {
+		if (sought < *mid) {
+			end = mid;
 		}
-		curr_id.printSalesReport(cout);
-		cout << "\n\t Items accounted: " << ++total_item_count;
+		else {
+			beg = mid + 1;
+		}
+		mid = beg + (end - beg) / 2;
 	}
-
+	if (mid != end && *mid == sought) {
+		cout << "Found " << *mid << " at position " << (mid - vec1.begin()) << endl;
+	}
+	else {
+		cout << "Value not found" << endl;
+	}
 
 	return 0;
 
