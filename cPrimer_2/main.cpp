@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 
-	const int sz = 10;
+	constexpr int sz = 10;
 	int arr[sz]{};
 
 	int* ptrArr = arr;	//arr[0];
