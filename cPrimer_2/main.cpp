@@ -22,13 +22,21 @@ int main() {
 	string sought = "hello";
 
 	while (getline(inFile, line)) {
+
 		if (!line.empty()) {
-			string temp;
-			auto sbeg = line.begin(), send = line.end();
-			for (auto it = sbeg; it != send && !isspace(*it); ++it) {
-				temp += *it;
+			string word = "";
+			for (auto it = line.begin(); it != line.end(); ++it) {
+				if (isspace(*it)) {
+					vec1.emplace_back(word);
+					word = "";
+				}
+				else {
+					word += *it;
+				}
 			}
-			vec1.emplace_back(temp);
+			if (!word.empty()) {
+				vec1.emplace_back(word);
+			}
 		}
 	}
 	//first sort the vector; binary search only works on sorted data;
@@ -46,8 +54,17 @@ int main() {
 		}
 		mid = beg + (end - beg) / 2;
 	}
+	int count = 0;
 	if (mid != end && *mid == sought) {
 		cout << "Found " << *mid << " at position " << (mid - vec1.begin()) << endl;
+		for (auto c : vec1) {
+			cout << c << " ";
+			++count;
+			if (count >= 2) {
+				count = 0;
+				cout << endl;
+			}
+		}
 	}
 	else {
 		cout << "Value not found" << endl;
