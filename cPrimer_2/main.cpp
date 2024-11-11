@@ -22,6 +22,7 @@ void upfirst(string& str) {
 	}
 }
 
+
 int main() {
 
 	char ca[] = { 'c','h','a','r','\0' };
