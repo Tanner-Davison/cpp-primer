@@ -5,15 +5,17 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+
 using namespace std;
 
-int main() {
 
+
+int main() {
 	fstream inFile("input_add_item.txt");
 
 	//check to ensure input file exist.
 	if (!inFile) cout << "No file found!" << endl;
-
+	//save
 	//create vector container;
 	vector<string> vec1;
 	//type to read;
