@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -12,9 +13,9 @@ int main() {
 	if (!inFile) {
 		cout << "no input file found!" << endl;
 		return 1;
-	}
 
-	unsigned acnt = 0, ecnt = 0, icnt = 0, ocnt = 0, ucnt = 0;
+	}
+	vector<unsigned>vwls{ 0,0,0,0,0 };
 
 	string line;
 
@@ -24,24 +25,32 @@ int main() {
 		while (ss >> c) {
 			switch (c) {
 			case 'a':
-				++acnt;
+				++vwls[0];
 				break;
 			case 'e':
-				++ecnt;
+				++vwls[1];
+				break;
+			case 'i':
+				++vwls[2];
 				break;
 			case 'o':
-				++ocnt;
+				++vwls[3];
 				break;
 			case 'u':
-				++ucnt;
+				++vwls[4];
 				break;
 			}
 		}
 	}
-	cout << "Number of vowels a: \t" << acnt << "\n"
-		<< "Number of vowels e: \t" << ecnt << "\n"
-		<< "Number of vowels i: \t" << icnt << "\n"
-		<< "Number of vowels o: \t" << ocnt << "\n"
-		<< "Number of vowels u: \t" << ucnt << "\n";
+	int total = 0;
+	for (int num : vwls) {
+		total += num;
+	}
+	cout << "Number of vowels a: \t" << vwls[0] << "\n"
+		<< "Number of vowels e: \t" << ++vwls[1] << "\n"
+		<< "Number of vowels i: \t" << ++vwls[2] << "\n"
+		<< "Number of vowels o: \t" << ++vwls[3] << "\n"
+		<< "Number of vowels u: \t" << ++vwls[4] << "\n"
+		<< "\n Total Vowels: \t" << total << "\n";
 	return 0;
 }

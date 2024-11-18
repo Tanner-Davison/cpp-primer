@@ -1,15 +1,45 @@
-0-201-70353-X 4 24.99
-apples bananas
-oranges pears strawberries
-pineapple mango 
-0-201-88954-4 2 15.00 
-0-201-88954-4 5 12.00 
-0-201-88954-4 7 12.00 
-0-201-88954-4 2 12.00
-hello 
-0-399-82477-1 2 45.39
-0-399-82477-1 3 45.39
-0-201-78345-X 3 20.00
-0-201-78345-X 2 25.00
+If you're looking for a curriculum to prepare you for a job as a C++ developer, or maybe your ambition is to develop your own indie games, then this course is for you!
+Intermediate C++ topics such as object oriented programming, pointers, inheritance and templates can be intimidating to some students, but I use simple examples, summaries, exercises and step by step illustrations throughout.
+Learning C++ concepts in isolation by writing simple console applications is not enough - you must learn to use intermediate features in combination.
+Through Unreal Engine project examples, I explain where specific language features are useful in a real world project. This will give you a much deeper understanding of those language features and not just how to use them, but why they are important to learn and remember and where they will be useful.
+What will I learn?
+Following the foundational modules, C++101 and C++102, you will learn to use intermediate C++ features in combination by programming game logic in Unreal Engine.
+Module C++101 (fundamentals):
+In this module we explore variables and variable types (an understanding of types is very important in C++).
+I introduce Conditional Statements and Logical Operators (how to write decision-making logic).
+Iteration statements such as the while() loop and the for() loop allow us to write logic that executes repeatedly - and we have many ways to control the looping/repetition.
+Arrays (containers of variables).
+Functions, debugging fundamentals, and Visual Studio tips & tricks to speed up your workflow.
+Module C++102:
+Object Oriented Programming: Structs, Classes, Inheritance and Polymorphism.
+Pointers and References are covered in detail.
+Characters are covered detail, and I also introduce the standard string class.
+Debugging and Visual Studio tips & tricks.
+This module also includes intermediate lessons on Templates, Smart Pointers, Callables and more.
+C++ Standards Covered:
+C++98
+C++11
+C++14
+C++17
+The course also includes lectures on C language features that are used (or can be used) in C++.
+C++20 lessons are planned for a future release - the standard is not widely adopted yet.
+More lessons are planned for this course, including the STL, exception handling, and many more.
+For the Unreal Engine 5 content, I begin by introducing the fundamentals of the engine, followed by a simple C++ project where we will apply those fundamentals and also learn a few new things along the way.
+Whether you have no programming experience, or are already familiar with a programming language and want to learn how to code game logic in Unreal Engine 5 with C++, this course is for you!
+What you’ll learn
+Learn C++ programming fundamentals through simple examples and illustrations
+Debugging and problem solving skills
+Learn how C++ is used in real-world projects, with examples from the Unreal Engine codebase
+Understand how intermediate C++ features, such as object oriented programming, inheritance and templates can be used in combination
+Apply your newly acquired C++ skills to game development fundamentals in Unreal Engine
+Are there any course requirements or prerequisites?
+Windows PC capable of running Visual Studio and Unreal Engine.
+Dedication and willing to work hard.
+Who this course is for:
+Complete beginners.
+Aspiring C++ Programmers
+Aspiring independent game developers.
+Developers/Programmers who want to re-skill to game development.
+C# or Unity developers who want to broaden their skill set to boost job prospects.
 
 
