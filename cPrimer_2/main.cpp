@@ -38,38 +38,36 @@ int main() {
 			}
 		}
 	}
-	{
-		const string Tanner = "Tanner";
-		//first sort the vector; binary search only works on sorted data;
-		sort(vec1.begin(), vec1.end());
-		//setup iterators;
-		auto beg = vec1.begin(), end = vec1.end();
-		auto mid = beg + (end - beg) / 2;
+	//first sort the vector; binary search only works on sorted data;
+	sort(vec1.begin(), vec1.end());
+	//setup iterators;
+	auto beg = vec1.begin(), end = vec1.end();
+	auto mid = beg + (end - beg) / 2;
 
-		while (mid != end && *mid != sought) {
-			if (sought < *mid) {
-				end = mid;
-			}
-			else {
-				beg = mid + 1;
-			}
-			mid = beg + (end - beg) / 2;
-		}
-		int count = 0;
-		if (mid != end && *mid == sought) {
-			cout << "Found " << *mid << " at position " << (mid - vec1.begin()) << endl;
-			for (auto c : vec1) {
-				cout << c << " ";
-				++count;
-				if (count >= 2) {
-					count = 0;
-					cout << endl;
-				}
-			}
+	while (mid != end && *mid != sought) {
+		if (sought < *mid) {
+			end = mid;
 		}
 		else {
-			cout << "Value not found" << endl;
+			beg = mid + 1;
 		}
-
-		return 0;
+		mid = beg + (end - beg) / 2;
 	}
+	int count = 0;
+	if (mid != end && *mid == sought) {
+		cout << "Found " << *mid << " at position " << (mid - vec1.begin()) << endl;
+		for (auto c : vec1) {
+			cout << c << " ";
+			++count;
+			if (count >= 2) {
+				count = 0;
+				cout << endl;
+			}
+		}
+	}
+	else {
+		cout << "Value not found" << endl;
+	}
+
+	return 0;
+}
