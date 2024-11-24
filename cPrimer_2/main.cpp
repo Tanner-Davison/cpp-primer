@@ -8,14 +8,11 @@
 
 using namespace std;
 
-
-
 int main() {
 	fstream inFile("input_add_item.txt");
 
 	//check to ensure input file exist.
 	if (!inFile) cout << "No file found!" << endl;
-	//save
 	//create vector container;
 	vector<string> vec1;
 	//type to read;
@@ -41,36 +38,38 @@ int main() {
 			}
 		}
 	}
-	//first sort the vector; binary search only works on sorted data;
-	sort(vec1.begin(), vec1.end());
-	//setup iterators;
-	auto beg = vec1.begin(), end = vec1.end();
-	auto mid = beg + (end - beg) / 2;
+	{
+		const string Tanner = "Tanner";
+		//first sort the vector; binary search only works on sorted data;
+		sort(vec1.begin(), vec1.end());
+		//setup iterators;
+		auto beg = vec1.begin(), end = vec1.end();
+		auto mid = beg + (end - beg) / 2;
 
-	while (mid != end && *mid != sought) {
-		if (sought < *mid) {
-			end = mid;
+		while (mid != end && *mid != sought) {
+			if (sought < *mid) {
+				end = mid;
+			}
+			else {
+				beg = mid + 1;
+			}
+			mid = beg + (end - beg) / 2;
 		}
-		else {
-			beg = mid + 1;
-		}
-		mid = beg + (end - beg) / 2;
-	}
-	int count = 0;
-	if (mid != end && *mid == sought) {
-		cout << "Found " << *mid << " at position " << (mid - vec1.begin()) << endl;
-		for (auto c : vec1) {
-			cout << c << " ";
-			++count;
-			if (count >= 2) {
-				count = 0;
-				cout << endl;
+		int count = 0;
+		if (mid != end && *mid == sought) {
+			cout << "Found " << *mid << " at position " << (mid - vec1.begin()) << endl;
+			for (auto c : vec1) {
+				cout << c << " ";
+				++count;
+				if (count >= 2) {
+					count = 0;
+					cout << endl;
+				}
 			}
 		}
-	}
-	else {
-		cout << "Value not found" << endl;
-	}
+		else {
+			cout << "Value not found" << endl;
+		}
 
-	return 0;
-}
+		return 0;
+	}
