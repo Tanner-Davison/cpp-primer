@@ -13,7 +13,7 @@ int main() {
 
 	//check to ensure input file exist.
 	if (!inFile) cout << "No file found!" << endl;
-	//create vector container;
+
 	vector<string> vec1;
 	//type to read;
 	string line;
