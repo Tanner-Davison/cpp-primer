@@ -10,7 +10,6 @@ using namespace std;
 
 int main() {
 	fstream inFile("input_add_item.txt");
-
 	//check to ensure input file exist.
 	if (!inFile) cout << "No file found!" << endl;
 
