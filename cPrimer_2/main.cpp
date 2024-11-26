@@ -18,7 +18,7 @@ int main() {
 	string line;
 
 	string sought = "hello";
-
+	//create new vector graphic
 	while (getline(inFile, line)) {
 
 		if (!line.empty()) {
