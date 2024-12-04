@@ -16,7 +16,7 @@ int main() {
 
 	}
 	vector<unsigned>vwls{ 0,0,0,0,0 };
-
+	unsigned long long count = 0;
 	string line;
 
 	while (getline(inFile, line)) {
@@ -39,6 +39,9 @@ int main() {
 			case 'u':
 				++vwls[4];
 				break;
+			default:
+				++count;
+				break;
 			}
 		}
 	}
@@ -46,11 +49,14 @@ int main() {
 	for (int num : vwls) {
 		total += num;
 	}
+
 	cout << "Number of vowels a: \t" << vwls[0] << "\n"
 		<< "Number of vowels e: \t" << ++vwls[1] << "\n"
 		<< "Number of vowels i: \t" << ++vwls[2] << "\n"
 		<< "Number of vowels o: \t" << ++vwls[3] << "\n"
 		<< "Number of vowels u: \t" << ++vwls[4] << "\n"
-		<< "\n Total Vowels: \t" << total << "\n";
+		<< "\n Total Vowels: \t" << total << "\n"
+		<< "\n Non-vowels: \t" << count << "\n"
+		<< "\n Letter count: " << (total + count) << "\n";
 	return 0;
 }
