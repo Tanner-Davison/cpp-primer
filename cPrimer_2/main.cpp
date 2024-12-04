@@ -50,6 +50,11 @@ int main() {
 		total += num;
 	}
 
+	const long long lettersTotal = total + count;
+
+
+
+
 	cout << "Number of vowels a: \t" << vwls[0] << "\n"
 		<< "Number of vowels e: \t" << ++vwls[1] << "\n"
 		<< "Number of vowels i: \t" << ++vwls[2] << "\n"
@@ -57,6 +62,14 @@ int main() {
 		<< "Number of vowels u: \t" << ++vwls[4] << "\n"
 		<< "\n Total Vowels: \t" << total << "\n"
 		<< "\n Non-vowels: \t" << count << "\n"
-		<< "\n Letter count: " << (total + count) << "\n";
+		<< "\n Letter count: " << lettersTotal << "\n";
+
+	if (lettersTotal > 1000) {
+		cout << "Thats a lot of letters!" << endl;
+	}
+	else {
+		cout << "You have less than 1000 letters in this test." << endl;
+	}
+
 	return 0;
 }
