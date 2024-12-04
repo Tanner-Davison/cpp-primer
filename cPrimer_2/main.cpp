@@ -15,11 +15,11 @@ int main() {
 	}
 
 	vector<unsigned> vwls{ 0,0,0,0,0,0 };
-	unsigned long long count = 0;
-	unsigned int spaces = 0;
+	unsigned long long count = 0, spaces = 0;
 	string line;
 
 	while (getline(inFile, line)) {
+		++newline;
 		for (unsigned char c : line) {
 			if (isspace(c)) {
 				++spaces;
@@ -42,7 +42,7 @@ int main() {
 	for (auto num : vwls) {
 		total += num;
 	}
-	const long long lettersTotal = total + count;
+	const long long lettersTotal = (total + count);
 
 	cout << "Number of vowels a: \t" << vwls[0] << "\n"
 		<< "Number of vowels e: \t" << vwls[1] << "\n"
