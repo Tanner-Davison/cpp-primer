@@ -19,7 +19,6 @@ int main() {
 	string line;
 
 	while (getline(inFile, line)) {
-		++newline;
 		for (unsigned char c : line) {
 			if (isspace(c)) {
 				++spaces;
