@@ -1,72 +1,75 @@
 #include <iostream>
-#include "Sales_item.h"
-#include "Sales_data.h"
-#include<sstream>
-#include <string>
+#include <sstream>
+#include <vector>
 #include <fstream>
-#include <algorithm>
+#include <ostream>
+#include <istream>
+#include <string>
+#include <utility> 
 
 using namespace std;
-//I am back baby!
-int main() {
-	fstream inFile("input_add_item.txt");
-	//check to ensure input file exist.
-	if (!inFile) cout << "No file found!" << endl;
 
-	vector<string> vec1;
-	//type to read;
-	string line;
+int countWords(string str) {
 
-	string sought = "hello";
-	//create new vector graphic
-	while (getline(inFile, line)) {
+	//loading str into the string stream;
+	stringstream s(str);
 
-		if (!line.empty()) {
-			string word = "";
-			for (auto it = line.begin(); it != line.end(); ++it) {
-				if (isspace(*it)) {
-					vec1.emplace_back(word);
-					word = "";
-				}
-				else {
-					word += *it;
-				}
-			}
-			if (!word.empty()) {
-				vec1.emplace_back(word);
-			}
-		}
-	}
-	//first sort the vector; binary search only works on sorted data;
-	sort(vec1.begin(), vec1.end());
-	//setup iterators;
-	auto beg = vec1.begin(), end = vec1.end();
-	auto mid = beg + (end - beg) / 2;
+	string word;
 
-	while (mid != end && *mid != sought) {
-		if (sought < *mid) {
-			end = mid;
-		}
-		else {
-			beg = mid + 1;
-		}
-		mid = beg + (end - beg) / 2;
-	}
 	int count = 0;
-	if (mid != end && *mid == sought) {
-		cout << "Found " << *mid << " at position " << (mid - vec1.begin()) << endl;
-		for (auto c : vec1) {
-			cout << c << " ";
-			++count;
-			if (count >= 2) {
-				count = 0;
-				cout << endl;
-			}
+
+	/*read each word skipping white spaces into word simultanously tracking
+	word count. */
+	while (s >> word) {
+		cout << "\nIteration" << (count + 1) << ": word = '" << word << "'" << endl;
+		count++;
+	}
+
+	return count;
+
+}
+
+
+
+int main() {
+
+	fstream inFile("input_add_item.txt");
+
+	if (!inFile) {
+		cout << "Error no file found" << endl;
+		return 1;
+	}
+	int points = 100;
+
+	vector<pair<string, string>> qa;
+
+	string current_line;
+
+	int line_count = 0;
+	string question, answer;
+
+	while (getline(inFile, question) && getline(inFile, answer)) {
+		if (!question.empty() && !answer.empty()) {
+			qa.emplace_back(question, answer);
 		}
+	}
+	if (qa.empty()) {
+		cout << "No questions found in file." << endl;
+		return 1;
+	}
+	cout << qa[0].first << "\n";
+
+	string human_response;
+	getline(cin, human_response);
+
+	if (human_response == qa[0].second) {
+		cout << "PASS" << endl;
 	}
 	else {
-		cout << "Value not found" << endl;
+		cout << "FAIL" << endl;
 	}
+
+
 
 	return 0;
 }
