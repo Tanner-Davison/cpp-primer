@@ -15,6 +15,7 @@ int main() {
 	}
 
 	vector<unsigned> vwls{ 0,0,0,0,0,0 };
+	int total = 0;
 	unsigned long long count = 0, spaces = 0;
 	string line;
 
@@ -37,7 +38,7 @@ int main() {
 		}
 		++vwls[5];
 	}
-	int total = 0;
+
 	for (auto num : vwls) {
 		total += num;
 	}
