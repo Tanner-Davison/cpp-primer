@@ -7,14 +7,12 @@
 #include <algorithm>
 
 using namespace std;
-//I am back baby!
 int main() {
+	
 	fstream inFile("input_add_item.txt");
-	//check to ensure input file exist.
 	if (!inFile) cout << "No file found!" << endl;
 
 	vector<string> vec1;
-	//type to read;
 	string line;
 
 	string sought = "hello";
