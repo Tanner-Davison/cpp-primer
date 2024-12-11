@@ -38,6 +38,7 @@ int main() {
 	//first sort the vector; binary search only works on sorted data;
 	sort(vec1.begin(), vec1.end());
 	//setup iterators;
+    //Adding a line with vim
 	auto beg = vec1.begin(), end = vec1.end();
 	auto mid = beg + (end - beg) / 2;
 
