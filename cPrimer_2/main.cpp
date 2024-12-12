@@ -8,12 +8,13 @@
 
 using namespace std;
 int main() {
-	
+
 	fstream inFile("input_add_item.txt");
 	if (!inFile) cout << "No file found!" << endl;
 
 	vector<string> vec1;
 	string line;
+	//adding for vim motions.
 
 	string sought = "hello";
 
@@ -38,7 +39,7 @@ int main() {
 	//first sort the vector; binary search only works on sorted data;
 	sort(vec1.begin(), vec1.end());
 	//setup iterators;
-    //Adding a line with vim
+	//Adding a line with vim
 	auto beg = vec1.begin(), end = vec1.end();
 	auto mid = beg + (end - beg) / 2;
 
