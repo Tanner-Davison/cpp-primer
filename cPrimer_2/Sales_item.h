@@ -140,7 +140,7 @@ operator>>(std::istream& in, Sales_item& s)
 		s = Sales_item();  // input failed: reset object to default state
 	return in;
 }
-
+//cat
 std::ostream&
 operator<<(std::ostream& out, const Sales_item& s)
 {
