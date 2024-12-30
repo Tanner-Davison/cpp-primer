@@ -1,9 +1,6 @@
-#include "Sales_data.h"
-#include "Sales_item.h"
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 
