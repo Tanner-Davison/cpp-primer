@@ -1,28 +1,32 @@
 #include <iostream>
+#include <sstream>
 #include <string>
+#include <vector>
+
 using namespace std;
 int main() {
-  string input1;
-  while (getline(std::cin, input1) && !input1.empty() && input1 != "n") {
-    switch (input1[0]) {
-    case '-':
-      for (auto it = input1.begin() + 1; it != input1.end(); ++it) {
-        if (*it == ' ') {
-          break;
+  string line;
+  string current_word;
+  vector<string> duplicates;
+  while (getline(cin, line) && !line.empty()) {
+    stringstream s(line);
+    string prev;
+    while (s >> current_word) {
+      if (prev.empty() && !current_word.empty()) {
+        prev = current_word;
+      } else if (!prev.empty() && !current_word.empty()) {
+        if (current_word == prev) {
+          duplicates.emplace_back(current_word);
+          prev = current_word;
         }
-        cout << *it;
+        prev = current_word;
       }
-      break;
-    case 't':
-      for (auto it = input1.begin() + 1; it != input1.end(); ++it) {
-        if (*it == 'x') {
-          break;
-        }
-        cout << *it;
-      }
-      break;
     }
-    cout << endl;
   }
+  cout << "Duplicate(s) Found: ";
+  for (string &word : duplicates) {
+    cout << word << ", ";
+  }
+
   return 0;
 }
