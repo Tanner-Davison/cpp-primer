@@ -12,13 +12,10 @@ int main() {
     stringstream s(line);
     string prev;
     while (s >> current_word) {
-      if (prev.empty() && !current_word.empty()) {
+      if (!current_word.empty() && current_word != prev) {
         prev = current_word;
-      } else if (!prev.empty() && !current_word.empty()) {
-        if (current_word == prev) {
-          duplicates.emplace_back(current_word);
-          prev = current_word;
-        }
+      } else {
+        duplicates.emplace_back(current_word);
         prev = current_word;
       }
     }
