@@ -1,23 +1,18 @@
 #include <iostream>
-#include <stdexcept>
-#include <string>
 using namespace std;
 
 int main() {
-
-  int num1, num2;
-  while (cin >> num1 >> num2) {
+  float num, num2;
+  while (cin >> num >> num2) {
     try {
-      
-      cout << num1 << " + " << num2 << " = " << (num1 + num2) << endl;
-      if (num1 + num2 <= 0) {
-        throw runtime_error("Addition must be greater than 0");
-      }
+      if (num2 == 0)
+        throw runtime_error("ERROR! -> Attempted to divide by 0");
+      cout << num << " / " << num2 << (num / num2) << endl;
     } catch (runtime_error err) {
-      cout << err.what() << "\n Try again? Enter y or n" << endl;
-      char rsp;
-      cin >> rsp;
-      if (!rsp || rsp == 'n') {
+      cout << err.what() << "\nTry again? y or n\n";
+      char rs;
+      cin >> rs;
+      if (rs == 'n' || !rs) {
         break;
       }
     }
