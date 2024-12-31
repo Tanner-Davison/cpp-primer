@@ -8,7 +8,7 @@ int fact(int num) {
   return ret;
 }
 
-int main() {
+int main() { // --< start
   int number{5};
   int factof = fact(number);
   cout << factof << endl;
