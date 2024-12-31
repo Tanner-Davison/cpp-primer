@@ -13,11 +13,6 @@ int main() {
 
   vector<string> vec1;
   string line;
-  //
-  // adding for vim motions.
-  // Inserting a new comment using vim.
-  //
-  string favEditor = "Vim";
   string sought = "hello";
 
   while (getline(inFile, line)) {
@@ -37,14 +32,9 @@ int main() {
       }
     }
   }
-  //
-  // first sort the vector; binary search only works on sorted data;
-  //
   sort(vec1.begin(), vec1.end());
-  //
+
   // Setup Iterators;
-  // Adding a line with vim
-  //
   auto beg = vec1.begin(), end = vec1.end();
   auto mid = beg + (end - beg) / 2;
 
