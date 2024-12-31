@@ -7,7 +7,7 @@ int main() {
     try {
       if (num2 == 0)
         throw runtime_error("ERROR! -> Attempted to divide by 0");
-      cout << num << " / " << num2 << (num / num2) << endl;
+      cout << num << " / " << num2 << " = " << (num / num2) << endl;
     } catch (runtime_error err) {
       cout << err.what() << "\nTry again? y or n\n";
       char rs;
