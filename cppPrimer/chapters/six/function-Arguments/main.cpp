@@ -1,19 +1,26 @@
 #include <iostream>
 using namespace std;
-int fact(int num) { // Factor function
-  int ret = 1;
-  while (num > 1) {
-    ret *= num--;
+
+std::string::size_type find_char(const string &s, char c,
+                                 string::size_type &occurs) {
+  auto ret = s.size();
+  for (decltype(ret) i = 0; i != s.size(); ++i) {
+    if (s[i] == c) {
+      if (ret == s.size()) {
+        ret = i;
+      }
+      ++occurs;
+    }
   }
   return ret;
 }
-unsigned int abs(unsigned int num) { return num; }
-int main() { // --< start
-  int factOfFive = fact(5);
-  int factOfFour = fact(4);
-  int total = factOfFive * factOfFour;
-  cout << total;
-  int myabs = -100;
-  cout << abs(myabs) << endl;
+int main() {
+
+  string testing = "hello world I am testing damn ditch a theory";
+  string::size_type occurs = 0;
+
+  cout << "First Occurence: " << find_char(testing, 'd', occurs)
+       << " Letters in.\nTotal occurences: " << occurs << endl;
+
   return 0;
 }
