@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-
+// Test for duplicates words in input stream
 using namespace std;
 int main() {
   string line;
