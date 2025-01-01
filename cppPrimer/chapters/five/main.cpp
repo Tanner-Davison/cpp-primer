@@ -13,8 +13,10 @@ int main() {
   char resp;
   string input;
   try {
-    getline(cin, input);
-    resp = input[0];
+    cin >> resp;
+    cin.ignore();
+    // getline(cin, input);       This way also works
+    // resp = input[0];           This way also works
     if (!resp || (resp != 'a' && resp != 'u')) {
       throw runtime_error("Must set boundry!");
     } else {
