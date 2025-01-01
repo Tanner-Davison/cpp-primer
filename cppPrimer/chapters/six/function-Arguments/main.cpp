@@ -16,7 +16,7 @@ std::string::size_type find_char(const string &s, char c,
 }
 int main() {
 
-  string testing = "hello world I am testing damn ditch a theory";
+  string testing = "hello world I am testing a theory";
   string::size_type occurs = 0;
 
   cout << "First Occurence: " << find_char(testing, 'd', occurs)
