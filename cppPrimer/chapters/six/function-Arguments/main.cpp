@@ -6,7 +6,7 @@ std::string::size_type find_char(const string &s, char c,
   auto ret = s.size();
   for (decltype(ret) i = 0; i != s.size(); ++i) {
     if (s[i] == c) {
-      if (ret == s.size()) {
+      if (ret == s.size()) { // clever way to only read first iteration.
         ret = i;
       }
       ++occurs;
