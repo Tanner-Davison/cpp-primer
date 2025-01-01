@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int fact(int num) {
+int fact(int num) { // Factor function
   int ret = 1;
   while (num > 1) {
     ret *= num--;
