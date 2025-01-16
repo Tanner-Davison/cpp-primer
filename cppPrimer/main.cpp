@@ -15,6 +15,8 @@ int (*func(int))[10] {
 
 int main() {
   int(*testPtr)[10] = func(5);
-  std::cout << (*testPtr)[3] << std::endl;
+  arrT *tenInts = func(10);
+  std::cout << (*tenInts)[9] << std::endl;
+
   return 0;
 }
