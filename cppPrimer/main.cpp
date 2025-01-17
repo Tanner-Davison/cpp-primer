@@ -17,7 +17,11 @@ int (*func(int addP))[10] {
   return nullptr;
 }
 int main(int argc, char *argv[]) {
-  int(*myArray)[10] = func(2);
+  if (argc > 2) {
+    std::cout << argv[0] << std::endl;
+    std::cout << argv[1] << std::endl;
+  }
+  int(*myArray)[10] = func(0);
 
   if (myArray) {
     for (auto &el : *myArray) {
