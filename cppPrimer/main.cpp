@@ -1,25 +1,28 @@
 #include <iostream>
-typedef int arrP[10];
-int (*func(int p))[10] {
-  static arrP arrP;
+
+int (*func(int addP))[10] {
+  static int arrS[10];
   try {
-    if (p > 0) {
-      for (int i = 0; i < p; ++i) {
-        arrP[i] = i;
-        std::cout << arrP[i] << std::endl;
+    if (addP > 0) {
+      for (int i = 0; i < 10; ++i) {
+        arrS[i] = i + addP;
       }
-      return &arrP;
+      return &arrS;
     } else {
-      throw std::runtime_error("function has no valid parameters");
+      throw std::runtime_error("Cannot add to 0");
     }
   } catch (std::runtime_error &err) {
     std::cout << err.what() << std::endl;
-    return nullptr;
   }
   return nullptr;
 }
-int main() {
-  int(*arr)[10] = func(0);
+int main(int argc, char *argv[]) {
+  int(*myArray)[10] = func(2);
 
+  if (myArray) {
+    for (auto &el : *myArray) {
+      std::cout << el << std::endl;
+    }
+  }
   return 0;
 }
