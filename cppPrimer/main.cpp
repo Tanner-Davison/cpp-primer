@@ -16,17 +16,19 @@ int (*func(int addP))[10] {
   }
   return nullptr;
 }
-int main(int argc, char *argv[]) {
-  if (argc > 2) {
-    std::cout << argv[0] << std::endl;
-    std::cout << argv[1] << std::endl;
+void myRec(int *arr, int index) {
+  std::cout << arr[index] << std::endl;
+  if (index > 0) {
+    --index;
+    myRec(arr, index);
+  } else {
+    std::cout << "end" << std::endl;
   }
-  int(*myArray)[10] = func(0);
+}
+int main() {
 
-  if (myArray) {
-    for (auto &el : *myArray) {
-      std::cout << el << std::endl;
-    }
-  }
+  std::cout << "choosing a monitor" << std::endl;
+  int arrTest[10]{10, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  myRec(arrTest, 10);
   return 0;
 }
