@@ -27,7 +27,6 @@ void myRec(int *arr, int index) {
 }
 int main() {
 
-  std::cout << "choosing a monitor" << std::endl;
   int arrTest[10]{10, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   myRec(arrTest, 10);
   return 0;
