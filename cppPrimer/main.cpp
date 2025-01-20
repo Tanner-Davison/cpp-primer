@@ -25,15 +25,27 @@ void myRec(int *arr, int index) {
     std::cout << "end" << std::endl;
   }
 }
+std::string strArr[10];
+decltype(strArr) &arrP(std::string); // decltype version
+typedef std::string ArrayType[10];   // typedef version
+ArrayType &funcName() {
+  static std::string staticString[10];
+  return staticString;
+}
+auto functrail() -> std::string (&)[10]; // Trailing function version
+
 std::string (&stringArr())[10] { // Exercise 6.36 p:230
   static std::string myTempString[10];
-
   return myTempString;
 }
+int odd[] = {1, 3, 5, 7, 9};
+int even[] = {2, 4, 6, 8, 10};
+decltype(odd) &arrPtr(int i) { return (i % 2) ? odd : even; }
 int main() {
   typedef int &lref;
   typedef int &&rref;
   int n;
+
   lref &r1 = n;
 
   int arrTest[10]{10, 2, 3, 4, 5, 6, 7, 8, 9, 10};
