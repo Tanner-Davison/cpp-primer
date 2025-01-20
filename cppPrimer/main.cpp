@@ -25,7 +25,16 @@ void myRec(int *arr, int index) {
     std::cout << "end" << std::endl;
   }
 }
+std::string (&stringArr())[10] { // Exercise 6.36 p:230
+  static std::string myTempString[10];
+
+  return myTempString;
+}
 int main() {
+  typedef int &lref;
+  typedef int &&rref;
+  int n;
+  lref &r1 = n;
 
   int arrTest[10]{10, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   myRec(arrTest, 10);
