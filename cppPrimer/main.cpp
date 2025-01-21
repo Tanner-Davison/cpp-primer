@@ -1,4 +1,6 @@
 #include <iostream>
+#include <map>
+#include <vector>
 
 int (*func(int addP))[10] {
   static int arrS[10];
@@ -16,7 +18,7 @@ int (*func(int addP))[10] {
   }
   return nullptr;
 }
-void myRec(int *arr, int index) {
+void myRec(int *arr, int index) { // Recursion example
   std::cout << arr[index] << std::endl;
   if (index > 0) {
     --index;
@@ -38,6 +40,25 @@ std::string (&stringArr())[10] { // Exercise 6.36 p:230
   static std::string myTempString[10];
   return myTempString;
 }
+// COMPLEX EXAMPLE of a function that returns a reference to an array of
+// pointers to functions that each take a vector of integers and return a const
+// reference to a map of strings to doubles.
+//  Original complex declaration
+std::map<std::string, double> const &(*(&complexFunc())[5])(std::vector<int>);
+
+// Trailing return style (more readable)
+auto complexFunc()
+    -> std::map<std::string, double> const &(*(&)[5])(std::vector<int>);
+
+// Break it down into manageable pieces
+using MapType = std::map<std::string, double>;
+using MapRef = const MapType &;
+using FuncPtr = MapRef (*)(std::vector<int>); // Pointer to function
+using ArrayOfFuncPtr = FuncPtr[5];            // Array of function pointers
+using ArrayPtrRef = ArrayOfFuncPtr &;         // Reference to the array
+
+ArrayPtrRef complexFunc();
+//////////////////////////////
 int odd[] = {1, 3, 5, 7, 9};
 int even[] = {2, 4, 6, 8, 10};
 decltype(odd) &arrPtr(int i) { return (i % 2) ? odd : even; }
