@@ -50,7 +50,7 @@ std::map<std::string, double> const &(*(&complexFunc())[5])(std::vector<int>);
 auto complexFunc()
     -> std::map<std::string, double> const &(*(&)[5])(std::vector<int>);
 
-// Break it down into manageable pieces
+// Break it down into manageable pieces using Type aliases
 using MapType = std::map<std::string, double>;
 using MapRef = const MapType &;
 using FuncPtr = MapRef (*)(std::vector<int>); // Pointer to function
