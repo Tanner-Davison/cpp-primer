@@ -1,3 +1,4 @@
+#include <ios>
 #include <iostream>
 #include <vector>
 
@@ -12,6 +13,7 @@ int (*func(int param1 = 10))[10] {
   return nullptr;
 }
 typedef std::string::size_type sz;
+
 std::vector<int> *funcVec(sz arrSz = 10) {
   if (arrSz > 0) {
     static std::vector<int> arrPtr;
@@ -22,8 +24,29 @@ std::vector<int> *funcVec(sz arrSz = 10) {
   }
   return {};
 }
+int howOld(int month, int born, int currentYear = 2025) {
+  std::cout << born << std::endl;
+  static int currMonth = 1;
+  if (month > currMonth) {
+    return (currentYear - born) - 1;
+  }
+  return currentYear - born;
+}
+inline std::string &shorterString(std::string &one, std::string &two) {
+  return one.size() < two.size() ? one : two;
+}
 
+constexpr int scale(std::string::size_type sz) { return 2 * sz; }
 int main() {
+  int arrTest[scale(4)];
+  for (int i = 0; i < 8; ++i) {
+    arrTest[i] = i;
+    std::cout << arrTest[i];
+  }
+  std::string nameOne = "RonaldReagan";
+  std::string nameTwo = "Tanner";
+  std::string winner = shorterString(nameOne, nameTwo);
+  std::cout << winner << std::endl;
   int(*myArrP)[10] = func(10);
   sz SIZE = 20;
   for (int i = 0; i < 10; ++i) {
@@ -34,5 +57,7 @@ int main() {
   for (auto val : *myTestVec) {
     std::cout << "Vector: " << val << std::endl;
   }
+  int age = howOld(1, 1984);
+  std::cout << "I am " << age << " years old." << std::endl;
   return 0;
 }
