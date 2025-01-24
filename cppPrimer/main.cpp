@@ -24,7 +24,7 @@ std::vector<int> *funcVec(sz arrSz = 10) {
   }
   return {};
 }
-int howOld(int month, int born, int currentYear = 2025) {
+int InitializeAge(int month, int born, int currentYear = 2025) {
   std::cout << born << std::endl;
   static int currMonth = 1;
   if (month > currMonth) {
@@ -57,7 +57,7 @@ int main() {
   for (auto val : *myTestVec) {
     std::cout << "Vector: " << val << std::endl;
   }
-  int age = howOld(1, 1984);
+  int age = InitializeAge(1, 1984);
   std::cout << "I am " << age << " years old." << std::endl;
   return 0;
 }
