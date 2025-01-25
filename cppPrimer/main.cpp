@@ -43,11 +43,6 @@ int main() {
     arrTest[i] = i;
     std::cout << arrTest[i];
   }
-  std::string nameThree = "testing";
-  std::string nameOne = "RonaldReagan";
-  std::string nameTwo = "Tanner";
-  std::string winner = shorterString(nameOne, nameTwo);
-  std::cout << winner << std::endl;
   int(*myArrP)[10] = func(10);
   sz SIZE = 20;
   for (int i = 0; i < 10; ++i) {
