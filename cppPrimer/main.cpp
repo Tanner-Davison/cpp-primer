@@ -43,6 +43,7 @@ int main() {
     arrTest[i] = i;
     std::cout << arrTest[i];
   }
+  std::string nameThree = "testing";
   std::string nameOne = "RonaldReagan";
   std::string nameTwo = "Tanner";
   std::string winner = shorterString(nameOne, nameTwo);
