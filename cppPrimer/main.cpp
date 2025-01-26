@@ -1,4 +1,5 @@
-#include <ios>
+#include <array>
+#include <cstddef>
 #include <iostream>
 #include <vector>
 
@@ -24,36 +25,42 @@ std::vector<int> *funcVec(sz arrSz = 10) {
   }
   return {};
 }
-int InitializeAge(int month, int born, int currentYear = 2025) {
-  std::cout << born << std::endl;
-  static int currMonth = 1;
-  if (month > currMonth) {
-    return (currentYear - born) - 1;
-  }
-  return currentYear - born;
-}
 inline std::string &shorterString(std::string &one, std::string &two) {
   return one.size() < two.size() ? one : two;
 }
+inline std::vector<int> allInts;
 
 constexpr int scale(std::string::size_type sz) { return 2 * sz; }
+template <typename T, std::size_t X, std::size_t Y> struct Matrix {
+  std::array<T, X * Y> mat{};
+
+  // Multidimensional operator[] in C++23
+  T &operator[](std::size_t x, std::size_t y) { return mat[y * X + x]; }
+
+  // Const version for read-only access
+  const T &operator[](std::size_t x, std::size_t y) const {
+    return mat[y * X + x];
+  }
+};
+
 int main() {
-  int arrTest[scale(4)];
-  for (int i = 0; i < 8; ++i) {
-    arrTest[i] = i;
-    std::cout << arrTest[i];
+
+  std::cout << '\n';
+
+  Matrix<int, 3, 3> mat;
+  for (auto i : {0, 1, 2}) {
+    for (auto j : {0, 1, 2})
+      mat[i, j] = (i * 3) + j; // (2)
   }
-  int(*myArrP)[10] = func(10);
-  sz SIZE = 20;
-  for (int i = 0; i < 10; ++i) {
-    std::cout << (*myArrP)[i] << std::endl;
+  for (auto i : {0, 1, 2}) {
+    for (auto j : {0, 1, 2}) {
+      if (i == 1 && j == 0 || i == 2 && j == 0) {
+        std::cout << "\n";
+      }
+      std::cout << " [" << i << "," << j << "]" << mat[i, j];
+    }
   }
-  // Vector Example
-  std::vector<int> *myTestVec{funcVec(SIZE)};
-  for (auto val : *myTestVec) {
-    std::cout << "Vector: " << val << std::endl;
-  }
-  int age = InitializeAge(1, 1984);
-  std::cout << "I am " << age << " years old." << std::endl;
+
+  std::cout << '\n';
   return 0;
 }
