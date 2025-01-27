@@ -1,66 +1,26 @@
-#include <array>
-#include <cstddef>
+
+#include <fstream>
 #include <iostream>
-#include <vector>
-
-int (*func(int param1 = 10))[10] {
-  static int arrP[10];
-  if (param1 > 0) {
-    for (int i = 1; i < 11; ++i) {
-      arrP[i - 1] = i;
-    }
-    return &arrP;
-  }
-  return nullptr;
-}
-typedef std::string::size_type sz;
-
-std::vector<int> *funcVec(sz arrSz = 10) {
-  if (arrSz > 0) {
-    static std::vector<int> arrPtr;
-    for (sz i = 0; i < arrSz; ++i) {
-      arrPtr.emplace_back(i);
-    }
-    return &arrPtr;
-  }
-  return {};
-}
-inline std::string &shorterString(std::string &one, std::string &two) {
-  return one.size() < two.size() ? one : two;
-}
-inline std::vector<int> allInts;
-
-constexpr int scale(std::string::size_type sz) { return 2 * sz; }
-template <typename T, std::size_t X, std::size_t Y> struct Matrix {
-  std::array<T, X * Y> mat{};
-
-  // Multidimensional operator[] in C++23
-  T &operator[](std::size_t x, std::size_t y) { return mat[y * X + x]; }
-
-  // Const version for read-only access
-  const T &operator[](std::size_t x, std::size_t y) const {
-    return mat[y * X + x];
-  }
-};
+#include <sstream>
+#include <string>
 
 int main() {
+  std::cout << "program starts here: " << std::endl;
 
-  std::cout << '\n';
-
-  Matrix<int, 3, 3> mat;
-  for (auto i : {0, 1, 2}) {
-    for (auto j : {0, 1, 2})
-      mat[i, j] = (i * 3) + j; // (2)
+  std::fstream inFile("./hextest.txt");
+  if (!inFile) {
+    std::cout << "Error no infile found" << std::endl;
+    return 1;
   }
-  for (auto i : {0, 1, 2}) {
-    for (auto j : {0, 1, 2}) {
-      if (i == 1 && j == 0 || i == 2 && j == 0) {
-        std::cout << "\n";
-      }
-      std::cout << " [" << i << "," << j << "]" << mat[i, j];
+  std::string line;
+
+  while (std::getline(inFile, line)) {
+    std::stringstream s(line);
+    std::string word;
+    while (s >> word) {
+      std::cout << word << std::endl;
     }
   }
-
-  std::cout << '\n';
+  std::cout << "Program Ends Here -> \n";
   return 0;
 }
