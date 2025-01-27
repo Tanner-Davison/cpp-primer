@@ -4,9 +4,19 @@
 #include <sstream>
 #include <string>
 
+int (*func())[10] {
+  static int tempArr[10];
+  for (int i = 0; i < 10; ++i) {
+    tempArr[i] = i;
+  }
+  return &tempArr;
+}
 int main() {
+  int(*myIntPtr)[10] = func();
+  for (auto i : *myIntPtr) {
+    std::cout << (*myIntPtr)[i] << std::endl;
+  }
   std::cout << "program starts here: " << std::endl;
-
   std::fstream inFile("./hextest.txt");
   if (!inFile) {
     std::cout << "Error no infile found" << std::endl;
