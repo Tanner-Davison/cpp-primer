@@ -11,6 +11,13 @@ int (*func())[10] {
   }
   return &tempArr;
 }
+char (*stringFunc())[10] {
+  static char nameTemp[10];
+  for (int i = 0; i < 10; ++i) {
+    nameTemp[i] = ('A' + i);
+  }
+  return &nameTemp;
+}
 int main() {
   int(*myIntPtr)[10] = func();
   for (auto i : *myIntPtr) {
