@@ -18,12 +18,18 @@ char (*stringFunc())[10] {
   }
   return &nameTemp;
 }
+
 int main() {
   int(*myIntPtr)[10] = func();
+  char(*charArr)[10] = stringFunc();
   for (auto i : *myIntPtr) {
     std::cout << (*myIntPtr)[i] << std::endl;
   }
-  std::cout << "program starts here: " << std::endl;
+  for (int i = 0; i < 10; ++i) {
+    std::cout << (*charArr)[i];
+  }
+
+  std::cout << "\nprogram starts here: " << std::endl;
   std::fstream inFile("./hextest.txt");
   if (!inFile) {
     std::cout << "Error no infile found" << std::endl;
