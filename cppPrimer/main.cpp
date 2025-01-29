@@ -1,9 +1,10 @@
 
 #include <fstream>
 #include <iostream>
+#include <memory>
+#include <ranges>
 #include <sstream>
 #include <string>
-
 int (*func())[10] {
   static int tempArr[10];
   for (int i = 0; i < 10; ++i) {
@@ -18,8 +19,30 @@ char (*stringFunc())[10] {
   }
   return &nameTemp;
 }
+class Resource {
+public:
+  Resource() { std::cout << "Resource constructed\n"; }
 
+  ~Resource() { std::cout << "Resource destroyed\n"; }
+
+  // Prevent copying
+  Resource(const Resource &) = delete;
+  Resource &operator=(const Resource &) = delete;
+};
 int main() {
+  // Create an array of Resources
+  alignas(Resource) unsigned char buffer[sizeof(Resource) * 3];
+  Resource *resources = reinterpret_cast<Resource *>(buffer);
+
+  // Construct the Resources
+  for (std::size_t i = 0; i < 3; ++i) {
+    new (resources + i) Resource();
+  }
+
+  std::cout << "Resources constructed, now destroying...\n";
+
+  // Use ranges::destroy to properly destroy the objects
+  std::ranges::destroy(resources, resources + 3);
   int(*myIntPtr)[10] = func();
   char(*charArr)[10] = stringFunc();
   for (auto i : *myIntPtr) {
@@ -44,6 +67,7 @@ int main() {
       std::cout << word << std::endl;
     }
   }
+  std::ranges::destroy;
   std::cout << "Program Ends Here -> \n";
   return 0;
 }
