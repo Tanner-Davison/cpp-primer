@@ -30,7 +30,8 @@ public:
   Resource &operator=(const Resource &) = delete;
 };
 int main() {
-  // Create an array of Resources
+  // Saving the array
+  //  Create an array of Resources
   alignas(Resource) unsigned char buffer[sizeof(Resource) * 3];
   Resource *resources = reinterpret_cast<Resource *>(buffer);
 
