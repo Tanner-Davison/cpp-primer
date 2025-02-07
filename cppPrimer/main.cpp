@@ -2,8 +2,8 @@
 #include <fstream>
 #include <iostream>
 #include <memory>
-#include <ranges>
 #include <sstream>
+#include <stdio.h>
 #include <string>
 int (*func())[10] {
   static int tempArr[10];
@@ -54,6 +54,7 @@ int main() {
   }
 
   std::cout << "\nprogram starts here: " << std::endl;
+  printf("line");
   std::fstream inFile("./hextest.txt");
   if (!inFile) {
     std::cout << "Error no infile found" << std::endl;
