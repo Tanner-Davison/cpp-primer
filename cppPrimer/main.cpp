@@ -1,10 +1,12 @@
 
+#include <cassert>
 #include <fstream>
 #include <iostream>
 #include <memory>
 #include <sstream>
 #include <stdio.h>
 #include <string>
+
 int (*func())[10] {
   static int tempArr[10];
   for (int i = 0; i < 10; ++i) {
@@ -46,6 +48,8 @@ int main() {
   std::ranges::destroy(resources, resources + 3);
   int(*myIntPtr)[10] = func();
   char(*charArr)[10] = stringFunc();
+  std::string name = "tanner";
+  static_assert(sizeof(int) == 4, "Size of int != 4 bytes");
   for (auto i : *myIntPtr) {
     std::cout << (*myIntPtr)[i] << std::endl;
   }
@@ -69,7 +73,7 @@ int main() {
       std::cout << word << std::endl;
     }
   }
-  std::ranges::destroy;
   std::cout << "Program Ends Here -> \n";
+
   return 0;
 }
