@@ -31,9 +31,20 @@ public:
   Resource(const Resource &) = delete;
   Resource &operator=(const Resource &) = delete;
 };
+void print(const int ia[], size_t size) {
+#ifndef NDEBGUG
+  std::cerr << __func__ << " : array size is " << size << std::endl;
+#endif // !NDEBGUG
+  for (size_t i = 0; i < size; i++) {
+    std::cout << ia[i] << " ";
+  }
+  std::cout << std::endl;
+}
 int main() {
   // Saving the array
   //  Create an array of Resources
+  int arr[] = {1, 2, 3, 4, 5};
+  print(arr, 5);
   alignas(Resource) unsigned char buffer[sizeof(Resource) * 3];
   Resource *resources = reinterpret_cast<Resource *>(buffer);
 
