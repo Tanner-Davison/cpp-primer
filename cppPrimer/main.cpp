@@ -23,13 +23,22 @@ int (*getOperation(char op))(int, int) {
     return nullptr;
   };
 };
-
+bool isLarger(std::string &str1, std::string &str2) {
+  return str1.size() > str2.size();
+}
+bool (*strBool)(const std::string &, const std::string &);
 std::string lengthCompare(std::string &str, std::string &str2) {
   return str.size() > str2.size() ? str : str2;
+}
+std::string concatStrings(std::string &str1, std::string &str2,
+                          bool (*pf)(std::string &, std::string &)) {
+
+  return pf(str1, str2) ? (str1 += str2) : str2 += str1;
 }
 std::string concatStrings(std::string &str1, std::string &str2) {
   return (str1 += str2);
 }
+
 std::string (*strPf)(std::string &str1, std::string &str2);
 
 bool (*pf)(int &num, int &num2) = [](int &num, int &num2) {
@@ -54,9 +63,14 @@ int main() {
   std::cout << strResult << std::endl;
   strPf = concatStrings;
   std::string concatted = strPf(name, name2);
+  std::string names = "Longer";
+  std::string names2 = "shorterer";
+  std::string concattedWithBool = concatStrings(names, names2, isLarger);
+  std::cout << concattedWithBool << std::endl;
   std::transform(concatted.begin(), concatted.end(), concatted.begin(),
                  ::toupper);
   std::cout << concatted << std::endl;
+
   ;
   return 0;
 }
