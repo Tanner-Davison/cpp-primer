@@ -1,4 +1,5 @@
 
+#include <algorithm>
 #include <cassert>
 #include <fstream>
 #include <iostream>
@@ -32,7 +33,7 @@ public:
   Resource &operator=(const Resource &) = delete;
 };
 void print(const int ia[], size_t size) {
-#ifndef NDEBGUG
+#ifndef NDEBUG
   std::cerr << __func__ << " : array size is " << size << std::endl;
 #endif // !NDEBGUG
   for (size_t i = 0; i < size; i++) {
@@ -56,7 +57,6 @@ int main() {
   std::cout << "Resources constructed, now destroying...\n";
 
   // Use ranges::destroy to properly destroy the objects
-  std::ranges::destroy(resources, resources + 3);
   int(*myIntPtr)[10] = func();
   char(*charArr)[10] = stringFunc();
   std::string name = "tanner";
