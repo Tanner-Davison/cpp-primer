@@ -1,5 +1,3 @@
-#include <algorithm>
-#include <cctype>
 #include <iostream>
 #include <string>
 
@@ -51,11 +49,9 @@ int main() {
   std::string name2 = "bubba";
   strPf = lengthCompare;
   std::string strResult = strPf(name, name2);
-  std::cout << strResult << std::endl;
+  std::cout << strResult;
   strPf = concatStrings;
   std::string concatted = strPf(name, name2);
-  std::transform(concatted.begin(), concatted.end(), concatted.begin(),
-                 ::toupper);
   std::cout << concatted << std::endl;
   ;
   return 0;
