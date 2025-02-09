@@ -21,20 +21,11 @@ int (*getOperation(char op))(int, int) {
   };
 };
 
-bool (*pf)(int &num, int &num2) = [](int &num, int &num2) {
-  return num == num2;
-};
-
 int main() {
   int (*func_ptr)(int, int) = getOperation('+');
   int sum = func_ptr(5, 3);
 
   std::cout << "\nSum: of 5 + 3 = " << sum << std::endl;
-  int num1 = 100;
-  int num2 = 100;
-  bool result = pf(num1, num2);
-  if (result) {
-    std::cout << "They are equal" << std::endl;
-  }
+
   return 0;
 }
