@@ -23,27 +23,31 @@ int (*getOperation(char op))(int, int) {
     return nullptr;
   };
 };
+
+bool (*pf)(int &num, int &num2) = [](int &num, int &num2) {
+  return num == num2;
+};
+
 bool isLarger(std::string &str1, std::string &str2) {
   return str1.size() > str2.size();
 }
 bool (*strBool)(const std::string &, const std::string &);
+
 std::string lengthCompare(std::string &str, std::string &str2) {
   return str.size() > str2.size() ? str : str2;
 }
+
 std::string concatStrings(std::string &str1, std::string &str2,
                           bool (*pf)(std::string &, std::string &)) {
 
   return pf(str1, str2) ? (str1 += str2) : str2 += str1;
 }
+
 std::string concatStrings(std::string &str1, std::string &str2) {
   return (str1 += str2);
 }
 
 std::string (*strPf)(std::string &str1, std::string &str2);
-
-bool (*pf)(int &num, int &num2) = [](int &num, int &num2) {
-  return num == num2;
-};
 
 int main() {
   int (*func_ptr)(int, int) = getOperation('+');
