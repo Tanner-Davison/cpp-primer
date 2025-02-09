@@ -57,7 +57,7 @@ int main() {
     std::cout << "They are equal" << std::endl;
   }
   std::string name = "Tanner";
-  std::string name2 = "bubba";
+  std::string name2 = "Davison";
   strPf = lengthCompare;
   std::string strResult = strPf(name, name2);
   std::cout << strResult << std::endl;
