@@ -31,6 +31,7 @@ bool (*pf)(int &num, int &num2) = [](int &num, int &num2) {
 bool isLarger(std::string &str1, std::string &str2) {
   return str1.size() > str2.size();
 }
+
 bool (*strBool)(const std::string &, const std::string &);
 
 std::string lengthCompare(std::string &str, std::string &str2) {
