@@ -1,18 +1,23 @@
 #include <iostream>
 #include <vector>
 
+// Create 4 functions Add, Subtract, Multiply, Divide
 int add(int num1, int num2) { return (num1 + num2); };
 int subtract(int num1, int num2) { return (num1 - num2); };
 int multiply(int num1, int num2) { return (num1 * num2); };
 int divide(int num1, int num2) { return (num1 / num2); };
 
-typedef int (*mathops)(int, int);
+// typedef int (*mathops)(int, int);
+
+using mathops = int (*)(int, int);
 
 int main() {
 
   std::vector<mathops> ops = {add, subtract, multiply, divide};
-
-  std::cout << ops[0](2, 2) << std::endl;
-
+  int num1 = 10;
+  int num2 = 20;
+  for (std::vector<mathops>::iterator it = ops.begin(); it != ops.end(); ++it) {
+    std::cout << "total: " << (*it)(num2, num1) << std::endl;
+  }
   return 0;
 }
