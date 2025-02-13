@@ -47,13 +47,15 @@ std::string concatStrings(std::string &str1, std::string &str2,
 std::string concatStrings(std::string &str1, std::string &str2) {
   return (str1 += str2);
 }
-
+int testme(int num) { return (num * 3); }
 std::string (*strPf)(std::string &str1, std::string &str2);
 
 int main() {
   int (*func_ptr)(int, int) = getOperation('+');
   int sum = func_ptr(5, 3);
-
+  int testNum = 24;
+  int (*ptrtest)(int num) = testme;
+  std::cout << ptrtest(testNum);
   std::cout << "\nSum: of 5 + 3 = " << sum << std::endl;
   int num1 = 100;
   int num2 = 100;
