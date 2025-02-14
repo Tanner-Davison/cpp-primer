@@ -11,6 +11,7 @@ int divide(int num1, int num2) { return (num1 / num2); };
 // typedef int (*mathops)(int, int);
 using mathops = int (*)(int, int);
 
+// passing pointer functions to functions
 int callback(int num1, int num2, int (*func_cb)(int, int)) {
   return func_cb(num1, num2);
 }
