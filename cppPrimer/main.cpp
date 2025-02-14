@@ -10,7 +10,7 @@ int multiply(int a, int b) { return (a * b); }
 int calculate(int a, int b, int (*operation)(int, int)) {
   return operation(a, b);
 };
-
+// see chapters/7
 int (*getOperation(char op))(int, int) {
   switch (op) {
   case '+':
