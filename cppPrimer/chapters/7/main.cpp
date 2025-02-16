@@ -1,3 +1,4 @@
+#include "./Person.hpp"
 #include "Sales_data.hpp"
 #include <fstream>
 #include <iostream>
@@ -28,5 +29,9 @@ int main() {
     std::cerr << "No data?!" << std::endl;
   }
   inFile.close();
+
+  Person person("Tanner", "213 w philly lane");
+  std::cout << "\n"
+            << person.get_name() << " , " << person.get_address() << std::endl;
   return 0;
 }
