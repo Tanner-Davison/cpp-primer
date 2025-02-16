@@ -1,10 +1,11 @@
-#include "./Person.hpp"
+#include "Person.hpp"
 #include "Sales_data.hpp"
 #include <fstream>
 #include <iostream>
 
 int main() {
   std::fstream inFile("./chapters/7/input.txt");
+  std::fstream inFile_person("./chapters/7/person.txt");
   if (!inFile) {
     inFile.clear();
     inFile.open("./input.txt");
@@ -12,8 +13,15 @@ int main() {
       throw std::runtime_error("Could not open input file in either location");
     }
   }
+  if (!inFile_person) {
+    inFile_person.clear();
+    inFile_person.open("./person.txt");
+    if (!inFile_person) {
+      throw std::runtime_error("No Person data found!");
+    }
+  }
   Sales_data total;
-
+  Person person;
   if (read(inFile, total)) {
     Sales_data trans;
     while (read(inFile, trans)) {
@@ -30,8 +38,10 @@ int main() {
   }
   inFile.close();
 
-  Person person("Tanner", "213 w philly lane");
-  std::cout << "\n"
-            << person.get_name() << " , " << person.get_address() << std::endl;
+  if (read_person(inFile_person, person)) {
+    std::cout << "Person Data Available" << std::endl;
+    print_person(std::cout, person);
+  }
+
   return 0;
 }
