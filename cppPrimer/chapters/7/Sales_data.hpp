@@ -32,3 +32,9 @@ private:
   double avg_price = 0.0;
   double revenue = 0.0;
 };
+// Forward declarations
+class Sales_data;
+std::istream &operator>>(std::istream &in, Sales_data &data);
+void print(std::ostream &out, const Sales_data &item);
+Sales_data add(const Sales_data &obj1, const Sales_data &obj2);
+bool read(std::istream &in, Sales_data &item);
