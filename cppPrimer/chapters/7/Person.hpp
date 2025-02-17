@@ -3,32 +3,24 @@
 #include <string>
 
 class Person {
+private:
   std::string name;
   std::string address;
 
 public:
+  // constructors
   Person() = default;
-  Person(std::string nameP, std::string addressP)
-      : name(nameP), address(addressP) {};
+  Person(const Person &);
+  Person(std::string nameP, std::string addressP);
 
-  const std::string &get_name() const { return name; }
-  const std::string &get_address() const { return address; }
-  void set_name(std::string new_name) { this->name = new_name; }
-  void set_address(std::string new_address) { this->address = new_address; }
-  Person &add(Person &other) {
-    name += (" " + other.name);
-    address += (" " + other.address);
-    return *this;
-  }
-  friend std::istream &read_person(std::istream &is, Person &person) {
-    is >> person.name;
-    std::getline(is >> std::ws, person.address);
-    return is;
-  }
+  // member functions
+  const std::string &get_name() const;
+  const std::string &get_address() const;
+  void set_name(std::string new_name);
+  void set_address(std::string new_address);
+  Person &add(Person &other);
+
+  // friend functions
+  friend std::istream &read_person(std::istream &is, Person &person);
   friend std::ostream &print_person(std::ostream &os, const Person &personP);
 };
-
-inline std::ostream &print_person(std::ostream &os, const Person &personP) {
-  os << "Name: " << personP.name << "\nAddress: " << personP.address;
-  return os;
-}
