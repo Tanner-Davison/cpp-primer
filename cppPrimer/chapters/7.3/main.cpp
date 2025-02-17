@@ -42,7 +42,6 @@ int main() {
             {ch, (max_height - 1) * max_width + (max_width - 1)});
       }
     }
-
     // Update and display all active characters
     for (auto &char_pos : active_chars) {
       if (char_pos.position < max_height * max_width) {
@@ -51,14 +50,11 @@ int main() {
         myScreen.set(row, col, char_pos.ch);
       }
     }
-
     myScreen.display(std::cout);
-
     // Move all characters -   subtract 1 to move left
     for (auto &char_pos : active_chars) {
       char_pos.position -= 1;
     }
-
     // Remove characters that have moved off screen
     active_chars.erase(
         std::remove_if(active_chars.begin(), active_chars.end(),
@@ -69,6 +65,5 @@ int main() {
 
     std::this_thread::sleep_for(std::chrono::milliseconds(120));
   }
-
   return 0;
 }
