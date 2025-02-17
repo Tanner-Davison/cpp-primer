@@ -31,7 +31,7 @@ int main() {
       }
     }
 
-    // Check for new character input
+    // Check for new char input
     if (_kbhit()) {
       char ch = _getch();
       if (ch == 'q' || ch == 'Q') {
