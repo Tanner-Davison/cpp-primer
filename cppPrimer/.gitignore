@@ -1,3 +1,13 @@
+# Visual Studio solution files
+*.sln
+
+# Executables
+*.exe
+main
+
+# Accidental files
 '
-cPrimer_2.sln
-main.exe
+
+# Build artifacts
+*.o
+*.obj
