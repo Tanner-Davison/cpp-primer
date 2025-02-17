@@ -4,8 +4,8 @@
 #include <iomanip>
 
 Sales_data::Sales_data(std::string id, unsigned units_s, double avg_p)
-    : item_id(id), units_sold(units_s), avg_price(avg_p),
-      revenue(avg_p * units_s) {}
+    : item_id(id), units_sold(units_s), price(avg_p), revenue(avg_p * units_s) {
+}
 
 Sales_data::Sales_data(std::istream &is) { read(is, *this); }
 

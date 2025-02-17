@@ -24,3 +24,7 @@ public:
   friend std::istream &read_person(std::istream &is, Person &person);
   friend std::ostream &print_person(std::ostream &os, const Person &personP);
 };
+
+// Forward declarations
+std::istream &read_person(std::istream &is, Person &person);
+std::ostream &print_person(std::ostream &os, const Person &personP);

@@ -3,9 +3,9 @@
 #include <ctime>
 #include <iomanip>
 
-Sales_data::Sales_data(std::string id, unsigned units_s, double avg_p)
-    : item_id(id), units_sold(units_s), avg_price(avg_p),
-      revenue(avg_p * units_s) {}
+Sales_data::Sales_data(std::string id, unsigned units_s, double price_p)
+    : item_id(id), units_sold(units_s), price(price_p),
+      revenue(price_p * units_s) {}
 
 Sales_data::Sales_data(std::istream &is) { read(is, *this); }
 
@@ -58,7 +58,7 @@ void print(std::ostream &out, const Sales_data &item) {
   out << "Item #: " << item.item_id << "\n"
       << "Units Sold: " << item.units_sold << "\n"
       << "Total Revenue: $" << item.revenue << "\n"
-      << "Average Price: $" << item.revenue / item.units_sold << "\n"
+      << "Average Price: $" << item.avg_price() << "\n"
       << "\n";
 }
 

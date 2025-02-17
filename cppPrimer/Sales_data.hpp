@@ -29,6 +29,6 @@ public:
 private:
   std::string item_id;
   unsigned units_sold = 0;
-  double avg_price = 0.0;
+  double price = 0.0;
   double revenue = 0.0;
 };
