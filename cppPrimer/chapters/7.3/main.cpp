@@ -17,17 +17,19 @@ struct CharPosition {
 int main() {
   pos max_height = 10;
   pos max_width = 35;
+  char character = '-';
   std::vector<CharPosition> active_chars;
 
-  Screen myScreen(max_height, max_width, '.');
+  Screen myScreen(max_height, max_width, character);
 
   while (true) {
     system("cls");
+    // if on linux systems use system("clear")
 
     // Reset screen to dots
     for (pos i = 0; i < max_height; i++) {
       for (pos j = 0; j < max_width; j++) {
-        myScreen.set(i, j, '.');
+        myScreen.set(i, j, character);
       }
     }
 
@@ -55,13 +57,19 @@ int main() {
     for (auto &char_pos : active_chars) {
       char_pos.position -= 1;
     }
+    for (auto &char_pos : active_chars) {
+      if (char_pos.position == 0) {
+        char_pos.position = (max_height - 1) * max_width + (max_width - 1);
+      }
+    }
+    // Turned off but uncomment when you want to show no repeat//
     // Remove characters that have moved off screen
-    active_chars.erase(
-        std::remove_if(active_chars.begin(), active_chars.end(),
-                       [max_height, max_width](const CharPosition &cp) {
-                         return cp.position >= max_height * max_width;
-                       }),
-        active_chars.end());
+    // active_chars.erase(
+    //     std::remove_if(active_chars.begin(), active_chars.end(),
+    //                    [max_height, max_width](const CharPosition &cp) {
+    //                      return cp.position >= max_height * max_width;
+    //                    }),
+    //     active_chars.end());
 
     std::this_thread::sleep_for(std::chrono::milliseconds(120));
   }
