@@ -1,4 +1,5 @@
 #pragma once
+#include <conio.h>
 #include <iostream>
 #include <vector>
 
@@ -21,7 +22,9 @@ public:
   // Member functions
   char get() const;
   void some_member() const;
+  void set_looping(bool do_loop);
   Screen &move(pos r, pos c);
+  void update_and_display();
 
   inline Screen &set(char);
   inline Screen &set(pos, pos, char);
@@ -30,11 +33,9 @@ public:
   inline char get(pos ht, pos wd) const;
   inline Screen &display(std::ostream &os);
   inline const Screen &display(std::ostream &os) const;
-  inline void update_and_display();
-  inline void update_active_chars(char &ch);
+  inline void update_active_chars(char ch);
   inline void move_left();
-  inline void loop_check();
-
+  inline void reset(const char &character);
   // Private Member Functions
 private:
   void do_display(std::ostream &os) const {
@@ -43,7 +44,7 @@ private:
       os.write(&contents[row_start], width);
       os << "\n";
     }
-  };
+  }
 
   // private data members
 private:
@@ -52,8 +53,8 @@ private:
   pos height = 0, width = 0;
   std::string contents;
 };
-
 // ###  CLASS END ###
+
 // Inline member functions --------------------------------
 //
 inline char Screen::get(pos row_p, pos ch_p) const {
@@ -64,29 +65,28 @@ inline char Screen::get(pos row_p, pos ch_p) const {
 inline Screen &Screen::set(char ch) {
   contents[cursor] = ch;
   return *this;
-};
-// set
+}
+// overloaded set
 inline Screen &Screen::set(pos row, pos col, char ch) {
   contents[row * width + col] = ch;
   return *this;
-};
+}
 // get width
-inline std::string::size_type Screen::get_width() const { return width; };
+inline std::string::size_type Screen::get_width() const { return width; }
 // get height
-inline std::string::size_type Screen::get_height() const { return height; };
-
+inline std::string::size_type Screen::get_height() const { return height; }
 // display
 inline Screen &Screen::display(std::ostream &os) {
   do_display(os);
   return *this;
-};
+}
 // const display
 inline const Screen &Screen::display(std::ostream &os) const {
   do_display(os);
   return *this;
-};
+}
 // update active_chars
-inline void Screen::update_active_chars(char &ch) {
+inline void Screen::update_active_chars(char ch) {
   active_chars.push_back({ch, ((height * width) - 1)});
 }
 // move left
@@ -95,19 +95,11 @@ inline void Screen::move_left() {
     char_pos.position -= 1;
   }
 }
-inline void Screen::loop_check() {
-  for (auto &char_pos : active_chars) {
-    if (char_pos.position == 0) {
-      char_pos.position = ((width * height) - 1);
-    }
-  }
-}
-inline void Screen::update_and_display() {
-  for (auto &char_pos : active_chars) {
-    if (char_pos.position < height * width) {
-      pos row = char_pos.position / width;
-      pos col = char_pos.position % width;
-      set(row, col, char_pos.ch);
+// Reset
+inline void Screen::reset(const char &character) {
+  for (pos i = 0; i < height; i++) {
+    for (pos j = 0; j < width; j++) {
+      set(i, j, character);
     }
   }
 }

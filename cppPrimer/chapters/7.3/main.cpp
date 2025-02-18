@@ -1,71 +1,45 @@
 #include "Screen.hpp"
-#include <algorithm> // for remove_if
-#include <conio.h>   // for _kbhit and _getch
+#include <conio.h> // for _kbhit and _getch
 #include <iostream>
-#include <thread>  // for sleep
-#include <utility> // for pair
-#include <vector>
+#include <thread> // for sleep
 #include <windows.h>
 
 using pos = std::string::size_type;
+
+bool handle_input(Screen &screen) {
+  if (_kbhit()) {
+    char ch = _getch();
+    if (ch == 'q' || ch == 'Q') {
+      return false;
+    } else {
+      screen.update_active_chars(ch);
+    }
+  }
+  return true;
+}
 
 int main() {
   pos max_height = 10;
   pos max_width = 35;
   char character = '-';
-
   Screen myScreen(max_height, max_width, character);
 
   while (true) {
     system("cls");
-
     // Reset screen to dots
-    for (pos i = 0; i < max_height; i++) {
-      for (pos j = 0; j < max_width; j++) {
-        myScreen.set(i, j, character);
-      }
-    }
-
+    myScreen.reset(character);
     // Check for new char input
-    if (_kbhit()) {
-      char ch = _getch();
-      if (ch == 'q' || ch == 'Q') {
-        break;
-      } else {
-        // Add new character at start position (bottom right corner)
-        myScreen.update_active_chars(ch);
-      }
-    }
+    if (!handle_input(myScreen)) {
+      break;
+    };
     // Update and display all active characters
     myScreen.update_and_display();
-    // for (auto &char_pos : active_chars) {
-    //   if (char_pos.position < max_height * max_width) {
-    //     pos row = char_pos.position / max_width;
-    //     pos col = char_pos.position % max_width;
-    //     myScreen.set(row, col, char_pos.ch);
-    //   }
-    // }
+    // Osstream specifier
     myScreen.display(std::cout);
-    // Move all characters -  subtract 1 to move left
-    // for (auto &char_pos : myScreen.active_chars) {
-    //   char_pos.position -= 1;
-    // }
     myScreen.move_left();
-    myScreen.loop_check();
-    // for (auto &char_pos : active_chars) {
-    //   if (char_pos.position == 0) {
-    //     char_pos.position = ((max_width * max_height) - 1);
-    //   }
-    // }
-    // Turned off but uncomment when you want to show no repeat//
-    // Remove characters that have moved off screen
-    // active_chars.erase(
-    //     std::remove_if(active_chars.begin(), active_chars.end(),
-    //                    [max_height, max_width](const CharPosition &cp) {
-    //                      return cp.position >= max_height * max_width;
-    //                    }),
-    //     active_chars.end());
-
+    // control loop *false for no looping
+    myScreen.set_looping(true);
+    // frame timing
     std::this_thread::sleep_for(std::chrono::milliseconds(120));
   }
   return 0;
