@@ -59,7 +59,7 @@ int main() {
     }
     for (auto &char_pos : active_chars) {
       if (char_pos.position == 0) {
-        char_pos.position = (max_height - 1) * max_width + (max_width - 1);
+        char_pos.position = ((max_width * max_height) - 1);
       }
     }
     // Turned off but uncomment when you want to show no repeat//
