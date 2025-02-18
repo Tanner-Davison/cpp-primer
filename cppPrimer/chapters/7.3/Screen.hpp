@@ -1,9 +1,17 @@
 #pragma once
 #include <iostream>
+#include <vector>
+
+struct CharPosition {
+  using pos = std::string::size_type;
+  char ch;
+  pos position;
+};
 
 class Screen {
 public:
   using pos = std::string::size_type;
+  std::vector<CharPosition> active_chars;
   // Constructors
   Screen() = default;
   Screen(const Screen &) = default;
@@ -15,14 +23,17 @@ public:
   void some_member() const;
   Screen &move(pos r, pos c);
 
-  // Inline member functions
-  inline char get(pos ht, pos wd) const;
   inline Screen &set(char);
   inline Screen &set(pos, pos, char);
   inline pos get_width() const;
   inline pos get_height() const;
+  inline char get(pos ht, pos wd) const;
   inline Screen &display(std::ostream &os);
   inline const Screen &display(std::ostream &os) const;
+  inline void update_and_display();
+  inline void update_active_chars(char ch);
+  inline void move_left();
+  inline void loop_check();
 
   // Private Member Functions
 private:
@@ -74,3 +85,29 @@ inline const Screen &Screen::display(std::ostream &os) const {
   do_display(os);
   return *this;
 };
+// update active_chars
+inline void Screen::update_active_chars(char ch) {
+  active_chars.push_back({ch, ((height * width) - 1)});
+}
+// move left
+inline void Screen::move_left() {
+  for (auto &char_pos : active_chars) {
+    char_pos.position -= 1;
+  }
+}
+inline void Screen::loop_check() {
+  for (auto &char_pos : active_chars) {
+    if (char_pos.position == 0) {
+      char_pos.position = ((width * height) - 1);
+    }
+  }
+}
+inline void Screen::update_and_display() {
+  for (auto &char_pos : active_chars) {
+    if (char_pos.position < height * width) {
+      pos row = char_pos.position / width;
+      pos col = char_pos.position % width;
+      set(row, col, char_pos.ch);
+    }
+  }
+}
