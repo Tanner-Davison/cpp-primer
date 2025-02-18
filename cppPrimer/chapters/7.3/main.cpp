@@ -21,7 +21,7 @@ bool handle_input(Screen &screen) {
 int main() {
   pos max_height = 10;
   pos max_width = 35;
-  char character = '-';
+  char character = '.';
   Screen myScreen(max_height, max_width, character);
 
   while (true) {
