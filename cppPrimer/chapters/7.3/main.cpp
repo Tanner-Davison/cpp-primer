@@ -33,8 +33,7 @@ int main() {
         break;
       } else {
         // Add new character at start position (bottom right corner)
-        myScreen.active_chars.push_back(
-            {ch, (max_height - 1) * max_width + (max_width - 1)});
+        myScreen.update_active_chars(ch);
       }
     }
     // Update and display all active characters

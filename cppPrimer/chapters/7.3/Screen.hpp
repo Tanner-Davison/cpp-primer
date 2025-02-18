@@ -31,7 +31,7 @@ public:
   inline Screen &display(std::ostream &os);
   inline const Screen &display(std::ostream &os) const;
   inline void update_and_display();
-  inline void update_active_chars(char ch);
+  inline void update_active_chars(char &ch);
   inline void move_left();
   inline void loop_check();
 
@@ -86,7 +86,7 @@ inline const Screen &Screen::display(std::ostream &os) const {
   return *this;
 };
 // update active_chars
-inline void Screen::update_active_chars(char ch) {
+inline void Screen::update_active_chars(char &ch) {
   active_chars.push_back({ch, ((height * width) - 1)});
 }
 // move left
