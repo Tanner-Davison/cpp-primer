@@ -7,7 +7,7 @@ public:
   // Constructors
   Sales_data() = default;
   Sales_data(std::string id, unsigned units_s, double avg_p);
-  explicit Sales_data(std::istream &is);
+  explicit Sales_data(std::istream &is = std::cin);
   Sales_data(const Sales_data &) = default;
 
   // Member functions
