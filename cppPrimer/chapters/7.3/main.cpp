@@ -7,18 +7,6 @@
 
 using pos = std::string::size_type;
 
-bool handle_input(Screen &screen) {
-  if (_kbhit()) {
-    char ch = _getch();
-    if (ch == 'q' || ch == 'Q') {
-      return false;
-    } else {
-      screen.update_active_chars(ch);
-    }
-  }
-  return true;
-}
-
 int main() {
   pos max_height = 10;
   pos max_width = 35;
