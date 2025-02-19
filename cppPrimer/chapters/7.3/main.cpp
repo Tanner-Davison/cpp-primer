@@ -5,11 +5,16 @@
 
 #include <windows.h>
 
-using pos = std::string::size_type;
+void end_result(Screen &screen) {
+  screen.reset(' ');
+  screen.update_and_display();
+  screen.display(std::cout);
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
+}
 
 int main() {
-  pos max_height = 10;
-  pos max_width = 35;
+  Screen::pos max_height = 10, max_width = 35;
+
   char character = '.';
   Screen myScreen(max_height, max_width, character);
 
@@ -19,6 +24,8 @@ int main() {
     myScreen.reset(character);
     // Check for new char input
     if (!myScreen.handle_input()) {
+      system("cls");
+      end_result(myScreen);
       break;
     };
     // Update and display all active characters

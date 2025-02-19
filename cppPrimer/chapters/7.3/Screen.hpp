@@ -1,16 +1,21 @@
 #pragma once
 #include <iostream>
 #include <vector>
+// forward declartion
+// class Window_mgr;
 
 struct CharPosition {
   using pos = std::string::size_type;
   char ch;
   pos position;
 };
-
+class Window_mgr;
 class Screen {
 public:
-  friend class Window_mgr;
+  // friend class Window_mgr;
+  friend Window_mgr;
+  friend std::ostream &storeOn(std::ostream &, Screen &);
+  friend CharPosition;
   using pos = std::string::size_type;
   std::vector<CharPosition> active_chars;
   // Constructors
@@ -27,10 +32,6 @@ public:
   void update_and_display();
   bool handle_input();
 
-  inline Screen &set(char);
-  inline Screen &set(pos, pos, char);
-  inline pos get_width() const;
-  inline pos get_height() const;
   inline char get(pos ht, pos wd) const;
   inline Screen &display(std::ostream &os);
   inline const Screen &display(std::ostream &os) const;
@@ -40,6 +41,11 @@ public:
 
   // Private Member Functions
 private:
+  inline Screen &set(char);
+  inline Screen &set(pos, pos, char);
+  inline pos get_width() const;
+  inline pos get_height() const;
+
   void do_display(std::ostream &os) const {
     for (pos row = 0; row < height; ++row) {
       pos row_start = row * width;
@@ -54,6 +60,7 @@ private:
   pos height = 0, width = 0;
   std::string contents;
 };
+
 // ###  CLASS END ###
 
 // Inline member functions --------------------------------
@@ -104,3 +111,5 @@ inline void Screen::reset(const char &character) {
     }
   }
 }
+// extern functions
+extern std::ostream &storeOn(std::ostream &, Screen &);

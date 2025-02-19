@@ -6,10 +6,11 @@
 class Window_mgr {
 public:
   using ScreenIndex = std::vector<Screen>::size_type;
-  Window_mgr() = default;
+  Window_mgr();
 
   void clear(ScreenIndex i);
+  ScreenIndex addScreen(const Screen &);
 
 private:
-  std::vector<Screen> screens{Screen(24, 80, ' ')};
+  std::vector<Screen> screens;
 };
