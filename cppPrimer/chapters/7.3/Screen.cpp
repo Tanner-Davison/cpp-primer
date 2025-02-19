@@ -1,5 +1,6 @@
 #include "Screen.hpp"
 #include <algorithm> // for remove_if
+#include <conio.h>   // for _kbhit and _getch
 
 // Constructors
 Screen::Screen(pos ht, pos wd, char ch)
@@ -42,4 +43,14 @@ void Screen::update_and_display() {
       set(row, col, char_pos.ch);
     }
   }
+};
+bool Screen::handle_input() {
+  if (_kbhit()) {
+    char ch = _getch();
+    if (ch == 'q' || ch == 'Q')
+      return false;
+
+    update_active_chars(ch);
+  }
+  return true;
 };

@@ -1,5 +1,4 @@
 #pragma once
-#include <conio.h>
 #include <iostream>
 #include <vector>
 
@@ -11,6 +10,7 @@ struct CharPosition {
 
 class Screen {
 public:
+  friend class Window_mgr;
   using pos = std::string::size_type;
   std::vector<CharPosition> active_chars;
   // Constructors
@@ -25,6 +25,7 @@ public:
   void set_looping(bool do_loop);
   Screen &move(pos r, pos c);
   void update_and_display();
+  bool handle_input();
 
   inline Screen &set(char);
   inline Screen &set(pos, pos, char);
@@ -36,6 +37,7 @@ public:
   inline void update_active_chars(char ch);
   inline void move_left();
   inline void reset(const char &character);
+
   // Private Member Functions
 private:
   void do_display(std::ostream &os) const {
@@ -45,7 +47,6 @@ private:
       os << "\n";
     }
   }
-
   // private data members
 private:
   mutable size_t access_ctr; // May change even a const object

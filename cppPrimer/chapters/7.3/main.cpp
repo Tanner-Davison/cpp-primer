@@ -1,7 +1,8 @@
 #include "Screen.hpp"
-#include <conio.h> // for _kbhit and _getch
+#include <conio.h>
 #include <iostream>
 #include <thread> // for sleep
+
 #include <windows.h>
 
 using pos = std::string::size_type;
@@ -29,7 +30,7 @@ int main() {
     // Reset screen to dots
     myScreen.reset(character);
     // Check for new char input
-    if (!handle_input(myScreen)) {
+    if (!myScreen.handle_input()) {
       break;
     };
     // Update and display all active characters
