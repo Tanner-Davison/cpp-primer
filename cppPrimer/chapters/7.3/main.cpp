@@ -26,7 +26,8 @@ int main() {
     // Osstream specifier
     myScreen.display(std::cout);
     myScreen.move_left();
-    // control loop *false for no looping
+
+    // dictates character loop true for infinite repeating
     myScreen.set_looping(true);
     // frame timing
     std::this_thread::sleep_for(std::chrono::milliseconds(120));
