@@ -92,3 +92,6 @@ bool read_non_blanks(std::istream &is, Book &data) {
   return true;
 };
 std::size_t Book::get_id() const { return this->book_id; }
+std::string Book::get_auth() const { return this->author; };
+std::string Book::get_title() const { return this->book_name; };
+std::string Book::get_published_date() const { return this->published_date; };

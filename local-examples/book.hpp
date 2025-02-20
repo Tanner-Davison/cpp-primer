@@ -17,9 +17,9 @@ public:
   Book(const Book &);
 
   // member functions
-  std::string get_auth(Book &) const;
-  std::string get_book_name(Book &) const;
-  std::string get_published_date(Book &) const;
+  std::string get_auth() const;
+  std::string get_title() const;
+  std::string get_published_date() const;
 
   // friend
   friend std::istream &operator>>(std::istream &, Book &);
