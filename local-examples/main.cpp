@@ -15,10 +15,12 @@ int main() {
   while (read_non_blanks(inFile, book_ref)) {
     lib.add_book(book_ref);
   }
-
-  std::cout << "Search by id (press Enter to list all): ";
+  std::size_t total_book_count = lib.get_book_count();
+  std::cout << "Search by id (press Enter to list all " << total_book_count
+            << " books!) : ";
   std::string input;
   std::getline(std::cin, input);
+  std::cout << "\n";
 
   if (input.empty()) {
     lib.read_inventory();

@@ -13,7 +13,7 @@ void BookLibrary::read_inventory() const {
   for (const auto &book : books) {
     std::cout << book << std::endl;
   }
-};
+}
 Book *BookLibrary::search_id(std::size_t id) {
   auto it = std::find_if(books.begin(), books.end(),
                          [id](const Book &b) { return b.get_id() == id; });
@@ -21,3 +21,4 @@ Book *BookLibrary::search_id(std::size_t id) {
     return &(*it);
   return nullptr;
 }
+std::size_t BookLibrary::get_book_count() const { return books.size() - 1; }
