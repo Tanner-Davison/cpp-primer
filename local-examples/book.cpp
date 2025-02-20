@@ -5,7 +5,7 @@ Book::Book(std::string auth, std::string bookName, std::string totalPages,
            std::string publishedDate)
     : author(auth), book_name(bookName), total_pages(totalPages),
       published_date(publishedDate) {};
-
+Book::Book(std::size_t id) : Book("", "", "", "") { book_id = id; };
 Book::Book() : Book("", "", "", "") {};
 Book::Book(std::string auth) : Book(auth, "", "", "") {};
 
@@ -91,3 +91,4 @@ bool read_non_blanks(std::istream &is, Book &data) {
 
   return true;
 };
+std::size_t Book::get_id() const { return this->book_id; }
