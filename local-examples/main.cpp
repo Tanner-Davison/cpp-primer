@@ -1,18 +1,42 @@
-#include "BookLibrary.hpp"
-#include "book.hpp"
+// Copyright (c) 2025 Tanner Davison. All rights reserved
+
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  * of this software and associated documentation files (the "Software"), to
+//  deal * in the Software without restriction, including without limitation the
+//  rights * to use, copy, modify, merge, publish, distribute, sublicense,
+//  and/or sell * copies of the Software, and to permit persons to whom the
+//  Software is * furnished to do so, subject to the following conditions: * * -
+//  This copyright notice and permission notice shall be included in all *
+//  copies or substantial portions of the Software. * * THE SOFTWARE IS PROVIDED
+//  "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR * IMPLIED, INCLUDING BUT
+//  NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, * FITNESS FOR A PARTICULAR
+//  PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE * AUTHORS OR COPYRIGHT
+//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER * LIABILITY, WHETHER IN AN
+//  ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, * OUT OF OR IN
+//  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN * THE SOFTWARE.
+
+#include "./BookLibrary.hpp" // Project headers first
+#include "./book.hpp"        // Other project headers
+
 #include <algorithm>
 #include <cctype>
-#include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <iostream> // C++ standard library
+#include <string>
+#include <vector>
+
 #ifdef _WIN32
 #include <conio.h>
 #else
-// For macOS/Linux, use alternative:
+#include <cstdio> // C standard library
 #include <termios.h>
 #include <unistd.h>
 
 char getch() {
   char buf = 0;
-  struct termios old = {0};
+  struct termios old;
+  memset(&old, 0, sizeof(old));
   if (tcgetattr(0, &old) < 0)
     perror("tcsetattr()");
   old.c_lflag &= ~ICANON;
@@ -30,10 +54,6 @@ char getch() {
   return buf;
 }
 #endif
-#include <cstdlib>
-#include <fstream>
-#include <string>
-#include <vector>
 
 // Platform-specific screen clear
 void clearScreen() {
