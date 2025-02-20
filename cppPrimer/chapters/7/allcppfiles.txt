@@ -1,3 +1,0 @@
-main.cpp
-Person.cpp
-Sales_data.cpp
