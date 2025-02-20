@@ -1,6 +1,9 @@
 #include "BookLibrary.hpp"
 
-BookLibrary::BookLibrary() { books.front().set_id(0); }
+BookLibrary::BookLibrary() {
+  books.front().set_id(0);
+  books.reserve(200);
+}
 void BookLibrary::add_book(Book &book) {
   books.push_back(book);
   books.back().set_id(books.size() - 1);

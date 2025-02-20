@@ -19,6 +19,6 @@ int main() {
   }
   lib.read_inventory();
 
-  std::cout << lib.books.front() << std::endl;
+  // std::cout << lib.books.front() << std::endl;
   return 0;
 }

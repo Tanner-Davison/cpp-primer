@@ -6,7 +6,7 @@ Book::Book(std::string auth, std::string bookName, std::string totalPages,
     : author(auth), book_name(bookName), total_pages(totalPages),
       published_date(publishedDate) {};
 
-Book::Book() : Book("", "", "", "") { book_id = 0; };
+Book::Book() : Book("", "", "", "") {};
 Book::Book(std::string auth) : Book(auth, "", "", "") {};
 
 Book::Book(std::string auth, std::string bookName, std::string totalPages)
@@ -50,7 +50,7 @@ void print(std::ostream &os, Book &book) {
 }
 std::ostream &operator<<(std::ostream &os, const Book &book) {
   if (book.author == "Inventory List") {
-    os << "All Available Books" << " id: " << book.book_id << "\n";
+    os << "\n\n||-- * -- * -- All Available Books  -- * -- * --||";
 
     return os;
   } else {
