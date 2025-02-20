@@ -5,24 +5,38 @@
 #include <stdexcept>
 
 int main() {
-
-  BookLibrary lib;
-  Book book_ref;
-  std::size_t search;
   std::fstream inFile("./books.txt");
   if (!inFile) {
     throw std::runtime_error("No input file found!");
   }
-  std::cout << "Search by id: ";
-  std::cin >> search;
+  BookLibrary lib;
+  Book book_ref;
 
   while (read_non_blanks(inFile, book_ref)) {
     lib.add_book(book_ref);
   }
-  std::cout << *lib.search_id(search) << std::endl;
-  ;
-  // lib.read_inventory();
 
-  // std::cout << lib.books.front() << std::endl;
+  std::cout << "Search by id (press Enter to list all): ";
+  std::string input;
+  std::getline(std::cin, input);
+
+  if (input.empty()) {
+    lib.read_inventory();
+  } else {
+    try {
+      std::size_t search_id = std::stoull(input);
+      auto book_ptr = lib.search_id(search_id);
+      if (book_ptr) {
+        std::cout << *book_ptr << std::endl;
+      } else {
+        std::cout << "No book found with ID: " << search_id << std::endl;
+      }
+    } catch (const std::exception &) {
+      std::cout << "Invalid ID. Showing all books instead.\n";
+      lib.read_inventory();
+    }
+  }
+
+  inFile.close();
   return 0;
 }
