@@ -6,7 +6,8 @@ Book::Book(std::string auth, std::string bookName, std::string totalPages,
     : author(auth), book_name(bookName), total_pages(totalPages),
       published_date(publishedDate) {};
 
-Book::Book() : Book("", "", "", "") {};
+Book::Book() : Book("", "", "", "") { book_id = 0; };
+Book::Book(std::string auth) : Book(auth, "", "", "") {};
 
 Book::Book(std::string auth, std::string bookName, std::string totalPages)
     : Book(auth, bookName, totalPages, "unknown") {};
@@ -48,8 +49,45 @@ void print(std::ostream &os, Book &book) {
      << "Published: " << book.published_date << "\n";
 }
 std::ostream &operator<<(std::ostream &os, const Book &book) {
-  os << "Author: " << book.author << "\n"
-     << "Book: " << book.book_name << " ( " << book.total_pages << " pages )\n"
-     << "Published: " << book.published_date << "\n";
-  return os;
+  if (book.author == "Inventory List") {
+    os << "All Available Books" << " id: " << book.book_id << "\n";
+
+    return os;
+  } else {
+    os << "id: " << book.book_id << "\n"
+       << "Author: " << book.author << "\n"
+       << "Book: " << book.book_name << " ( " << book.total_pages
+       << " pages )\n"
+       << "Published: " << book.published_date << "\n";
+    return os;
+  }
+};
+
+bool read_non_blanks(std::istream &is, Book &data) {
+  std::string line;
+
+  // Skip any empty lines
+  do {
+    if (!std::getline(is, line)) {
+      return false; // End of file reached
+    }
+  } while (line.empty());
+  data.author = line;
+
+  // book name
+  if (!std::getline(is, line) || line.empty())
+    return false;
+  data.book_name = line;
+
+  // total pages
+  if (!std::getline(is, line) || line.empty())
+    return false;
+  data.total_pages = line;
+
+  // published date
+  if (!std::getline(is, line) || line.empty())
+    return false;
+  data.published_date = line;
+
+  return true;
 };
