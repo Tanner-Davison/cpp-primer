@@ -2,10 +2,12 @@
 #include <chrono>
 #include <ctime>
 #include <iomanip>
-
 Sales_data::Sales_data(std::string id, unsigned units_s, double price_p)
     : item_id(id), units_sold(units_s), price(price_p),
       revenue(price_p * units_s) {}
+Sales_data::Sales_data(std::string id, unsigned units_s)
+    : Sales_data(id, units_s, 0) {};
+Sales_data::Sales_data() : Sales_data(" ", 0, 0) {};
 
 Sales_data::Sales_data(std::istream &is) { read(is, *this); }
 

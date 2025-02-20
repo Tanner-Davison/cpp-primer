@@ -18,6 +18,7 @@ int main() {
   }
 
   Sales_data total;
+
   Person person;
   // Process sales data, accumulating transactions for matching ISBNs
   if (read(inFile, total)) {
