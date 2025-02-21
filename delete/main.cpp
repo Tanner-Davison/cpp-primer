@@ -1,4 +1,3 @@
-#include "C.hpp"
 #include "NoDefault.hpp"
 #include <chrono>
 #include <iostream>
