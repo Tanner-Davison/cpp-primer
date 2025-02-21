@@ -11,10 +11,6 @@ Book::Book(std::string auth) : Book(auth, "", "", "") {};
 
 Book::Book(std::string auth, std::string bookName, std::string totalPages)
     : Book(auth, bookName, totalPages, "unknown") {};
-// copy constructor using constructor delegation!
-Book::Book(const Book &other)
-    : Book(other.author, other.book_name, other.total_pages,
-           other.published_date) {};
 
 std::istream &operator>>(std::istream &is, Book &data) {
   std::string line;

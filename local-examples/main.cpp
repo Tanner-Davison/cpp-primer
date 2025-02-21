@@ -77,9 +77,9 @@ std::vector<Book *> searchBooks(BookLibrary &lib, const std::string &query) {
   try {
     if (!query.empty()) {
       std::size_t id = std::stoull(query);
-      Book *result = lib.search_id(id);
-      if (result)
-        results.push_back(result);
+      Book *book_result = lib.search_id(id);
+      if (book_result)
+        results.push_back(book_result);
     }
   } catch (...) {
     for (auto &book : lib.books) {

@@ -11,10 +11,10 @@ public:
   Book();
   Book(std::string, std::string, std::string, std::string);
   Book(std::string, std::string, std::string);
-  Book(std::size_t);
-  Book(std::string);
+  explicit Book(std::size_t);
+  explicit Book(std::string);
   // copy constructor
-  Book(const Book &);
+  Book(const Book &) = default;
 
   // member functions
   std::string get_auth() const;
