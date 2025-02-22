@@ -1,6 +1,0 @@
-hello world how are you doing today?
-I am testing what happens if i put in no.
-but I also wanted to test the buffer to see how awesome I could make it!
-so far it is working super well i can literally type in the terminal while
-
-being able to edit my text and delete and also return lines kinda bad ass if you ask me.
