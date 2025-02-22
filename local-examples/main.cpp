@@ -17,7 +17,6 @@
 
 #include "./BookLibrary.hpp" // Project headers first
 #include "./book.hpp"        // Other project headers
-
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>

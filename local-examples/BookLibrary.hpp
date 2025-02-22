@@ -1,5 +1,6 @@
 #pragma once
 #include "book.hpp"
+#include <iostream>
 #include <vector>
 
 class BookLibrary {
