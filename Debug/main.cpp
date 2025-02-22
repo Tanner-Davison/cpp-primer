@@ -1,11 +1,12 @@
 #include "DebugEx.hpp"
+#include <conio.h>
 #include <cstring>
 #include <fstream>
 #include <iostream>
 
-bool writetofile(const std::string &filename, const std::string &data,
-                 const Debug debug) {
-  std::fstream file(filename);
+bool writetofile(const std::string &filename, const Debug debug) {
+  // std::fstream file(filename);
+  std::ofstream file(filename);
   if (!file.is_open()) {
     if (debug.any()) {
       std::cerr << "[DEBUG] Failed to open: " << filename << std::endl;
@@ -14,13 +15,21 @@ bool writetofile(const std::string &filename, const std::string &data,
     return false;
   }
   try {
-    file << data;
+    char ch;
+    while ((ch = _getch()) != 27) {
+      if (debug.any()) {
+        std::cerr << "[DEBUG] Got Character: " << static_cast<int>(ch)
+                  << std::endl;
+      }
+      file.put(ch);
+    }
+    // file << data;
   } catch (const std::exception &e) {
     if (debug.any()) {
       std::cerr << "[DEBUG] write operation failed" << std::endl;
       std::cerr << "[DEBUG] Exception: " << e.what() << std::endl;
-      std::cerr << "[DEBUG] Attempted to write: " << data.length() << "bytes"
-                << std::endl;
+      // std::cerr << "[DEBUG] Attempted to write: " << ch << "bytes" <<
+      // std::endl;
     }
   }
   return true;
@@ -28,11 +37,11 @@ bool writetofile(const std::string &filename, const std::string &data,
 
 int main() {
   constexpr Debug io_sub(false, true, false);
-  constexpr Debug prod(false);
+  constexpr Debug prod;
 
-  writetofile("./testing.tx", "This is a critical message", io_sub);
+  writetofile("./testing.txt", io_sub);
 
-  writetofile("./regular.txt", "seeing if this still writes", prod);
+  // writetofile("./regular.txt", "seeing if this still writes", prod);
 
   return 0;
 }
