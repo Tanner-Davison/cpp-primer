@@ -15,8 +15,9 @@ bool writetofile(const std::string &filename, const Debug debug) {
     return false;
   }
   try {
+    const char ESC_KEY = 27;
     char ch;
-    while ((ch = _getch()) != 27) {
+    while ((ch = _getch()) != ESC_KEY) {
       if (debug.any()) {
         std::cerr << "[DEBUG] Got Character: " << static_cast<int>(ch)
                   << std::endl;
