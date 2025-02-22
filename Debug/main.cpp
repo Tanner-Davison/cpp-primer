@@ -56,6 +56,7 @@ bool writetofile(const std::string &filename, const Debug debug) {
   } catch (const std::exception &e) {
     if (debug.any()) {
       std::cerr << "[DEBUG] Write operation failed" << std::endl;
+      std::cerr << "[DEBUG] Faied to write to file: " << filename << std::endl;
     }
     file.close();
     return false;
