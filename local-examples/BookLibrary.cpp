@@ -4,8 +4,8 @@
 // constexpr static members;
 constexpr std::size_t BookLibrary::default_size;
 BookLibrary::BookLibrary() {
-  books.front().set_id(0);
   books.reserve(default_size);
+  books.front().set_id(0);
 }
 void BookLibrary::add_book(Book &book) {
   books.push_back(book);

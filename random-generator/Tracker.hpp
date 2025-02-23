@@ -1,20 +1,24 @@
 #pragma once
-
+#include <iostream>
 class Tracker {
+private:
+  static Tracker *mem2;
+  Tracker(int sec_key);
+
 public:
   static Tracker mem;
-  static Tracker *mem2;
-
   Tracker();
-  // I can use the static member as a default argument
-  Tracker(int = counter);
-
+  static Tracker *get_tracker_ptr();
+  static Tracker &get_local_tracker();
+  static void destroy();
   int get_id() const;
   static void increment_counter();
 
 private:
-  static int curr_num;
+  static int ptr_count;
+  static int local_count;
   static int counter;
   static constexpr int constant_int = 50;
+  int key;
   int id;
 };
