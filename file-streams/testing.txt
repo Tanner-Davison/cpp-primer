@@ -1,0 +1,7 @@
+this is a test example I want to read from this stream until it
+reaches the end of the file
+which is not here
+nor here
+but
+<---- alas the end of file is here!
+
