@@ -17,14 +17,15 @@ void process_input(std::istream &in, std::string &valp) {
 
 int main() {
   Debug io_db(false, true, false);
-  std::cout << "wait for input" << std::endl;
-  std::string test;
-  std::cin >> test;
+
   std::string filename = "./testing.txt";
   std::string report = "./log.txt";
-  std::ifstream inFile(filename);
+
+  std::ifstream in_file(filename);
   std::ofstream out("log.txt", std::ios::app);
-  if (!inFile) {
+  std::string line;
+
+  if (!in_file) {
     if (io_db.any()) {
       std::cerr << "No input file has been found with file name: " << filename
                 << std::endl;
@@ -34,16 +35,14 @@ int main() {
     std::cout << "Input File is open!" << std::endl;
   }
 
-  std::string val;
-
   while (true) {
-    auto old_state = inFile.rdstate();
-    inFile.clear(inFile.rdstate() & ~inFile.failbit & ~inFile.badbit);
+    auto old_state = in_file.rdstate();
+    in_file.clear(in_file.rdstate() & ~in_file.failbit & ~in_file.badbit);
 
-    process_input(inFile, val);
+    process_input(in_file, line);
 
-    if (!inFile.good()) {
-      if ((inFile.rdstate() == std::ios::eofbit) | std::ios::failbit) {
+    if (!in_file.good()) {
+      if ((in_file.rdstate() == std::ios::eofbit) | std::ios::failbit) {
         if (io_db.any()) {
           std::cerr << "- end of file -" << std::endl;
         }
@@ -51,16 +50,16 @@ int main() {
         if (io_db.any()) {
           std::cerr
               << "Failed to read input from std::cin. Expected type: ( INT )\n"
-              << "\terror state: " << inFile.rdstate() << std::endl;
+              << "\terror state: " << in_file.rdstate() << std::endl;
         }
       }
       break;
     }
 
-    inFile.setstate(old_state);
+    in_file.setstate(old_state);
   }
-  if (inFile.is_open()) {
-    inFile.close();
+  if (in_file.is_open()) {
+    in_file.close();
     std::cout << "Input File Closed!" << std::endl;
   }
   return 0;
