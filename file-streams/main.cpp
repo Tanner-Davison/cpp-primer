@@ -32,7 +32,8 @@ int main() {
     }
     throw std::runtime_error("No input file found");
   } else {
-    std::cout << "Input File is open!" << std::endl;
+
+    out << "Input File is open:\nfilename: " << filename << "\n";
   }
 
   while (true) {
@@ -48,9 +49,9 @@ int main() {
         }
       } else {
         if (io_db.any()) {
-          std::cerr
-              << "Failed to read input from std::cin. Expected type: ( INT )\n"
-              << "\terror state: " << in_file.rdstate() << std::endl;
+          out << "Failed to Read input From " << filename << std::endl;
+          std::cerr << "Failed to read input from std::ifstream \n"
+                    << "\terror state: " << in_file.rdstate() << std::endl;
         }
       }
       break;
@@ -60,7 +61,7 @@ int main() {
   }
   if (in_file.is_open()) {
     in_file.close();
-    std::cout << "Input File Closed!" << std::endl;
+    out << "Input File Closed!" << std::endl;
   }
   return 0;
 }

@@ -1,0 +1,2 @@
+Input File is open:
+filename: ./testing.txt
