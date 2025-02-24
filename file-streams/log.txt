@@ -34,3 +34,9 @@ File: [./testing.txt]
  ( END )
 =========================
 
+File: [./testing.txt]
+	Opened :2025-02-23 10:29 PM
+	Input File Closed!
+ ( END )
+=========================
+

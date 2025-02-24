@@ -33,11 +33,9 @@ void process_input(std::istream &in, std::string &valp) {
 int main() {
   Debug io_db(false, true, false);
 
-  std::string filename = "./testing.txt";
-  std::string report = "./log.txt";
+  std::string filename = "./testing.txt", report = "./log.txt", line;
   std::ifstream in_file(filename);
   std::ofstream out("log.txt", std::ios::app);
-  std::string line;
 
   if (!in_file) {
     if (io_db.any()) {
