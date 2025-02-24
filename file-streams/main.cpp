@@ -17,6 +17,9 @@ void process_input(std::istream &in, std::string &valp) {
 
 int main() {
   Debug io_db(false, true, false);
+  std::cout << "wait for input" << std::endl;
+  std::string test;
+  std::cin >> test;
   std::string filename = "./testing.txt";
   std::string report = "./log.txt";
   std::ifstream inFile(filename);
