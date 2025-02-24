@@ -1,4 +1,4 @@
-#include "DebugEx.hpp"
+#include "../DebugEx.hpp"
 #include <conio.h>
 #include <cstring>
 #include <fstream>
