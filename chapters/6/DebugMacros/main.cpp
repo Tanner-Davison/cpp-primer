@@ -1,10 +1,9 @@
 #include <cassert>
+#include <experimental/source_location>
 #include <iostream>
-#include <source_location>
-
 void print(const int ia[], size_t size) {
 #ifndef NDEBUG
-  std::cerr << std::source_location::current().function_name()
+  std::cerr << std::experimental::source_location::current().function_name()
             << " : array size is :" << size << " @ line : " << __LINE__
             << " Date:" << __DATE__ << " \nTime: " << __TIME__ << std::endl;
 #endif
@@ -13,8 +12,7 @@ void print(const int ia[], size_t size) {
   }
   std::cout << std::endl;
 }
-inline constexpr std::string isShorter(const std::string &str,
-                                       const std::string &str2) {
+inline constexpr std::string &isShorter(std::string &str, std::string &str2) {
   return str.size() > str2.size() ? str2 : str;
 }
 
