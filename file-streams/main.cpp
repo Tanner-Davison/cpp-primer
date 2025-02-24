@@ -1,17 +1,32 @@
 #include "../DebugEx.hpp"
+#include <chrono>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <stdexcept>
 #include <string>
 
+void printTime(std::ostream &out, std::string &file,
+               std::runtime_error err = std::runtime_error("")) {
+  auto now = std::chrono::system_clock::now();
+  auto time = std::chrono::system_clock::to_time_t(now);
+  struct tm timeinfo;
+  localtime_s(&timeinfo, &time);
+  if (err.what() != std::string("")) {
+    out << "ERROR!" << "\t" << std::put_time(&timeinfo, "%Y-%m-%d %I:%M %p")
+        << "\n\tdescription: " << err.what() << " : " << file << "\n( END )\n"
+        << "\n=========================\n\n";
+  } else {
+    out << "File: [" << file << "]\n"
+        << "\tOpened :" << std::put_time(&timeinfo, "%Y-%m-%d %I:%M %p");
+  }
+}
 void process_input(std::istream &in, std::string &valp) {
   while (std::getline(in, valp)) {
     if (!valp.empty()) {
-      std::cout << std::unitbuf;
       std::cout << "\n" << valp;
     }
   };
-  std::cout << std::nounitbuf;
   std::cout << std::endl;
 }
 
@@ -30,10 +45,9 @@ int main() {
       std::cerr << "No input file has been found with file name: " << filename
                 << std::endl;
     }
-    throw std::runtime_error("No input file found");
+    printTime(out, filename, std::runtime_error("No input file found"));
   } else {
-
-    out << "Input File is open:\nfilename: " << filename << "\n";
+    printTime(out, filename);
   }
 
   while (true) {
@@ -61,7 +75,9 @@ int main() {
   }
   if (in_file.is_open()) {
     in_file.close();
-    out << "Input File Closed!" << std::endl;
+    out << "\n\tInput File Closed!" << "\n ( END )\n"
+        << "=========================\n"
+        << std::endl;
   }
   return 0;
 }
