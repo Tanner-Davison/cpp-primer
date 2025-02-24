@@ -6,20 +6,23 @@
 #include <stdexcept>
 #include <string>
 
-void printTime(std::ostream &out, std::string &file,
+void printTime(std::ostream &out, std::string &file) {
+  auto now = std::chrono::system_clock::now();
+  auto time = std::chrono::system_clock::to_time_t(now);
+  struct tm timeinfo;
+  localtime_s(&timeinfo, &time);
+  out << "File: [" << file << "]\n"
+      << "\tOpened :" << std::put_time(&timeinfo, "%Y-%m-%d %I:%M %p");
+}
+void log_error(std::ostream &out, std::string &file,
                std::runtime_error err = std::runtime_error("")) {
   auto now = std::chrono::system_clock::now();
   auto time = std::chrono::system_clock::to_time_t(now);
   struct tm timeinfo;
   localtime_s(&timeinfo, &time);
-  if (err.what() != std::string("")) {
-    out << "ERROR!" << "\t" << std::put_time(&timeinfo, "%Y-%m-%d %I:%M %p")
-        << "\n\tdescription: " << err.what() << " : " << file << "\n( END )\n"
-        << "\n=========================\n\n";
-  } else {
-    out << "File: [" << file << "]\n"
-        << "\tOpened :" << std::put_time(&timeinfo, "%Y-%m-%d %I:%M %p");
-  }
+  out << "ERROR!" << "\t" << std::put_time(&timeinfo, "%Y-%m-%d %I:%M %p")
+      << "\n\tdescription: " << err.what() << " : " << file << "\n( END )\n"
+      << "\n=========================\n\n";
 }
 void process_input(std::istream &in, std::string &valp) {
   while (std::getline(in, valp)) {
@@ -34,6 +37,7 @@ int main() {
   Debug io_db(false, true, false);
 
   std::string filename = "./testing.txt", report = "./log.txt", line;
+
   std::ifstream in_file(filename);
   std::ofstream out("log.txt", std::ios::app);
 
@@ -42,7 +46,7 @@ int main() {
       std::cerr << "No input file has been found with file name: " << filename
                 << std::endl;
     }
-    printTime(out, filename, std::runtime_error("No input file found"));
+    log_error(out, filename, std::runtime_error("No input file found"));
   } else {
     printTime(out, filename);
   }
@@ -54,7 +58,7 @@ int main() {
     process_input(in_file, line);
 
     if (!in_file.good()) {
-      if ((in_file.rdstate() == std::ios::eofbit) | std::ios::failbit) {
+      if (in_file.rdstate() == (std::ios::eofbit | std::ios::failbit)) {
         if (io_db.any()) {
           std::cerr << "- end of file -" << std::endl;
         }

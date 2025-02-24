@@ -1,41 +1,23 @@
-File: [./testing.txt]
-	Opened :2025-02-23 10:24 PM
-	Input File Closed!
- ( END )
-=========================
-
-ERROR!	2025-02-23 10:24 PM
+ERROR!	2025-02-23 11:07 PM
 	description: No input file found : ./esting.txt
 ( END )
 
 =========================
 
-ERROR!	2025-02-23 10:24 PM
-	description: No input file found : ./esting.txt
-( END )
-
-=========================
-
-ERROR!	2025-02-23 10:24 PM
+ERROR!	2025-02-23 11:09 PM
 	description: No input file found : ./esting.txt
 ( END )
 
 =========================
 
 File: [./testing.txt]
-	Opened :2025-02-23 10:25 PM
+	Opened :2025-02-23 11:09 PM
 	Input File Closed!
  ( END )
 =========================
 
 File: [./testing.txt]
-	Opened :2025-02-23 10:25 PM
-	Input File Closed!
- ( END )
-=========================
-
-File: [./testing.txt]
-	Opened :2025-02-23 10:29 PM
+	Opened :2025-02-23 11:10 PM
 	Input File Closed!
  ( END )
 =========================
