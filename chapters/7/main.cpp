@@ -3,28 +3,24 @@
 #include <fstream>
 #include <iostream>
 
-int main() {
-  // Try primary file paths first, fall back to local directory if needed
-  std::fstream inFile("./chapters/7/input.txt");
-  std::fstream inFile_person("./chapters/7/person.txt");
+int main(int argc, char *argv[]) {
+  std::string input_path = (argc > 1) ? argv[1] : "./input.txt";
+  std::string input_person = (argc > 2) ? argv[2] : "./person.txt";
+  ;
+  std::fstream inFile(argv[1]);
+  std::fstream inFile_person(input_person);
 
-  // Attempt to open sales data file in alternate location if primary fails
   if (!inFile) {
-    inFile.clear();
-    inFile.open("./input.txt");
-    if (!inFile) {
-      throw std::runtime_error("Could not open input file in either location");
-    }
+    throw std::runtime_error("Could not open input file in either location");
   }
 
   Sales_data total;
 
   Person person;
-  // Process sales data, accumulating transactions for matching ISBNs
+
   if (read(inFile, total)) {
     Sales_data trans;
 
-    // Combine consecutive transactions with matching ISBNs
     while (read(inFile, trans)) {
       if (total.isbn() == trans.isbn()) {
         total.combine(trans);
@@ -33,9 +29,9 @@ int main() {
         total = trans;
       }
     }
-    // Print final transaction after loop
+    // final trans
     print(std::cout, total);
-    // Record processing completion time
+    // log time
     trans.logTime(std::cout);
   } else {
     std::cerr << "No data?!" << std::endl;
@@ -43,18 +39,12 @@ int main() {
 
   inFile.close();
 
-  // Attempt to open person data file in alternate location if primary fails
   if (!inFile_person) {
-    inFile_person.clear();
-    inFile_person.open("./person.txt");
-    if (!inFile_person) {
-      throw std::runtime_error("No Person data found!");
-    }
+    throw std::runtime_error("No Person data found!");
   }
 
   const char *checkmark = " ✓ ";
-
-  // Display person data if successfully read from file
+  // person data display
   if (read_person(inFile_person, person)) {
     std::cout << "---- Person Data Available " << checkmark << "----"
               << std::endl;

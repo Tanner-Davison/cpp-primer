@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 void printTime(std::ostream &out, std::string &file) {
   auto now = std::chrono::system_clock::now();
@@ -24,9 +25,11 @@ void log_error(std::ostream &out, std::string &file,
       << "\n\tdescription: " << err.what() << " : " << file << "\n( END )\n"
       << "\n=========================\n\n";
 }
-void process_input(std::istream &in, std::string &valp) {
+void process_input(std::istream &in, std::string &valp,
+                   std::vector<std::string> &lines_container) {
   while (std::getline(in, valp)) {
     if (!valp.empty()) {
+      lines_container.push_back(valp);
       std::cout << "\n" << valp;
     }
   };
@@ -35,9 +38,8 @@ void process_input(std::istream &in, std::string &valp) {
 
 int main() {
   Debug io_db(false, true, false);
-
+  std::vector<std::string> all_lines;
   std::string filename = "./testing.txt", report = "./log.txt", line;
-
   std::ifstream in_file(filename);
   std::ofstream out("log.txt", std::ios::app);
 
@@ -55,7 +57,7 @@ int main() {
     auto old_state = in_file.rdstate();
     in_file.clear(in_file.rdstate() & ~in_file.failbit & ~in_file.badbit);
 
-    process_input(in_file, line);
+    process_input(in_file, line, all_lines);
 
     if (!in_file.good()) {
       if (in_file.rdstate() == (std::ios::eofbit | std::ios::failbit)) {

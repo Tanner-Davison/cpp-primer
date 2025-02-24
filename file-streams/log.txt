@@ -22,3 +22,21 @@ File: [./testing.txt]
  ( END )
 =========================
 
+File: [./testing.txt]
+	Opened :2025-02-23 11:21 PM
+	Input File Closed!
+ ( END )
+=========================
+
+File: [./testing.txt]
+	Opened :2025-02-23 11:22 PM
+	Input File Closed!
+ ( END )
+=========================
+
+File: [./testing.txt]
+	Opened :2025-02-23 11:23 PM
+	Input File Closed!
+ ( END )
+=========================
+
