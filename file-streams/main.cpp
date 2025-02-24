@@ -35,7 +35,6 @@ int main() {
 
   std::string filename = "./testing.txt";
   std::string report = "./log.txt";
-
   std::ifstream in_file(filename);
   std::ofstream out("log.txt", std::ios::app);
   std::string line;
