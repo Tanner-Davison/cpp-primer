@@ -1,4 +1,10 @@
 #pragma once
+#include <chrono>
+#include <ctime>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <stdexcept>
 
 class Debug {
 public:
@@ -11,8 +17,72 @@ public:
   constexpr bool any() const { return hw || io || other; }
   void set_io(bool i) { io = i; }
   void set_hw(bool h) { hw = h; }
-  void set_other(bool o) { hw = o; }
+  void set_other(bool o) { other = o; }
+  inline void log_error(std::ostream &out, std::string &filename,
+                        std::runtime_error err = std::runtime_error("unknown"));
+  inline void log_message(std::ostream &out, const std::string &message,
+                          const std::string &filename);
+  inline bool file_check(const std::ifstream &is,
+                         std::string filename = "unknown",
+                         std::runtime_error err = std::runtime_error("unknown"),
+                         std::ostream &os = std::cout);
 
 private:
   bool hw, io, other;
 };
+
+// inline functions
+void Debug::log_error(std::ostream &out, std::string &filename,
+                      std::runtime_error err) {
+  auto now = std::chrono::system_clock::now();
+  auto time = std::chrono::system_clock::to_time_t(now);
+  struct tm timeinfo;
+  localtime_s(&timeinfo, &time);
+  out << "\n=========================\n"
+      << "\nERROR!\n"
+      << "\t" << std::put_time(&timeinfo, "%Y-%m-%d\n %I:%M %p")
+      << "\n\tdescription: " << err.what() << " : " << filename << "\n( END )\n"
+      << "\n=========================\n";
+}
+void Debug::log_message(std::ostream &out, const std::string &message,
+                        const std::string &filename = "") {
+  static std::string current_file = "";
+  // If we're switching to a new file
+  if (current_file != filename && !current_file.empty()) {
+    // Add END marker for the previous file
+    out << "[ END ]\n\n=========================\n";
+  }
+
+  // If this is a new file, print the file header
+  if (current_file != filename && !filename.empty()) {
+    out << "=========================\n" << "\nFile: \n\t" << filename << "\n";
+  }
+  // Update current file tracking
+  current_file = filename;
+
+  auto now = std::chrono::system_clock::now();
+  auto time = std::chrono::system_clock::to_time_t(now);
+  struct tm timeinfo;
+  localtime_s(&timeinfo, &time);
+  out << std::put_time(&timeinfo, "%I:%M %p") << ": \n\tMessage: [ " << message
+      << " ]"
+      << "\n";
+}
+bool Debug::file_check(const std::ifstream &is, std::string filename,
+                       std::runtime_error err, std::ostream &os) {
+
+  if (!is) {
+    if (any()) {
+      std::cerr << err.what() << std::endl;
+      log_error(os, filename, err);
+    }
+    return false;
+  } else {
+    if (any()) {
+      log_message(os, "opened!", filename);
+      return true;
+    }
+    return true;
+  }
+  return false;
+}

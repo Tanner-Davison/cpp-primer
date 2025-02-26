@@ -1,86 +1,68 @@
 #include "../DebugEx.hpp"
-#include <chrono>
 #include <fstream>
-#include <iomanip>
 #include <iostream>
 #include <stdexcept>
 #include <string>
 #include <vector>
+using namespace std;
 
-void printTime(std::ostream &out, std::string &file) {
-  auto now = std::chrono::system_clock::now();
-  auto time = std::chrono::system_clock::to_time_t(now);
-  struct tm timeinfo;
-  localtime_s(&timeinfo, &time);
-  out << "File: [" << file << "]\n"
-      << "\tOpened :" << std::put_time(&timeinfo, "%Y-%m-%d %I:%M %p");
-}
-void log_error(std::ostream &out, std::string &file,
-               std::runtime_error err = std::runtime_error("")) {
-  auto now = std::chrono::system_clock::now();
-  auto time = std::chrono::system_clock::to_time_t(now);
-  struct tm timeinfo;
-  localtime_s(&timeinfo, &time);
-  out << "ERROR!" << "\t" << std::put_time(&timeinfo, "%Y-%m-%d %I:%M %p")
-      << "\n\tdescription: " << err.what() << " : " << file << "\n( END )\n"
-      << "\n=========================\n\n";
-}
-void process_input(std::istream &in, std::string &valp,
-                   std::vector<std::string> &lines_container) {
-  while (std::getline(in, valp)) {
+Debug io_db(false, true, false);
+
+void process_input(istream &in, string &valp, vector<string> &lines_container,
+                   const string &filename) {
+  if (::io_db.any()) {
+    cerr << "\nFilename: [" << filename << " ]\n\tFILE START-----------> "
+         << endl;
+  }
+
+  while (getline(in, valp)) {
+
     if (!valp.empty()) {
       lines_container.push_back(valp);
-      std::cout << "\n" << valp;
+      cout << "\n" << valp;
     }
   };
-  std::cout << std::endl;
+  cout << endl;
 }
 
 int main() {
-  Debug io_db(false, true, false);
-  std::vector<std::string> all_lines;
-  std::string filename = "./testing.txt", report = "./log.txt", line;
-  std::ifstream in_file(filename);
-  std::ofstream out("log.txt", std::ios::app);
+  // initializing
+  vector<string> all_lines;
+  string test = "./test.txt", test2 = "./test2.txt", logs = "./logs.txt";
+  string line;
+  ifstream file1(test), file2(test2);
+  ofstream out("log.txt");
+  vector<pair<ifstream &, string>> file_pairs = {{file1, test}, {file2, test2}};
+  const string err_msg = "Failed to open file";
 
-  if (!in_file) {
-    if (io_db.any()) {
-      std::cerr << "No input file has been found with file name: " << filename
-                << std::endl;
-    }
-    log_error(out, filename, std::runtime_error("No input file found"));
-  } else {
-    printTime(out, filename);
-  }
-
-  while (true) {
-    auto old_state = in_file.rdstate();
-    in_file.clear(in_file.rdstate() & ~in_file.failbit & ~in_file.badbit);
-
-    process_input(in_file, line, all_lines);
-
-    if (!in_file.good()) {
-      if (in_file.rdstate() == (std::ios::eofbit | std::ios::failbit)) {
-        if (io_db.any()) {
-          std::cerr << "- end of file -" << std::endl;
+  // start of program
+  for (auto &[file, name] : file_pairs) {
+    io_db.file_check(file, name, runtime_error(err_msg), out);
+    while (true) {
+      auto old_state = file.rdstate();
+      file.clear(file.rdstate() & ~file.failbit & ~file.badbit);
+      process_input(file, line, all_lines, name);
+      if (!file.good()) {
+        if (file.rdstate() == (ios::eofbit | ios::failbit)) {
+          if (io_db.any()) {
+            cerr << "\n <---------- END OF FILE \n" << endl;
+          }
+        } else {
+          if (io_db.any()) {
+            const string err_msg("Failed reading input from: ");
+            io_db.log_error(out, name, runtime_error(err_msg));
+            // logs to console
+            cerr << err_msg << "\terror state: " << file.rdstate() << endl;
+          }
         }
-      } else {
-        if (io_db.any()) {
-          out << "Failed to Read input From " << filename << std::endl;
-          std::cerr << "Failed to read input from std::ifstream \n"
-                    << "\terror state: " << in_file.rdstate() << std::endl;
-        }
+        break;
       }
-      break;
+      file.setstate(old_state);
     }
-
-    in_file.setstate(old_state);
-  }
-  if (in_file.is_open()) {
-    in_file.close();
-    out << "\n\tInput File Closed!" << "\n ( END )\n"
-        << "=========================\n"
-        << std::endl;
+    if (file.is_open()) {
+      file.close();
+      io_db.log_message(out, "Input File Closed!", name);
+    }
   }
   return 0;
 }

@@ -1,19 +1,18 @@
+
+=========================
+
+ERROR!
+	2025-02-25
+ 08:55 PM
+	description: Failed to open file : ./esting.txt
+( END )
+
+=========================
 =========================
 
 File: 
-	./test.txt
-09:19 PM: 
+	./testingtwo.txt
+08:55 PM: 
 	Message: [ opened! ]
-09:19 PM: 
-	Message: [ Input File Closed! ]
-[ END ]
-
-=========================
-=========================
-
-File: 
-	./test2.txt
-09:19 PM: 
-	Message: [ opened! ]
-09:19 PM: 
+08:55 PM: 
 	Message: [ Input File Closed! ]
