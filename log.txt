@@ -1,6 +1,20 @@
-ERROR!	2025-02-25 06:12 PM
-	description: No input file found : ./testing.txt
+
+=========================
+
+ERROR!
+	2025-02-26
+ 08:56 PM
+	description: Failed to open file : ./test.txt
 ( END )
 
 =========================
 
+=========================
+
+ERROR!
+	2025-02-26
+ 08:56 PM
+	description: Failed to open file : ./test2.txt
+( END )
+
+=========================

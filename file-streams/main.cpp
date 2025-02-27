@@ -26,22 +26,20 @@ void process_input(istream &in, string &valp, vector<string> &lines_container,
 }
 
 int main() {
-  // initializing
   vector<string> all_lines;
-  string test = "./test.txt", test2 = "./test2.txt", logs = "./logs.txt";
-  string line;
+  string test = "./test.txt", test2 = "./test2.txt", logs = "./logs.txt",
+         temp_line;
+  const string err_msg = "Failed to open file";
   ifstream file1(test), file2(test2);
   ofstream out("log.txt");
   vector<pair<ifstream &, string>> file_pairs = {{file1, test}, {file2, test2}};
-  const string err_msg = "Failed to open file";
 
-  // start of program
   for (auto &[file, name] : file_pairs) {
     io_db.file_check(file, name, runtime_error(err_msg), out);
     while (true) {
       auto old_state = file.rdstate();
       file.clear(file.rdstate() & ~file.failbit & ~file.badbit);
-      process_input(file, line, all_lines, name);
+      process_input(file, temp_line, all_lines, name);
       if (!file.good()) {
         if (file.rdstate() == (ios::eofbit | ios::failbit)) {
           if (io_db.any()) {
@@ -51,7 +49,6 @@ int main() {
           if (io_db.any()) {
             const string err_msg("Failed reading input from: ");
             io_db.log_error(out, name, runtime_error(err_msg));
-            // logs to console
             cerr << err_msg << "\terror state: " << file.rdstate() << endl;
           }
         }
