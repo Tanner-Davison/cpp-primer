@@ -24,7 +24,6 @@
 #include <iostream> // C++ standard library
 #include <string>
 #include <vector>
-
 #ifdef _WIN32
 #include <conio.h>
 #else

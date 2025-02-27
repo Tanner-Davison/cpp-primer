@@ -1,0 +1,48 @@
+Index: 1
+Name: Tanner
+	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, 
+	Total Phone Numbers: [7]
+
+
+Index: 2
+Name: Alexis
+	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, 
+	Total Phone Numbers: [4]
+
+
+Index: 3
+Name: John
+	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, 
+	Total Phone Numbers: [3]
+
+
+Index: 4
+Name: Waylon
+	Phones #'s: (555)123-4567, (555)123-4567, 
+	Total Phone Numbers: [2]
+
+
+Index: 5
+Name: Wyatt
+	Phones #'s: (555)123-4567, 
+	Total Phone Numbers: [1]
+
+
+Index: 6
+Name: Bubbas
+	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, 
+	Total Phone Numbers: [3]
+
+
+Index: 7
+Name: Jennings
+	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, 
+	Total Phone Numbers: [5]
+
+
+Index: 8
+Name: Rachel
+	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, 
+	Total Phone Numbers: [5]
+
+
