@@ -1,30 +1,36 @@
+[id: 1]
+Name: Tanner
+	[3] phone #'s: 
+	[ (891) 999-2839, (444) 844-8484, (888) 555-8888,]
 
-Name: Tanner id: 1
-	Phones #'s:  (801) 857-5996, (911) 892-9304,
-	count: [2]
-
-
-
-Name: Alexis id: 2
-	Phones #'s:  (801) 929-3849,
-	count: [1]
-
+[id: 2]
+Name: Jackson
+	[3] phone #'s: 
+	[ (891) 999-2839, (444) 844-8484, (888) 555-8888,]
 
 
-Name: John id: 3
-	Phones #'s:  (894) 958-9402, (849) 385-8495,
-	count: [2]
-
-
-
-Name: Dad id: 4
-	Phones #'s:  (892) 838-4959,
-	count: [1]
+Name: Jacksoff id: 3
+[2] Phone Number(s):  (888) 555-8888,
+	
+	(1) invalid numbers: 
+	[  89t19992839, 4t448448484, ]
 
 
 
-Name: Joe id: 5
-	Phones #'s:  (911) 911-9111, (911) 911-9111, (233) 333-3333, (930) 404-0405, (493) 949-4044,
-	count: [5]
+Name: Jackson id: 4
+[2] Phone Number(s):  (891) 999-2839, (444) 844-8484,
+	
+	(1) invalid numbers: 
+	[  888555888d, ]
 
+
+[id: 5]
+Name: Amelia
+	[1] phone #'s: 
+	[ (888) 444-8855,]
+
+[id: 6]
+Name: Julia
+	[3] phone #'s: 
+	[ (444) 555-4444, (444) 555-4444, (444) 333-2222,]
 
