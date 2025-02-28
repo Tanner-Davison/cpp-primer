@@ -1,48 +1,18 @@
-Index: 1
-Name: Tanner
-	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, 
-	Total Phone Numbers: [7]
+
+Name: Tanner id: 1
+	Phones #'s:  (801) 888-3894, (849) 392-9384,
+	count: [2]
 
 
-Index: 2
-Name: Alexis
-	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, 
-	Total Phone Numbers: [4]
+
+Name: Alexis id: 2
+	Phones #'s:  (801) 749-5059,
+	count: [1]
 
 
-Index: 3
-Name: John
-	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, 
-	Total Phone Numbers: [3]
 
-
-Index: 4
-Name: Waylon
-	Phones #'s: (555)123-4567, (555)123-4567, 
-	Total Phone Numbers: [2]
-
-
-Index: 5
-Name: Wyatt
-	Phones #'s: (555)123-4567, 
-	Total Phone Numbers: [1]
-
-
-Index: 6
-Name: Bubbas
-	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, 
-	Total Phone Numbers: [3]
-
-
-Index: 7
-Name: Jennings
-	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, 
-	Total Phone Numbers: [5]
-
-
-Index: 8
-Name: Rachel
-	Phones #'s: (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, (555)123-4567, 
-	Total Phone Numbers: [5]
+Name: John id: 3
+	Phones #'s:  (901) 999-2384, (849) 405-0594, (493) 023-9394, (485) 948-2039,
+	count: [4]
 
 
