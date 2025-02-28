@@ -69,9 +69,10 @@ int main() {
         formatted << " " << formatPhoneNumber(nums);
     }
     if (badNums.str().empty()) {
-      out << "[id: " << ++count << "]\n"
+      out << "\n[id: " << ++count << "]\n"
           << "Name: " << person.name << "\n\t[" << person.get_phone_count()
-          << "] phone #'s: \n\t[" << formatted.str() << "]\n\n";
+          << "] phone #'s: \n\t[" << formatted.str() << "]\n"
+          << "----------------------------" << "\n";
     } else {
       std::cerr << "input error! " << person.name << " invalid number(s) "
                 << badNums.str() << std::endl;
@@ -79,8 +80,9 @@ int main() {
       out << "\nName: " << person.name << " id: " << ++count << "\n["
           << person.get_phone_count()
           << "] Phone Number(s): " << formatted.str() << "\n\t"
-          << "\n\t(" << person.get_invalid_count()
-          << ") invalid numbers: \n\t[ " << badNums.str() << " ]\n\n\n";
+          << "\n(" << person.get_invalid_count()
+          << ")Error! invalid numbers: [ " << badNums.str() << " ]\n"
+          << "----------------------------" << "\n";
     }
   }
   return 0;
