@@ -6,7 +6,7 @@
 struct Person {
   std::string name;
   std::vector<std::string> phones;
-  std::vector<std::string> bad_numbers;
+  int get_phone_count() { return phones.size(); };
 };
 bool valid(const std::string &nums) {
   if (nums.empty())
@@ -49,7 +49,6 @@ int main() {
 
   for (auto &person : people) {
     static int count = 0;
-    static int phone_count = 0;
     std::ostringstream formatted, badNums;
 
     for (auto &nums : person.phones) {
@@ -57,18 +56,17 @@ int main() {
         badNums << " " << nums;
       } else
         formatted << " " << formatPhoneNumber(nums);
-      ++phone_count;
     }
     if (badNums.str().empty()) {
       out << "\nName: " << person.name << " id: " << ++count
           << "\n\tPhones #'s: ";
-      out << formatted.str() << "\n\tcount: " << "[" << phone_count << "]"
+      out << formatted.str() << "\n\tcount: " << "[" << person.get_phone_count()
+          << "]"
           << "\n\n\n";
     } else {
       std::cerr << "Input Error! " << person.name << " invalid number(s) "
                 << badNums.str() << std::endl;
     }
-    phone_count = 0;
   }
   return 0;
 }
