@@ -37,10 +37,20 @@ void Debug::log_error(std::ostream &out, std::string &filename,
   auto now = std::chrono::system_clock::now();
   auto time = std::chrono::system_clock::to_time_t(now);
   struct tm timeinfo;
+#ifdef _WIN32
   localtime_s(&timeinfo, &time);
+#else
+  localtime_r(&time, &timeinfo);
+
+#endif
   out << "\n=========================\n"
       << "\nERROR!\n"
+#ifdef _WIN32
       << "\t" << std::put_time(&timeinfo, "%Y-%m-%d\n %I:%M %p")
+#else
+      << "\t" << std::put_time(&timeinfo, "%Y-%m-%d\n %I:%M %p")
+#endif
+
       << "\n\tdescription: " << err.what() << " : " << filename << "\n( END )\n"
       << "\n=========================\n";
 }
@@ -63,7 +73,11 @@ void Debug::log_message(std::ostream &out, const std::string &message,
   auto now = std::chrono::system_clock::now();
   auto time = std::chrono::system_clock::to_time_t(now);
   struct tm timeinfo;
+#ifdef _WIN_32
   localtime_s(&timeinfo, &time);
+#else
+  localtime_r(&time, &timeinfo);
+#endif
   out << std::put_time(&timeinfo, "%I:%M %p") << ": \n\tMessage: [ " << message
       << " ]"
       << "\n";
