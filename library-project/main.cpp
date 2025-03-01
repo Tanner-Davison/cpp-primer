@@ -17,19 +17,17 @@
 // Project headers first
 #include "./BookLibrary.hpp"
 #include "./book.hpp"
-
 // C system headers
 #include <cctype>
-#include <cstdio>  // Move up with other C headers
+#include <cstdio>
 #include <cstdlib>
-
+#include <cstring> // For memset
 // C++ system headers
 #include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
-
 // Platform-specific headers
 #ifdef _WIN32
 #include <conio.h>
@@ -38,21 +36,52 @@
 #include <unistd.h>
 #endif
 
+// Platform-specific getch implementation
+#ifdef _WIN32
+// On Windows, use _getch() directly
+#else
+// On Unix/Linux, use termios-based implementation
 char getch() {
   char buf = 0;
   struct termios old;
-  memset(&old, 0, sizeof(old));
-  if (tcgetattr(0, &old) < 0) perror("tcsetattr()");
-  old.c_lflag &= ~ICANON;
-  old.c_lflag &= ~ECHO;
-  old.c_cc[VMIN] = 1;
-  old.c_cc[VTIME] = 0;
-  if (tcsetattr(0, TCSANOW, &old) < 0) perror("tcsetattr ICANON");
-  if (read(0, &buf, 1) < 0) perror("read()");
-  old.c_lflag |= ICANON;
-  old.c_lflag |= ECHO;
-  if (tcsetattr(0, TCSADRAIN, &old) < 0) perror("tcsetattr ~ICANON");
-  return buf;
+  struct termios current;
+
+  // Get current terminal settings
+  if (tcgetattr(0, &old) < 0) {
+    perror("tcgetattr()");
+    return 0;
+  }
+
+  // Copy the settings
+  current = old;
+
+  // Disable canonical mode and echo
+  current.c_lflag &= ~ICANON;
+  current.c_lflag &= ~ECHO;
+  current.c_cc[VMIN] = 1;  // Read 1 character at a time
+  current.c_cc[VTIME] = 0; // No timeout
+
+  // Apply the new settings
+  if (tcsetattr(0, TCSANOW, &current) < 0) {
+    perror("tcsetattr ICANON");
+    return 0;
+  }
+
+  // Read a single character
+  char ch;
+  if (read(0, &ch, 1) < 0) {
+    perror("read()");
+    // Restore terminal settings before returning on error
+    tcsetattr(0, TCSADRAIN, &old);
+    return 0;
+  }
+
+  // Restore the original terminal settings
+  if (tcsetattr(0, TCSADRAIN, &old) < 0) {
+    perror("tcsetattr ~ICANON");
+  }
+
+  return ch;
 }
 #endif
 
@@ -65,7 +94,8 @@ void clearScreen() {
 #endif
 }
 
-bool containsIgnoreCase(const std::string& str, const std::string& substring) {
+// Case-insensitive substring search
+bool containsIgnoreCase(const std::string &str, const std::string &substring) {
   auto it = std::search(str.begin(), str.end(), substring.begin(),
                         substring.end(), [](char ch1, char ch2) {
                           return std::tolower(ch1) == std::tolower(ch2);
@@ -73,34 +103,46 @@ bool containsIgnoreCase(const std::string& str, const std::string& substring) {
   return it != str.end();
 }
 
-std::vector<Book*> searchBooks(BookLibrary& lib, const std::string& query) {
-  std::vector<Book*> results;
+// Search for books matching the query
+std::vector<Book *> searchBooks(BookLibrary &lib, const std::string &query) {
+  std::vector<Book *> results;
+
+  // Empty query returns no results
+  if (query.empty()) {
+    return results;
+  }
+
+  // Try to interpret query as an ID
   try {
-    if (!query.empty()) {
-      std::size_t id = std::stoull(query);
-      Book* book_result = lib.search_id(id);
-      if (book_result) results.push_back(book_result);
+    std::size_t id = std::stoull(query);
+    Book *book_result = lib.search_id(id);
+    if (book_result) {
+      results.push_back(book_result);
     }
   } catch (...) {
-    for (auto& book : lib.books) {
+    // If query is not a valid ID, search by title and author
+    for (auto &book : lib.books) {
       if (containsIgnoreCase(book.get_title(), query) ||
           containsIgnoreCase(book.get_auth(), query)) {
         results.push_back(&book);
       }
     }
   }
+
   return results;
 }
 
-void displayResults(const std::vector<Book*>& results,
-                    const std::string& query) {
+// Display search results
+void displayResults(const std::vector<Book *> &results,
+                    const std::string &query) {
   clearScreen();
   std::cout << "Search: " << query << std::endl;
   std::cout << "---------------------" << std::endl;
+
   if (results.empty()) {
     std::cout << "No matching books found." << std::endl;
   } else {
-    for (const auto& book : results) {
+    for (const auto &book : results) {
       std::cout << *book << std::endl;
       std::cout << "---------------------" << std::endl;
     }
@@ -108,41 +150,47 @@ void displayResults(const std::vector<Book*>& results,
   }
 }
 
-extern bool read_non_blanks(std::istream& is, Book& data);
+// External function declaration
+extern bool read_non_blanks(std::istream &is, Book &data);
 
 int main() {
   BookLibrary lib;
   Book book_ref;
-  std::fstream inFile("./books.txt");
 
+  // Open and load the books file
+  std::fstream inFile("./books.txt");
   if (!inFile) {
     std::cerr << "Error: Could not open books.txt" << std::endl;
     return 1;
   }
 
+  // Read books from file
   while (read_non_blanks(inFile, book_ref)) {
     lib.add_book(book_ref);
   }
   inFile.close();
 
+  // Initialize search interface
   std::string query;
   char ch;
-
   clearScreen();
   std::cout << "Interactive Book Search (press Esc to exit)" << std::endl;
   std::cout << "Total books loaded: " << lib.books.size() << std::endl;
   std::cout << "Search: ";
 
+  // Main input loop
   while (true) {
 #ifdef _WIN32
     ch = _getch();
 #else
-    system("stty raw");
-    ch = getchar();
-    system("stty cooked");
+    ch = m_getch();
 #endif
-    if (ch == 27) break;
+    // Exit on Escape key
+    if (ch == 27) {
+      break;
+    }
 
+    // Handle backspace (both ASCII 8 and 127 for different terminals)
     if (ch == 8 || ch == 127) {
       if (!query.empty()) {
         query.pop_back();
@@ -153,7 +201,8 @@ int main() {
       continue;
     }
 
-    if (ch >= 32 && ch <= 126) {  // Printable characters
+    // Handle printable characters
+    if (ch >= 32 && ch <= 126) {
       query += ch;
       auto results = searchBooks(lib, query);
       displayResults(results, query);
