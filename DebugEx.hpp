@@ -41,7 +41,6 @@ void Debug::log_error(std::ostream &out, std::string &filename,
   localtime_s(&timeinfo, &time);
 #else
   localtime_r(&time, &timeinfo);
-
 #endif
   out << "\n=========================\n"
       << "\nERROR!\n"
@@ -73,7 +72,7 @@ void Debug::log_message(std::ostream &out, const std::string &message,
   auto now = std::chrono::system_clock::now();
   auto time = std::chrono::system_clock::to_time_t(now);
   struct tm timeinfo;
-#ifdef _WIN_32
+#ifdef _WIN32
   localtime_s(&timeinfo, &time);
 #else
   localtime_r(&time, &timeinfo);
