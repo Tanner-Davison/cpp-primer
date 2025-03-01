@@ -1,7 +1,10 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
 #include <vector>
+
+using std::string;
 
 struct Person {
   std::string name;
@@ -17,7 +20,7 @@ struct Person {
       return (bsize - psize);
     }
   };
-  int get_invalid_count() { return (bad_numbers.size()); };
+  int get_invalid_count() { return (bad_numbers.size()); }
 };
 bool valid(const std::string &nums) {
   if (nums.empty())
@@ -30,7 +33,7 @@ bool valid(const std::string &nums) {
   }
   return true;
 }
-std::string formatPhoneNumber(std::string &nums) {
+std::string formatPhoneNumber(const std::string &nums) {
   if (nums.length() == 10) {
     return "(" + nums.substr(0, 3) + ") " + nums.substr(3, 3) + "-" +
            nums.substr(6, 4) + ",";
@@ -38,7 +41,7 @@ std::string formatPhoneNumber(std::string &nums) {
   return nums;
 }
 int main() {
-  std::string line, word;
+  string line, word;
   std::vector<Person> people;
   std::ofstream out("logs.txt");
   if (!out) {
