@@ -41,6 +41,7 @@ int main() {
             << "\ntype: " << type << std::endl;
   std::cout << "roll's dice: " << die6(mt) << std::endl;
   // this cleans up all my pointers who point to t_ptrs
+  // saving ending
   t_ptr->destroy();
   return 0;
 }
