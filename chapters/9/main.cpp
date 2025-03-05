@@ -33,15 +33,15 @@ int main() {
 
   while (begin < end) {
     std::string comma = ((begin + 1) == end) ? "" : ", ";
-
     std::cout << *begin++ << comma;
   }
+  // Nums Vector
   std::cout << "\n\nNums (vector): \t";
   for (auto &num : nums) {
     std::cout << num << ", ";
   }
   std::cout << "\n\nDequed List of Nums:\n\t";
-
+  // std::list of std::deques reading
   for (auto &dq : my_list) {
     for (auto &num : dq) {
       std::cout << num << ", ";
