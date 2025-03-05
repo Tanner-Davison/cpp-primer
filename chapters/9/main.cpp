@@ -5,9 +5,10 @@
 #include <list>
 #include <vector>
 
-std::vector<std::string>::iterator
-find_string(std::vector<std::string>::iterator begin,
-            std::vector<std::string>::iterator end, const std::string &target) {
+template <typename T>
+typename std::vector<T>::iterator find_(typename std::vector<T>::iterator begin,
+                                        typename std::vector<T>::iterator end,
+                                        const T &target) {
   return std::find(begin, end, target);
 }
 
@@ -49,6 +50,12 @@ int main() {
   for (auto &num : nums) {
     std::cout << num << ", ";
   }
+  auto numTarget = find_<int>(nums.begin(), nums.end(), 3);
+  if (numTarget == nums.end()) {
+    std::cout << "\nTarget Number Not Found" << std::endl;
+  } else {
+    std::cout << "\nTarget: [" << *numTarget << "] found!" << std::endl;
+  }
   std::cout << "\n\nDequed List of Nums:\n\t";
   // std::list of std::deques reading
   for (auto &dq : my_list) {
@@ -60,7 +67,7 @@ int main() {
   // using iterators and std::find() to find target match
   auto l_begin = lookup_lib.begin();
   auto l_end = lookup_lib.end();
-  auto result = find_string(l_begin, l_end, "Ben");
+  auto result = find_<std::string>(l_begin, l_end, "Ben");
   if (result == l_end) {
     std::cout << "\nTarget not found." << std::endl;
   } else {
