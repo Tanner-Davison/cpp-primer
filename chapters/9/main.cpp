@@ -5,10 +5,10 @@
 #include <list>
 #include <vector>
 
-bool find_string(std::vector<std::string>::iterator begin,
-                 std::vector<std::string>::iterator end,
-                 const std::string &target) {
-  return std::find(begin, end, target) != end;
+std::vector<std::string>::iterator
+find_string(std::vector<std::string>::iterator begin,
+            std::vector<std::string>::iterator end, const std::string &target) {
+  return std::find(begin, end, target);
 }
 
 int main() {
@@ -60,10 +60,11 @@ int main() {
   // using iterators and std::find() to find target match
   auto l_begin = lookup_lib.begin();
   auto l_end = lookup_lib.end();
-  if (find_string(l_begin, l_end, "Ransom")) {
-    std::cout << "\n Target FOUND!" << std::endl;
+  auto result = find_string(l_begin, l_end, "Ben");
+  if (result == l_end) {
+    std::cout << "\nTarget not found." << std::endl;
   } else {
-    std::cout << "TARGET NOT FOUND!" << std::endl;
+    std::cout << "\nTarget: [" << *result << "] Found!" << std::endl;
   }
   return 0;
 }
