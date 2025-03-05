@@ -5,10 +5,19 @@
 #include <list>
 #include <vector>
 
+bool find_string(std::vector<std::string>::iterator begin,
+                 std::vector<std::string>::iterator end,
+                 const std::string &target) {
+  return std::find(begin, end, target) != end;
+}
+
 int main() {
   std::vector<std::string> days_of_week{"Monday",   "Tuesday", "Wednesday",
                                         "Thursday", "Friday",  "Saturday",
                                         "Sunday"};
+  std::vector<std::string> lookup_lib{"hello", "Tom", "Ransom", "Ben",
+                                      "Tougher"};
+
   std::vector<int> nums{3, 4, 5, 2, 1, 6, 8, 7};
   std::list<std::deque<int>> my_list{{1, 3, 4, 6, 5, 9, 7, 8},
                                      {3, 2, 4, 1, 5, 6}};
@@ -47,6 +56,14 @@ int main() {
       std::cout << num << ", ";
     }
     std::cout << "\n\t";
+  }
+  // using iterators and std::find() to find target match
+  auto l_begin = lookup_lib.begin();
+  auto l_end = lookup_lib.end();
+  if (find_string(l_begin, l_end, "Ransom")) {
+    std::cout << "\n Target FOUND!" << std::endl;
+  } else {
+    std::cout << "TARGET NOT FOUND!" << std::endl;
   }
   return 0;
 }
