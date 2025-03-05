@@ -16,17 +16,26 @@ int main() {
     std::sort(dq.begin(), dq.end());
   }
 
-  std::sort(days_of_week.begin(), days_of_week.end());
   std::sort(nums.begin(), nums.end(), std::greater<int>());
   std::cout << "Weekdays (vector): " << "\n\t";
 
-  // looping using iterator less conventional
+  // looping using iterator only weekdays
   auto it = days_of_week.begin();
-  auto end = days_of_week.end();
+  auto end = days_of_week.begin() + 5;
   while (it < end) {
-    std::cout << *it++ << ", ";
+    std::string comma = ((it + 1) == end) ? "" : ", ";
+    std::cout << *it++ << comma;
   }
+  // only weekends
+  std::cout << "\nWeekend: \n\t";
+  auto begin = (days_of_week.end() - 2);
+  end = days_of_week.end();
 
+  while (begin < end) {
+    std::string comma = ((begin + 1) == end) ? "" : ", ";
+
+    std::cout << *begin++ << comma;
+  }
   std::cout << "\n\nNums (vector): \t";
   for (auto &num : nums) {
     std::cout << num << ", ";
