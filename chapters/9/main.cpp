@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <set>
 #include <vector>
 
 template <typename T>
@@ -14,18 +15,29 @@ typename std::vector<T>::iterator find_(typename std::vector<T>::iterator begin,
 }
 
 int main() {
+  // Vector
   std::vector<std::string> days_of_week{"Monday",   "Tuesday", "Wednesday",
                                         "Thursday", "Friday",  "Saturday",
                                         "Sunday"};
   std::vector<std::string> lookup_lib{"hello", "Tom", "Ransom", "Ben",
                                       "Tougher"};
+  // Set
+  std::set<int> my_set_example{3, 2, 1, 5, 6, 9, 7, 19, 8};
+  std::cout << "'Set' Example\n\t";
+  for (auto num : my_set_example) {
+    std::cout << num << ", ";
+  }
+  std::cout << std::endl;
+  // MAP
   std::map<char, int> map1{{'a', 1}, {'b', 2}, {'c', 3}, {'d', 4}, {'e', 5}};
   std::cout << "Map Testing:\n\t " << std::endl;
   for (auto &pair : map1) {
     std::cout << pair.first << ", " << pair.second << std::endl;
   }
   std::cout << std::endl;
+
   std::vector<int> nums{3, 4, 5, 2, 1, 6, 8, 7};
+  // List
   std::list<std::deque<int>> my_list{{1, 3, 4, 6, 5, 9, 7, 8},
                                      {3, 2, 4, 1, 5, 6}};
   for (auto &dq : my_list) {
