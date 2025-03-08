@@ -22,6 +22,7 @@ int main() {
                                         "Sunday"};
   std::vector<std::string> lookup_lib{"hello", "Tom", "Ransom", "Ben",
                                       "Tougher"};
+  std::vector<std::string> c(days_of_week.begin() + 2, days_of_week.end() - 3);
   // Set
   std::unordered_set<int> my_set_example{3, 2, 1, 5, 6, 9, 7, 19, 8};
   std::cout << "'Set' Example\n\t";
@@ -54,7 +55,7 @@ int main() {
   std::sort(nums.begin(), nums.end(), std::greater<int>());
   std::cout << "Weekdays (vector): " << "\n\t";
 
-  // looping using iterator only weekdays
+  // looping using iterator only WEEKDAYS
   auto it = days_of_week.begin();
   auto end = days_of_week.begin() + 5;
   while (it < end) {
@@ -70,6 +71,12 @@ int main() {
     std::string comma = ((begin + 1) == end) ? "" : ", ";
     std::cout << *begin++ << comma;
   }
+  // Mid week
+  std::cout << "\nMID WEEK\n\t";
+  for (auto &s : c) {
+    std::cout << s << ", ";
+  }
+  std::cout << std::endl;
 
   // Nums Vector
   std::cout << "\n\nNums (vector): \t";
