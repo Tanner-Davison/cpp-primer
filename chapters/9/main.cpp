@@ -5,6 +5,7 @@
 #include <list>
 #include <map>
 #include <set>
+#include <unordered_set>
 #include <vector>
 
 template <typename T>
@@ -22,12 +23,17 @@ int main() {
   std::vector<std::string> lookup_lib{"hello", "Tom", "Ransom", "Ben",
                                       "Tougher"};
   // Set
-  std::set<int> my_set_example{3, 2, 1, 5, 6, 9, 7, 19, 8};
+  std::unordered_set<int> my_set_example{3, 2, 1, 5, 6, 9, 7, 19, 8};
   std::cout << "'Set' Example\n\t";
   for (auto num : my_set_example) {
     std::cout << num << ", ";
   }
+  if (my_set_example.find(19) != my_set_example.end()) {
+    std::cout << "\nNumber " << *my_set_example.find(19)
+              << " was found in the unordered set!" << std::endl;
+  }
   std::cout << std::endl;
+
   // MAP
   std::map<char, int> map1{{'a', 1}, {'b', 2}, {'c', 3}, {'d', 4}, {'e', 5}};
   std::cout << "Map Testing:\n\t " << std::endl;
@@ -37,6 +43,7 @@ int main() {
   std::cout << std::endl;
 
   std::vector<int> nums{3, 4, 5, 2, 1, 6, 8, 7};
+
   // List
   std::list<std::deque<int>> my_list{{1, 3, 4, 6, 5, 9, 7, 8},
                                      {3, 2, 4, 1, 5, 6}};
@@ -63,6 +70,7 @@ int main() {
     std::string comma = ((begin + 1) == end) ? "" : ", ";
     std::cout << *begin++ << comma;
   }
+
   // Nums Vector
   std::cout << "\n\nNums (vector): \t";
   for (auto &num : nums) {
@@ -75,6 +83,7 @@ int main() {
     std::cout << "\nTarget: [" << *numTarget << "] found!" << std::endl;
   }
   std::cout << "\n\nDequed List of Nums:\n\t";
+
   // std::list of std::deques reading
   for (auto &dq : my_list) {
     for (auto &num : dq) {
@@ -82,6 +91,7 @@ int main() {
     }
     std::cout << "\n\t";
   }
+
   // using iterators and std::find() to find target match
   auto l_begin = lookup_lib.begin();
   auto l_end = lookup_lib.end();
