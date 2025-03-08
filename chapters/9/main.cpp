@@ -3,6 +3,7 @@
 #include <deque>
 #include <iostream>
 #include <list>
+#include <map>
 #include <vector>
 
 template <typename T>
@@ -18,7 +19,12 @@ int main() {
                                         "Sunday"};
   std::vector<std::string> lookup_lib{"hello", "Tom", "Ransom", "Ben",
                                       "Tougher"};
-
+  std::map<char, int> map1{{'a', 1}, {'b', 2}, {'c', 3}, {'d', 4}, {'e', 5}};
+  std::cout << "Map Testing:\n\t " << std::endl;
+  for (auto &pair : map1) {
+    std::cout << pair.first << ", " << pair.second << std::endl;
+  }
+  std::cout << std::endl;
   std::vector<int> nums{3, 4, 5, 2, 1, 6, 8, 7};
   std::list<std::deque<int>> my_list{{1, 3, 4, 6, 5, 9, 7, 8},
                                      {3, 2, 4, 1, 5, 6}};
