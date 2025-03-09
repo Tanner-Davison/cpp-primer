@@ -1,0 +1,7 @@
+TYPES OF CONTAINERS C++
+vector,
+deque,
+list,
+forward_list,
+array,
+string

@@ -1,0 +1,19 @@
+=========================
+
+File: 
+	./test.txt
+11:33 PM: 
+	Message: [ opened! ]
+11:33 PM: 
+	Message: [ Input File Closed! ]
+[ END ]
+
+=========================
+=========================
+
+File: 
+	./test2.txt
+11:33 PM: 
+	Message: [ opened! ]
+11:33 PM: 
+	Message: [ Input File Closed! ]
