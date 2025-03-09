@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <array>
 #include <iostream>
 #include <list>
@@ -81,5 +82,27 @@ int main() {
   if (num_compare(nums, numslist)) {
     std::cout << "Elements of containers are of equal size" << std::endl;
   };
+  // using insert
+  auto numsbeg = nums.begin() + 1;
+  auto bracedList = {9, 8, 7};
+  nums.insert(numsbeg, bracedList);
+  for (const auto &num : nums) {
+    std::cout << num << ", ";
+  }
+  std::cout << std::endl;
+  std::list<std::string> insertTest;
+  auto iter = insertTest.begin();
+  std::string word = "";
+  while (std::cin >> word) {
+    if (word == "quit") {
+      break;
+    }
+    iter = insertTest.insert(iter, word);
+  }
+  insertTest.sort();
+  for (const auto &word : insertTest) {
+    std::cout << word << ", ";
+  }
+  std::cout << std::endl;
   return 0;
 }
