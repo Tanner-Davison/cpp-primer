@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <array>
+#include <deque>
 #include <iostream>
 #include <list>
 #include <typeinfo>
@@ -90,7 +91,8 @@ int main() {
     std::cout << num << ", ";
   }
   std::cout << std::endl;
-  std::list<std::string> insertTest;
+  std::vector<std::string> insertTest;
+  insertTest.insert(insertTest.begin(), my_strings.begin(), my_strings.end());
   auto iter = insertTest.begin();
   std::string word = "";
   while (std::cin >> word) {
@@ -99,10 +101,12 @@ int main() {
     }
     iter = insertTest.insert(iter, word);
   }
-  insertTest.sort();
+  std::sort(insertTest.begin(), insertTest.end());
+
   for (const auto &word : insertTest) {
     std::cout << word << ", ";
   }
   std::cout << std::endl;
+
   return 0;
 }

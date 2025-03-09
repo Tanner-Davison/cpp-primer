@@ -82,8 +82,23 @@ char getch() {
   }
 
   return ch;
+  memset(&old, 0, sizeof(old));
+  if (tcgetattr(0, &old) < 0)
+    perror("tcsetattr()");
+  old.c_lflag &= ~ICANON;
+  old.c_lflag &= ~ECHO;
+  old.c_cc[VMIN] = 1;
+  old.c_cc[VTIME] = 0;
+  if (tcsetattr(0, TCSANOW, &old) < 0)
+    perror("tcsetattr ICANON");
+  if (read(0, &buf, 1) < 0)
+    perror("read()");
+  old.c_lflag |= ICANON;
+  old.c_lflag |= ECHO;
+  if (tcsetattr(0, TCSADRAIN, &old) < 0)
+    perror("tcsetattr ~ICANON");
+  return buf;
 }
-#endif
 
 // Platform-specific screen clear
 void clearScreen() {
@@ -94,7 +109,6 @@ void clearScreen() {
 #endif
 }
 
-// Case-insensitive substring search
 bool containsIgnoreCase(const std::string &str, const std::string &substring) {
   auto it = std::search(str.begin(), str.end(), substring.begin(),
                         substring.end(), [](char ch1, char ch2) {
