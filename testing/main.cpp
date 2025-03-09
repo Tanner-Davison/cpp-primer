@@ -4,6 +4,21 @@
 #include <typeinfo>
 #include <vector>
 
+bool num_compare(const std::vector<int> &vec, const std::list<int> &li) {
+  auto beg = vec.begin();
+  auto beglist = li.begin();
+  bool allEqual = true;
+  while (beg != vec.end() && beglist != li.end()) {
+    if (*beg != *beglist) {
+      allEqual = false;
+      break;
+    } else {
+      ++beg;
+      ++beglist;
+    }
+  }
+  return allEqual;
+}
 int main() {
   // const Char * to " " literals adds a null terminating character at the end
   // \0;
@@ -50,7 +65,21 @@ int main() {
   for (auto &num : my_dub_list) {
     std::cout << num << ", ";
   }
-
   std::cout << std::endl;
+  // Write a program to assign the elements from a list of char* pointers to
+  // C-style character strings to a vector of strings
+  std::list<const char *> charPtrs{"a", "b", "c", "d"};
+  std::vector<std::string> stringVector;
+  stringVector.assign(charPtrs.begin(), charPtrs.end());
+  for (const auto &l : stringVector) {
+    std::cout << l;
+  }
+  std::cout << std::endl;
+  // Compare elements in a list<int> to elements in a vector<int>
+  std::vector<int> nums{1, 2, 3, 4, 5, 6};
+  std::list<int> numslist{1, 2, 3, 4, 5, 6};
+  if (num_compare(nums, numslist)) {
+    std::cout << "Elements of containers are of equal size" << std::endl;
+  };
   return 0;
 }
