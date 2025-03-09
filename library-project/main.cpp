@@ -20,7 +20,7 @@
 
 // C system headers
 #include <cctype>
-#include <cstdio>  // Move up with other C headers
+#include <cstdio> // Move up with other C headers
 #include <cstdlib>
 
 // C++ system headers
@@ -42,19 +42,22 @@ char getch() {
   char buf = 0;
   struct termios old;
   memset(&old, 0, sizeof(old));
-  if (tcgetattr(0, &old) < 0) perror("tcsetattr()");
+  if (tcgetattr(0, &old) < 0)
+    perror("tcsetattr()");
   old.c_lflag &= ~ICANON;
   old.c_lflag &= ~ECHO;
   old.c_cc[VMIN] = 1;
   old.c_cc[VTIME] = 0;
-  if (tcsetattr(0, TCSANOW, &old) < 0) perror("tcsetattr ICANON");
-  if (read(0, &buf, 1) < 0) perror("read()");
+  if (tcsetattr(0, TCSANOW, &old) < 0)
+    perror("tcsetattr ICANON");
+  if (read(0, &buf, 1) < 0)
+    perror("read()");
   old.c_lflag |= ICANON;
   old.c_lflag |= ECHO;
-  if (tcsetattr(0, TCSADRAIN, &old) < 0) perror("tcsetattr ~ICANON");
+  if (tcsetattr(0, TCSADRAIN, &old) < 0)
+    perror("tcsetattr ~ICANON");
   return buf;
 }
-#endif
 
 // Platform-specific screen clear
 void clearScreen() {
@@ -65,7 +68,7 @@ void clearScreen() {
 #endif
 }
 
-bool containsIgnoreCase(const std::string& str, const std::string& substring) {
+bool containsIgnoreCase(const std::string &str, const std::string &substring) {
   auto it = std::search(str.begin(), str.end(), substring.begin(),
                         substring.end(), [](char ch1, char ch2) {
                           return std::tolower(ch1) == std::tolower(ch2);
@@ -73,16 +76,17 @@ bool containsIgnoreCase(const std::string& str, const std::string& substring) {
   return it != str.end();
 }
 
-std::vector<Book*> searchBooks(BookLibrary& lib, const std::string& query) {
-  std::vector<Book*> results;
+std::vector<Book *> searchBooks(BookLibrary &lib, const std::string &query) {
+  std::vector<Book *> results;
   try {
     if (!query.empty()) {
       std::size_t id = std::stoull(query);
-      Book* book_result = lib.search_id(id);
-      if (book_result) results.push_back(book_result);
+      Book *book_result = lib.search_id(id);
+      if (book_result)
+        results.push_back(book_result);
     }
   } catch (...) {
-    for (auto& book : lib.books) {
+    for (auto &book : lib.books) {
       if (containsIgnoreCase(book.get_title(), query) ||
           containsIgnoreCase(book.get_auth(), query)) {
         results.push_back(&book);
@@ -92,15 +96,15 @@ std::vector<Book*> searchBooks(BookLibrary& lib, const std::string& query) {
   return results;
 }
 
-void displayResults(const std::vector<Book*>& results,
-                    const std::string& query) {
+void displayResults(const std::vector<Book *> &results,
+                    const std::string &query) {
   clearScreen();
   std::cout << "Search: " << query << std::endl;
   std::cout << "---------------------" << std::endl;
   if (results.empty()) {
     std::cout << "No matching books found." << std::endl;
   } else {
-    for (const auto& book : results) {
+    for (const auto &book : results) {
       std::cout << *book << std::endl;
       std::cout << "---------------------" << std::endl;
     }
@@ -108,7 +112,7 @@ void displayResults(const std::vector<Book*>& results,
   }
 }
 
-extern bool read_non_blanks(std::istream& is, Book& data);
+extern bool read_non_blanks(std::istream &is, Book &data);
 
 int main() {
   BookLibrary lib;
@@ -141,7 +145,8 @@ int main() {
     ch = getchar();
     system("stty cooked");
 #endif
-    if (ch == 27) break;
+    if (ch == 27)
+      break;
 
     if (ch == 8 || ch == 127) {
       if (!query.empty()) {
@@ -153,7 +158,7 @@ int main() {
       continue;
     }
 
-    if (ch >= 32 && ch <= 126) {  // Printable characters
+    if (ch >= 32 && ch <= 126) { // Printable characters
       query += ch;
       auto results = searchBooks(lib, query);
       displayResults(results, query);
