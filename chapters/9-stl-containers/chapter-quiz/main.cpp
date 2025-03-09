@@ -107,6 +107,30 @@ int main() {
     std::cout << word << ", ";
   }
   std::cout << std::endl;
+  // Write a program to copy elements from a list<int> into two deques The
+  // even-valued elements should go into one deque and the odd into another
+  std::list<int> input_nums;
+  std::deque<int> evens;
+  std::deque<int> odds;
+  int temp;
+  while (std::cin >> temp) {
+    if (temp == 0) {
+      break;
+    }
+    if ((temp % 2) == 0) {
+      evens.emplace_back(temp);
+    } else {
+      odds.emplace_back(temp);
+    }
+  }
+  std::cout << "Evens: ";
+  for (const auto &evenNum : evens) {
+    std::cout << evenNum << ",";
+  }
+  std::cout << "\nOdds: ";
+  for (const auto &oddNum : odds) {
+    std::cout << oddNum << ",";
+  }
 
   return 0;
 }
