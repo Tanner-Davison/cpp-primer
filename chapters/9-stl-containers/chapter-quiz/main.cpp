@@ -23,9 +23,6 @@ bool num_compare(const std::vector<int> &vec, const std::list<int> &li) {
 }
 int main() {
   // const char * to " " literals adds a null terminating character at the end
-  // \0;
-  //
-  //
   // example
   std::vector<const char *> cptrs{"tanner", "andrew", "nathan",
                                   "nate",   "eear",   "rapper"};
@@ -49,27 +46,28 @@ int main() {
   }
 
   // six ways to initialize a vector
-  std::vector<int> vec1{1};
-  std::vector<int> vec2 = vec1;
-  std::vector<int> vec3(vec1);
-  std::vector<int> vec4 = {01};
-  std::vector<int> vec5(1, 1);
-  std::vector<int> vec6(1);
+  std::vector<int> vec1{1};     // brace Initialization
+  std::vector<int> vec2 = vec1; // copy
+  std::vector<int> vec3(vec1);  // direct initialization
+  std::vector<int> vec4 = {01}; // copy from brace
+  std::vector<int> vec5(1, 1);  // N (number) & value initialization
+  std::vector<int> vec6(1);     // direct
 
   // how would you initialize a vector<double> from a list <int>?
   // from a vector<int>?
-  //
+
   std::list<int> my_list{3, 4, 6};
   auto begin = my_list.begin();
   auto end = my_list.end();
   std::vector<double> my_dub_list(begin, end);
-
   for (auto &num : my_dub_list) {
     std::cout << num << ", ";
   }
   std::cout << std::endl;
+
   // write a program to assign the elements from a list of char* pointers to
   // c-style character strings to a vector of strings
+
   std::list<const char *> charptrs{"a", "b", "c", "d"};
   std::vector<std::string> stringvector;
   stringvector.assign(charptrs.begin(), charptrs.end());
@@ -77,6 +75,7 @@ int main() {
     std::cout << l;
   }
   std::cout << std::endl;
+
   // compare elements in a list<int> to elements in a vector<int>
   std::vector<int> nums{1, 2, 3, 4, 5, 6};
   std::list<int> numslist{1, 2, 3, 4, 5, 6};
