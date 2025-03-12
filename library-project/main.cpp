@@ -66,7 +66,6 @@ char getch() {
     perror("tcsetattr ICANON");
     return 0;
   }
-
   // Read a single character
   char ch;
   if (read(0, &ch, 1) < 0) {
@@ -99,7 +98,7 @@ char getch() {
     perror("tcsetattr ~ICANON");
   return buf;
 }
-
+#endif
 // Platform-specific screen clear
 void clearScreen() {
 #ifdef _WIN32

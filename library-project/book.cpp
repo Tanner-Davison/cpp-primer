@@ -1,4 +1,5 @@
 #include "book.hpp"
+
 #include <string>
 
 Book::Book(std::string auth, std::string bookName, std::string totalPages,

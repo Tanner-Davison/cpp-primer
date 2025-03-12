@@ -25,7 +25,7 @@ void process_input(std::istream &in, std::vector<std::string> &lines_container,
 
 int main() {
   std::vector<std::string> all_lines;
-  std::string test = "./test.txt", test2 = "./test2.txt", logs = "./logs.txt";
+  std::string test = "./test.tx", test2 = "./test2.txt", logs = "./logs.txt";
 
   const std::string err_msg = "Failed to open file";
   std::ifstream file1(test), file2(test2);

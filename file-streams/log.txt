@@ -1,19 +1,18 @@
+
 =========================
 
-File: 
-	./test.txt
-11:33 PM: 
-	Message: [ opened! ]
-11:33 PM: 
-	Message: [ Input File Closed! ]
-[ END ]
+ERROR!
+	2025-03-11
+ 07:04 PM
+	description: Failed to open file : ./test.tx
+( END )
 
 =========================
 =========================
 
 File: 
 	./test2.txt
-11:33 PM: 
+07:04 PM: 
 	Message: [ opened! ]
-11:33 PM: 
+07:04 PM: 
 	Message: [ Input File Closed! ]
