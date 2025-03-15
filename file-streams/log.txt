@@ -1,18 +1,19 @@
-
 =========================
 
-ERROR!
-	2025-03-11
- 07:04 PM
-	description: Failed to open file : ./test.tx
-( END )
+File: 
+	./test.txt
+10:55 PM: 
+	Message: [ opened! ]
+10:55 PM: 
+	Message: [ Input File Closed! ]
+[ END ]
 
 =========================
 =========================
 
 File: 
 	./test2.txt
-07:04 PM: 
+10:55 PM: 
 	Message: [ opened! ]
-07:04 PM: 
+10:55 PM: 
 	Message: [ Input File Closed! ]

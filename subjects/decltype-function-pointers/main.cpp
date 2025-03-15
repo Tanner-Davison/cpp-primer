@@ -17,7 +17,6 @@ int callback(int num1, int num2, int (*func_cb)(int, int)) {
 }
 
 int main() {
-
   std::vector<mathops> ops = {add, subtract, multiply, divide};
   int num1 = 10;
   int num2 = 20;
