@@ -1,26 +1,20 @@
-#include <ncurses.h>
-
+#include <deque>
+#include <iostream>
+#include <list>
+#include <vector>
 int main() {
-  // Initialize ncurses
-  initscr();
-  cbreak();             // Line buffering disabled
-  noecho();             // Don't echo keypresses
-  keypad(stdscr, TRUE); // Enable function keys
+  std::list<std::string> my_strings{"String_1", "String_2", "String_3"};
+  my_strings.pop_back();
+  auto start = my_strings.begin();
+  std::advance(
+      start,
+      1); // advances bidirectional containers which dont accept random access
 
-  // Clear the screen and print message
-  clear();
-  mvprintw(5, 10, "Press any key to continue...");
-  refresh();
+  my_strings.erase(start);
 
-  // This is the correct way to use getch() on Mac with ncurses
-  int ch = getch();
+  for (const auto &str : my_strings) {
+    std::cout << str << std::endl;
+  };
 
-  // Show what key was pressed
-  mvprintw(7, 10, "You pressed: %c", ch);
-  refresh();
-  getch();
-
-  // Clean up
-  endwin();
   return 0;
 }
