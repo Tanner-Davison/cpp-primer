@@ -2,19 +2,25 @@
 #include <iostream>
 #include <list>
 #include <vector>
+
+void remove_odds(std::list<int> &strs) {
+  if (!strs.empty()) {
+    auto it = strs.begin();
+    while (it != strs.end()) {
+      if (*it % 2) {
+        it = strs.erase(it);
+      } else {
+        ++it;
+      }
+    }
+  }
+  for (const auto &num : strs) {
+    std::cout << num << ", ";
+  }
+  std::cout << std::endl;
+}
 int main() {
-  std::list<std::string> my_strings{"String_1", "String_2", "String_3"};
-  my_strings.pop_back();
-  auto start = my_strings.begin();
-  std::advance(
-      start,
-      1); // advances bidirectional containers which dont accept random access
-
-  my_strings.erase(start);
-
-  for (const auto &str : my_strings) {
-    std::cout << str << std::endl;
-  };
-
+  std::list<int> my_strings{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  remove_odds(my_strings);
   return 0;
 }
