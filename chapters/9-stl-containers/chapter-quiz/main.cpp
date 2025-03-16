@@ -130,6 +130,5 @@ int main() {
   for (const auto &oddnum : odds) {
     std::cout << oddnum << ",";
   }
-
   return 0;
 }
