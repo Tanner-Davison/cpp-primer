@@ -21,7 +21,7 @@ void find_insert_string(std::forward_list<std::string> &flist,
         ++curr;
       }
     }
-    if (found == false) {
+    if (!found) {
       flist.insert_after(prev, str2);
       std::cout << "\nInserted string at the end of forward list." << std::endl;
     };
