@@ -9,31 +9,18 @@ void find_insert_string(std::forward_list<std::string> &flist,
                         const std::string &str1, const std::string &str2) {
   auto prev = flist.before_begin();
   auto curr = flist.begin();
-  if (!flist.empty() && !str1.empty() && !str2.empty()) {
-    bool found = false;
-    while (curr != flist.end() && !found) {
-      if (*curr == str1) {
-        prev = curr;
-        curr = flist.insert_after(curr, str2);
-        found = true;
-      } else {
-        prev = curr;
-        ++curr;
-      }
+
+  while (curr != flist.end()) {
+    if (*curr == str1) {
+      flist.insert_after(curr, str2);
+      return;
     }
-    if (!found) {
-      flist.insert_after(prev, str2);
-      std::cout << "\nInserted string at the end of forward list." << std::endl;
-    };
-  } else {
-    if (!str1.empty() && !str2.empty()) {
-      std::cout << "\nList is empty! adding first element.\n" << std::endl;
-      flist.insert_after(flist.before_begin(), str2);
-    } else {
-      std::cout << "\nstr1 or str2 is empty!\n" << std::endl;
-    }
+    prev = curr;
+    ++curr;
   }
-};
+
+  flist.insert_after(prev, str2);
+}
 
 int main() {
   int ia[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
