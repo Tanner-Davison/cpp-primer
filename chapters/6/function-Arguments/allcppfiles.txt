@@ -1,2 +1,0 @@
-FindString.cpp
-main.cpp

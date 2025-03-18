@@ -1,16 +1,15 @@
 // MAIN
-#include "Headers/FindString.hpp"
+#include "./Headers/FindString.hpp"
 #include <iostream>
-
-using namespace std;
 
 int main() {
 
-  string testing = "hello world I am testing a theory";
-  string::size_type occurs = 0;
+  const std::string testing = "hello world I am testing a theory";
+  std::string::size_type occurs = 0;
+  char c = 'd';
 
-  cout << "First Occurence: " << find_char(testing, 'd', occurs)
-       << " Letters in.\nTotal occurences: " << occurs << endl;
+  std::cout << "First Occurence: " << find_char(testing, c, occurs)
+            << " Letters in.\nTotal occurences: " << occurs << std::endl;
 
   return 0;
 }
