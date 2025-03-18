@@ -16,8 +16,8 @@ int main() {
   // resize vector
   ivec.resize(50);
   std::cout << "\nAfter resize: " << std::endl;
-  std::cout << "\tCapacity: "
-            << "\n\tSize: " << ivec.size() << " \n";
+  std::cout << "\tCapacity: " << ivec.capacity() << "\n\tSize: " << ivec.size()
+            << " \n";
 
   // shrink to fit
   std::cout << "\nAfter Shrink to fit-> \n";
