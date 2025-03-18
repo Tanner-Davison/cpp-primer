@@ -18,7 +18,6 @@ int main() {
   std::cout << "\nAfter resize: " << std::endl;
   std::cout << "\tCapacity: " << ivec.capacity() << "\n\tSize: " << ivec.size()
             << " \n";
-
   // shrink to fit
   std::cout << "\nAfter Shrink to fit-> \n";
   ivec.shrink_to_fit();
