@@ -8,9 +8,22 @@ int main() {
   int start = 0;
   std::vector<int> ivec(500);
   std::iota(ivec.begin(), ivec.end(), ++start);
-  std::vector<std::string> strvec;
+  std::string rand_str = "rand_str: ";
+  std::vector<std::string> strvec{rand_str};
+  std::cout << "Initial string vector value: " << std::endl;
+  std::cout << "\tCapacity: " << strvec.capacity()
+            << "\n\tSize: " << strvec.size() << " \n";
+
+  for (int i = 0; i < 20; ++i) {
+    strvec.push_back((rand_str += std::to_string(i)));
+  }
+  // read string data after loop
+  std::cout << "\nString Vector after loop" << std::endl;
+  std::cout << "\tCapacity: " << strvec.capacity()
+            << "\n\tSize: " << strvec.size() << " \n";
+
   // initial
-  std::cout << "Initial vector value: " << std::endl;
+  std::cout << "\nInitial vector value: " << std::endl;
   std::cout << "\tCapacity: " << ivec.capacity() << "\n\tSize: " << ivec.size()
             << " \n";
   // resize vector

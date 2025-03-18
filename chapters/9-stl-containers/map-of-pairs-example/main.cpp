@@ -5,7 +5,6 @@
 #include <vector>
 
 int main() {
-  // Map demonstration with name keys and descriptive pairs
   std::map<std::string, std::pair<std::string, int>> people;
   people["tanner"] = std::make_pair("pretty cool", 30);
   people["ben"] = std::make_pair("average", 20);
