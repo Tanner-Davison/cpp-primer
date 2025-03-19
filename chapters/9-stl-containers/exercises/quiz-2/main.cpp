@@ -1,6 +1,6 @@
 #include <cassert>
-#include <iostream>
 #include <list>
+#include <ranges>
 #include <vector>
 
 int main() {
@@ -13,11 +13,3 @@ int main() {
 #endif
   assert((head == std::list{1, 2, 3, 4, -5, -6, -7}));
 }
-
-// explain the difference between a vector's capacity and its size
-
-//    Answer:
-//    A vectors capacity is how much actual memory is allocated to the
-//    container not how many elements their are.
-//    size is the number of element count of actual items that are in said
-//    container could be less than the capacity but never will be more.
