@@ -1,3 +1,4 @@
+// make sure to set this file as your pwd when compiling
 #include "../DebugEx.hpp"
 #include <fstream>
 #include <iostream>
