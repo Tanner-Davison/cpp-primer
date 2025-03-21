@@ -30,6 +30,16 @@ void replace_substring(std::string &str1, const std::string &oldVal,
               << std::endl;
   }
 }
+void add_pronouns(std::string &str, const std::string &pro,
+                  const std::string &after) {
+  str.insert(0, pro).append(after);
+}
+void add_pronouns_index_only(std::string &str, const std::string &pro,
+                             const std::string &after) {
+  auto posStart = str.size() - str.size();
+  str.insert(posStart, pro);
+  str.insert(str.size(), after);
+}
 
 int main(int argc, char *argv[]) {
   // Store command line arguments in vector
@@ -96,7 +106,7 @@ int main(int argc, char *argv[]) {
   std::cout << "\nString_view examples:" << std::endl;
   std::cout << "First name: " << firstname << std::endl;
   std::cout << "Last name: " << lastname << std::endl;
-  std::cout << "With std::quoted: " << std::quoted(strview) << std::endl;
-
+  add_pronouns_index_only(name, "Mr.", " jr");
+  std::cout << name << std::endl;
   return 0;
 }
