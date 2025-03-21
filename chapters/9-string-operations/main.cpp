@@ -5,14 +5,6 @@
 #include <string_view>
 #include <vector>
 
-/**
- * Program demonstrating:
- * 1. Vector container holding main arguments
- * 2. Exception handling with .at() and std::out_of_range
- * 3. String and string_view operations
- * 4. Various string manipulation techniques
- */
-
 // Print command line arguments, demonstrating exception handling
 void print_args(const std::vector<std::string> &args) {
   try {
