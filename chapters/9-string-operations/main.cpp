@@ -1,6 +1,7 @@
 #include <exception>
 #include <iomanip>
 #include <iostream>
+#include <string_view>
 #include <vector>
 // program creates a vector container to hold mains arguments
 // has an out of bounds in case the loop trys to access elements in vector which
@@ -60,7 +61,13 @@ int main(int argc, char *argv[]) {
   std::string old_val = "brown fox";
   std::string new_value = "stupid kid";
   three_strings(value, old_val, new_value);
-
   std::cout << "changed string with function: \n\t" << value << std::endl;
+  const char *char_test = {"This is a testing string of const char pointers"};
+  std::string name = "Tanner Davison";
+  std::string_view firstname(name.c_str(), 7);
+  std::string_view lastname(name.c_str());
+  std::string_view strview(char_test, 5);
+  std::cout << std::quoted(strview) << std::endl; // std::quoted quotes the text
+
   return 0;
 }
