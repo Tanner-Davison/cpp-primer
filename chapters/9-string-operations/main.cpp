@@ -38,7 +38,6 @@ int main(int argc, char *argv[]) {
 
   // String creation examples
   std::string str = "This is a testing string";
-  const char *cstr = "This is a null terminated string";
   char nonull[] = {'h', 'k'};
 
   // String views and substrings
