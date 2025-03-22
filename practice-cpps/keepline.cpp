@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <string>
 #include <vector>
 
 int main(int argc, char *argv[]) {
@@ -22,7 +23,11 @@ int main(int argc, char *argv[]) {
     std::cout << line << "\n\t Keep line? (y || n)" << std::endl;
     std::cin >> input;
     if (input != 'y' && input != 'Y' && input != 'n' && input != 'N') {
+#ifdef _WIN32
       system("cls");
+#else
+      system("clear");
+#endif
       std::cout << "Could not recognize input would you like to keep line? "
                    "('y', 'n')\n\t"
                 << line << std::endl;
@@ -37,7 +42,6 @@ int main(int argc, char *argv[]) {
   }
   std::cout << "\n-------END OF FILE-------\n"
             << "\nYour saved Values: " << std::endl;
-  ;
   for (const auto &l : lines) {
     std::cout << l << ", " << std::endl;
   }
