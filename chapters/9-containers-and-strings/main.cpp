@@ -108,5 +108,11 @@ int main() {
   } else {
     std::cout << "\nTarget: [" << *result << "] Found!" << std::endl;
   }
+  // finding the double value from a string and converting it to its type
+  // example stod
+  std::string s2 = "pi = 3.14";
+  double d = std::stod(s2.substr(s2.find_first_of("+-.0123456789")));
+  std::cout << "String conversion: " << d << std::endl;
+
   return 0;
 }
