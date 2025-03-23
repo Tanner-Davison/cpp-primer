@@ -1,4 +1,4 @@
-// this file is included in /projects
+// this file is included in /projects as name-and-phone-adder
 #include <fstream>
 #include <iostream>
 #include <sstream>
