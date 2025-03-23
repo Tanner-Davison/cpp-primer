@@ -6,7 +6,8 @@
 #include <list>
 #include <string>
 #include <vector>
-void update_winner(std::vector<std::string> &saved) {
+
+void update_winner(const std::vector<std::string> &saved) {
   std::string winner = "";
   static std::size_t top_count = 0;
   const std::list<char> ascenders{'b', 'd', 'f', 'h', 'k', 'l', 't'};
@@ -32,7 +33,8 @@ void update_winner(std::vector<std::string> &saved) {
       top_count = word.size();
     }
   }
-  std::cout << "\nCurrent Winner: [ " << winner << " ]\n" << std::endl;
+  auto display = !winner.empty() ? winner : "empty";
+  std::cout << "\nCurrent Winner: [ " << display << " ]\n" << std::flush;
 }
 void find_nums(const std::string &numbers, const std::string &line) {
   std::list<char> nums;
