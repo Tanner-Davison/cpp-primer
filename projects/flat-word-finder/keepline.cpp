@@ -65,13 +65,21 @@ void find_nums(const std::string &numbers, const std::string &line) {
   std::cout << ")";
 }
 int main(int argc, char *argv[]) {
+  std::string default_file = "./text-files/input_add_item.txt";
+  std::ifstream inFile;
   if (argc < 2) {
-    std::cout << "Usage: " << argv[0] << " <filename>" << std::endl;
-    return 1;
+    std::cout << "No filename provided. Using default file: " << default_file
+              << std::endl;
+    inFile.open(default_file);
+  } else {
+    inFile.open(argv[1]);
   }
-  std::ifstream inFile(argv[1]);
   if (!inFile) {
-    throw std::runtime_error("No input file found");
+    std::cerr << "Failed to open file. Attempted paths:" << std::endl;
+    if (argc >= 2)
+      std::cerr << " - " << argv[1] << std::endl;
+    std::cerr << " - " << default_file << std::endl;
+    throw std::runtime_error("No input file found or nonexistent default file");
   }
 
   std::vector<std::string> saved;
