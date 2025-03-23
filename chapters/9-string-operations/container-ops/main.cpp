@@ -1,4 +1,3 @@
-#include <deque>
 #include <forward_list>
 #include <iostream>
 #include <list>
@@ -82,9 +81,9 @@ int main() {
 
   // 9.2.8
   std::forward_list<std::string> strList = {"Alpha", "Bravo", "Charlie"};
-  std::string fstr = "Charlie";
-  std::string input_str = "Delta";
-  find_insert_string(strList, fstr, input_str);
+  std::string find_this = "Charlie";
+  std::string replace_with = "Delta";
+  find_insert_string(strList, find_this, replace_with);
   std::cout << "Forward list function: " << std::endl;
   for (const auto &str : strList) {
     std::cout << str << ", ";

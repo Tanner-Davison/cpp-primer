@@ -21,7 +21,7 @@
 #include <cctype>
 #include <cstdio>
 #include <cstdlib>
-#include <cstring>  // For memset
+#include <cstring> // For memset
 // C++ system headers
 #include <algorithm>
 #include <fstream>
@@ -58,8 +58,8 @@ char getch() {
   // Disable canonical mode and echo
   current.c_lflag &= ~ICANON;
   current.c_lflag &= ~ECHO;
-  current.c_cc[VMIN] = 1;   // Read 1 character at a time
-  current.c_cc[VTIME] = 0;  // No timeout
+  current.c_cc[VMIN] = 1;  // Read 1 character at a time
+  current.c_cc[VTIME] = 0; // No timeout
 
   // Apply the new settings
   if (tcsetattr(0, TCSANOW, &current) < 0) {
@@ -82,16 +82,20 @@ char getch() {
 
   return ch;
   memset(&old, 0, sizeof(old));
-  if (tcgetattr(0, &old) < 0) perror("tcsetattr()");
+  if (tcgetattr(0, &old) < 0)
+    perror("tcsetattr()");
   old.c_lflag &= ~ICANON;
   old.c_lflag &= ~ECHO;
   old.c_cc[VMIN] = 1;
   old.c_cc[VTIME] = 0;
-  if (tcsetattr(0, TCSANOW, &old) < 0) perror("tcsetattr ICANON");
-  if (read(0, &buf, 1) < 0) perror("read()");
+  if (tcsetattr(0, TCSANOW, &old) < 0)
+    perror("tcsetattr ICANON");
+  if (read(0, &buf, 1) < 0)
+    perror("read()");
   old.c_lflag |= ICANON;
   old.c_lflag |= ECHO;
-  if (tcsetattr(0, TCSADRAIN, &old) < 0) perror("tcsetattr ~ICANON");
+  if (tcsetattr(0, TCSADRAIN, &old) < 0)
+    perror("tcsetattr ~ICANON");
   return buf;
 }
 #endif
@@ -104,7 +108,7 @@ void clearScreen() {
 #endif
 }
 
-bool containsIgnoreCase(const std::string& str, const std::string& substring) {
+bool containsIgnoreCase(const std::string &str, const std::string &substring) {
   auto it = std::search(str.begin(), str.end(), substring.begin(),
                         substring.end(), [](char ch1, char ch2) {
                           return std::tolower(ch1) == std::tolower(ch2);
@@ -113,8 +117,8 @@ bool containsIgnoreCase(const std::string& str, const std::string& substring) {
 }
 
 // Search for books matching the query
-std::vector<Book*> searchBooks(BookLibrary& lib, const std::string& query) {
-  std::vector<Book*> results;
+std::vector<Book *> searchBooks(BookLibrary &lib, const std::string &query) {
+  std::vector<Book *> results;
 
   // Empty query returns no results
   if (query.empty()) {
@@ -124,13 +128,13 @@ std::vector<Book*> searchBooks(BookLibrary& lib, const std::string& query) {
   // Try to interpret query as an ID
   try {
     std::size_t id = std::stoull(query);
-    Book* book_result = lib.search_id(id);
+    Book *book_result = lib.search_id(id);
     if (book_result) {
       results.push_back(book_result);
     }
   } catch (...) {
     // If query is not a valid ID, search by title and author
-    for (auto& book : lib.books) {
+    for (auto &book : lib.books) {
       if (containsIgnoreCase(book.get_title(), query) ||
           containsIgnoreCase(book.get_auth(), query)) {
         results.push_back(&book);
@@ -142,8 +146,8 @@ std::vector<Book*> searchBooks(BookLibrary& lib, const std::string& query) {
 }
 
 // Display search results
-void displayResults(const std::vector<Book*>& results,
-                    const std::string& query) {
+void displayResults(const std::vector<Book *> &results,
+                    const std::string &query) {
   clearScreen();
   std::cout << "Search: " << query << std::endl;
   std::cout << "---------------------" << std::endl;
@@ -151,7 +155,7 @@ void displayResults(const std::vector<Book*>& results,
   if (results.empty()) {
     std::cout << "No matching books found." << std::endl;
   } else {
-    for (const auto& book : results) {
+    for (const auto &book : results) {
       std::cout << *book << std::endl;
       std::cout << "---------------------" << std::endl;
     }
@@ -160,7 +164,7 @@ void displayResults(const std::vector<Book*>& results,
 }
 
 // External function declaration
-extern bool read_non_blanks(std::istream& is, Book& data);
+extern bool read_non_blanks(std::istream &is, Book &data);
 
 int main() {
   BookLibrary lib;

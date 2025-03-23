@@ -1,3 +1,0 @@
-BookLibrary.cpp
-book.cpp
-main.cpp
