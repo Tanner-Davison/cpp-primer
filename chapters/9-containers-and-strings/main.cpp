@@ -110,9 +110,10 @@ int main() {
   }
   // finding the double value from a string and converting it to its type
   // example stod
-  std::string s2 = "pi = 3.14";
+  std::string s2 = "pi = 3.84";
   double d = std::stod(s2.substr(s2.find_first_of("+-.0123456789")));
-  std::cout << "String conversion: " << d << std::endl;
-
+  int intstr = std::stoi(s2.substr(s2.find_first_of("0123456789")));
+  std::cout << "String conversion to double: " << d << std::endl;
+  std::cout << "String conversion to int: " << intstr << std::endl;
   return 0;
 }
