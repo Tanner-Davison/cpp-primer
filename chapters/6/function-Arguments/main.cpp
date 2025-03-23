@@ -1,4 +1,5 @@
 // MAIN
+//(hint) compiled with multiple cpp files leader cx
 #include "./Headers/FindString.hpp"
 #include <iostream>
 

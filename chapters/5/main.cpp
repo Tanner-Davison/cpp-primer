@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-// Test for duplicates words in input stream
+
 using namespace std;
 int main() {
   string line = "";
@@ -16,8 +16,6 @@ int main() {
   try {
     cin >> resp;
     cin.ignore();
-    // getline(cin, input);       This way also works
-    // resp = input[0];           This way also works
     if (resp != 'a' && resp != 'u') {
       throw runtime_error("Must set boundry!");
     } else {
