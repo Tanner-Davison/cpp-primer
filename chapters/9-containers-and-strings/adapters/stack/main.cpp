@@ -11,7 +11,6 @@ int main() {
     std::cout << strQue.top() << ", ";
     strQue.pop();
   }
-
   if (strQue.empty()) {
     std::cout << "\nqueue is empty." << std::endl;
   }
