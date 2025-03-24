@@ -1,5 +1,5 @@
 // chapter 8 streams
-#include "./utils.h"
+// Standard library headers (alphabetical order)
 #include <algorithm>
 #include <cstdlib>
 #include <fstream>
@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+// Local/project headers
+#include "./utils.h"
 void update_winner(const std::vector<std::string> &saved) {
   std::string winner = "";
   static std::size_t top_count = 0;
