@@ -68,7 +68,7 @@ void find_nums(const std::string &numbers, const std::string &line) {
   std::cout << ")";
 }
 int main(int argc, char *argv[]) {
-  std::string default_file = "./text-files/input_add_item.txt";
+  std::string default_file = "../../text-files/input_add_item.txt";
   std::ifstream inFile;
   if (argc < 2) {
     std::cout << "No filename provided. Using default file: " << default_file
