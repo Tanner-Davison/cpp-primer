@@ -9,9 +9,10 @@ int main() {
 
   while (iter != iv.begin() + iv.size() / 2) {
     if (*iter == some_value) {
-      // this line is important iter returns the pointer returned by insert to
-      // keep the iterator validated
-      iter = iv.insert(iter, 2 * some_value);
+      iter = iv.insert(
+          iter,            // this line is important iter returns the pointer
+          2 * some_value); // returned by insert to keep the iterator validated
+
       break;
     } else {
       ++iter;
