@@ -1,55 +1,55 @@
 #include <iostream>
 #include <stack>
 #include <string>
+#include <vector>
 
 bool areParenthesesBalanced(const std::string &expression) {
   std::stack<char> stack;
-
-  for (char c : expression) {
-    if (c == '(' || c == '[' || c == '{') {
-      // Push opening brackets onto the stack
+  for (const auto c : expression) {
+    if (c == '(' || c == '{' || c == '[') {
       stack.push(c);
-    } else if (c == ')' || c == ']' || c == '}') {
-      // For closing brackets, check if stack is empty
+    } else if (c == ')' || c == '}' || c == ']') {
       if (stack.empty()) {
-        return false; // Closing bracket with no matching opening bracket
+        return false;
       }
-
-      // Get the top element and check if it matches
       char top = stack.top();
       stack.pop();
 
-      // Check for mismatched brackets
-      if ((c == ')' && top != '(') || (c == ']' && top != '[') ||
-          (c == '}' && top != '{')) {
+      if ((c == ')' && top != '(') || (c == '}' && top != '{') ||
+          (c == ']' && top != '[')) {
         return false;
       }
     }
   }
 
-  // If stack is empty, all brackets are balanced
   return stack.empty();
 }
 
 int main() {
-  std::string expression1 = "{[()]}";
-  std::string expression2 = "{[(])}";
-  std::string expression3 = ")}"; // Closing without opening
+  std::vector<std::string> expressions{"{([])}", "{[(]}", "(", "([)", "([])"};
+  std::string test =
+      " const AnimatedQuote = ({ content }) => { const allQuotes = "
+      "content.quotes.map((quote, index) => ( <QuoteContent className= quotes"
+      " id={`quote-${index}`}> <Quote className= text "
+      ">{quote.quote}</Quote> <Person className= text "
+      ">{quote.person}</Person> </QuoteContent>));";
+  std::string test2 =
+      "content.quotes.map((quote, index) => ( <QuoteContent className= quotes"
+      " id={`quote-${index}`}> <Quote className= text "
+      ">{quote.quote}</Quote> <Person className= text "
+      ">{quote.person}</Person> </QuoteContent>));";
 
-  std::cout << expression1 << " is "
-            << (areParenthesesBalanced(expression1) ? "balanced"
-                                                    : "not balanced")
+  for (const auto &exp : expressions) {
+    std::cout << (areParenthesesBalanced(exp) ? "balanced = "
+                                              : "not balanced = ")
+              << exp << std::endl;
+  }
+  std::cout << (areParenthesesBalanced(test) ? "\nbalanced =\n"
+                                             : "\nnot balanced =\n")
+            << test << "\n"
             << std::endl;
-
-  std::cout << expression2 << " is "
-            << (areParenthesesBalanced(expression2) ? "balanced"
-                                                    : "not balanced")
+  std::cout << (areParenthesesBalanced(test2) ? "\nbalanced =\n\t"
+                                              : "not balanced =\n\t")
+            << test2 << "\n"
             << std::endl;
-
-  std::cout << expression3 << " is "
-            << (areParenthesesBalanced(expression3) ? "balanced"
-                                                    : "not balanced")
-            << std::endl;
-
-  return 0;
 }

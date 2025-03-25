@@ -1,3 +1,5 @@
+// quiz chapter 11.6 || exercise: 9.52 (cpp primer 6th edition) page 371
+// ~chapters/9-containers-and-strings/adapters/stack/main.cpp
 #include <iostream>
 #include <stack>
 #include <string>
