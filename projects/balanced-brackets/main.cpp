@@ -28,7 +28,9 @@ bool areParenthesesBalanced(const std::string &expression) {
 }
 
 int main() {
-  std::vector<std::string> expressions{"{([])}", "{[(]}", "(", "([)", "([])"};
+  std::vector<std::string> expressions{"Test 1: {([])}", "Test 2: {[(]}",
+                                       "Test 3: (", "Test 4: ([)",
+                                       "Test 5: ([])"};
   std::string test =
       " const AnimatedQuote = ({ content }) => { const allQuotes = "
       "content.quotes.map((quote, index) => ( <QuoteContent className= quotes"
@@ -42,9 +44,10 @@ int main() {
       ">{quote.person}</Person> </QuoteContent>));";
 
   for (const auto &exp : expressions) {
-    std::cout << (areParenthesesBalanced(exp) ? "balanced = "
-                                              : "not balanced = ")
-              << exp << std::endl;
+    std::cout << "\n"
+              << exp
+              << (areParenthesesBalanced(exp) ? " = balanced"
+                                              : " = not balanced");
   }
   std::cout << (areParenthesesBalanced(test) ? "\nbalanced =\n"
                                              : "\nnot balanced =\n")
