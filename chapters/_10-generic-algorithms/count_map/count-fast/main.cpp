@@ -7,6 +7,7 @@ int main() {
 
   std::unordered_map<int, int> count_map;
 
+  std::cout << "baulders" << std::endl;
   for (const auto &num : nums) {
     count_map[num]++;
   }
