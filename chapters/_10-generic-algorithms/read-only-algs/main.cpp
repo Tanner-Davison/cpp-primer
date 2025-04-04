@@ -19,7 +19,7 @@ int main() {
       continue;
     }
     auto width = i > 1 ? std::setw(5) : std::setw(2);
-    std::cout << width << "  [" << i << "]";
+    std::cout << width << "  _" << i << "_";
   }
   std::cout << std::endl;
   for (const auto &cell : grid) {
@@ -29,7 +29,7 @@ int main() {
         std::cout << std::endl;
       }
       current_line = cell.first.first;
-      std::cout << " [" << current_line << "] ";
+      std::cout << " _" << current_line << "_ ";
     }
     if (current_line == 10) {
       spacing = std::setw(0);
