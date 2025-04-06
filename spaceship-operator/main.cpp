@@ -1,3 +1,5 @@
+// spaceship operator (c++ new declaration)
+
 #include <compare>
 #include <iostream>
 
