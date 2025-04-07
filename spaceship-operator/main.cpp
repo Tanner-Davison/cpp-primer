@@ -6,7 +6,6 @@
 struct Point {
   int x, y;
 
-  // Define three-way comparison
   auto operator<=>(const Point &other) const {
     // First compare x values
     if (auto cmp = x <=> other.x; cmp != 0) {
