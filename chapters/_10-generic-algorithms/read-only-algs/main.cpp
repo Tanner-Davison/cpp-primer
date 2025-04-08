@@ -15,7 +15,7 @@ int main() {
   std::cout << "std::accumulate(strs) : --> "
             << std::accumulate(strs.cbegin(), strs.cend(), std::string(""))
             << std::endl;
-
+  // compare
   bool csty_compare = std::equal(csty.cbegin(), csty.cend(), csty_cop.cbegin());
   if (csty_compare) {
     std::cout << "\nstd::equal(const csty, const csty_cop)csty == csty_cop"
@@ -24,6 +24,7 @@ int main() {
     std::cout << "\nstd::equal(const csty, const csty_cop)csty !== csty_cop"
               << std::endl;
   }
+  // equal
   if (std::equal(nums.cbegin(), nums.cend(), nums_copy.begin())) {
     std::cout << "std::equal(nums ,nums_copy) : --> nums == nums_copy"
               << std::endl;

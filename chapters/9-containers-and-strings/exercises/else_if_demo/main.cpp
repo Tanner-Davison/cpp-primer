@@ -1,4 +1,5 @@
 #include <cassert>
+#include <iostream>
 #include <list>
 #include <ranges>
 #include <vector>
@@ -12,4 +13,8 @@ int main() {
   head.insert(head.end(), tail.cbegin(), tail.cend());
 #endif
   assert((head == std::list{1, 2, 3, 4, -5, -6, -7}));
+  for (const auto &num : head) {
+    std::cout << num << ", ";
+  }
+  std::cout << std::endl;
 }
