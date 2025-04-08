@@ -2,9 +2,6 @@
 #include <iostream>
 #include <numeric>
 #include <vector>
-// accumulate <int>
-// accumulate <string>
-//
 int main() {
   std::vector<const char *> csty{"hello world", "how are you today"};
   std::vector<const char *> csty_cop{"hello world", "how are you today"};
