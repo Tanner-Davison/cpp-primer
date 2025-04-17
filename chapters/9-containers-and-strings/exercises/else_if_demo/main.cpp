@@ -3,7 +3,7 @@
 #include <list>
 #include <ranges>
 #include <vector>
-
+// demo on else if using preprocessor macros
 int main() {
   auto head = std::list{1, 2, 3, 4};
   const auto tail = std::vector{-5, -6, -7};
