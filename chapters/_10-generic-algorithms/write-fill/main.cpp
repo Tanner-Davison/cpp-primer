@@ -11,7 +11,7 @@ void read_vec(std::vector<int> &vec) {
 }
 
 int main() {
-  // Fill
+  // Fill example
   std::vector<int> my_ints(20);
   std::fill(my_ints.begin(), my_ints.end(), 1);
   std::cout << "std::fill(beg,end, fill_value)" << std::endl;
