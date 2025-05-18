@@ -4,12 +4,12 @@
 #include <vector>
 
 int main() {
-  // empty vector
+  // start with an empty vector
   std::vector<std::string> fill_me;
-  std::string storytwo = "the quick red fox jumps over the slow red turtle";
+  std::string storyTwo = "the quick red fox jumps over the slow red turtle";
   std::string word;
-  std::stringstream ss(storytwo);
-  // fill container
+  std::stringstream ss(storyTwo);
+  // fill vector Container
   while (ss >> word) {
     fill_me.emplace_back(word);
   }

@@ -17,7 +17,8 @@ int main() {
   std::cout << "std::fill(beg,end, fill_value)" << std::endl;
   read_vec(my_ints);
 
-  // add to container using iota
+  // add to container using iota (increments like start_count++ until the
+  // container reaches the end)
   std::vector<int> iota_ints(20);
   int start_count = 1;
   std::iota(iota_ints.begin(), iota_ints.end(), start_count);
