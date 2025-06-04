@@ -5,18 +5,18 @@
 
 int main() {
   // start with an empty vector
-  std::vector<std::string> fill_me;
+  std::vector<std::string> container_to_fill;
   std::string storyTwo = "the quick red fox jumps over the slow red turtle";
   std::string word;
   std::stringstream ss(storyTwo);
   // fill vector Container
   while (ss >> word) {
-    fill_me.emplace_back(word);
+    container_to_fill.emplace_back(word);
   }
 
   // std::sort duplicate words to be next to eachother with sort
-  std::sort(begin(fill_me), end(fill_me));
-  for (const auto &word : fill_me) {
+  std::sort(begin(container_to_fill), end(container_to_fill));
+  for (const auto &word : container_to_fill) {
     std::cout << word << "|";
   }
   std::cout << std::endl;
@@ -24,13 +24,14 @@ int main() {
   // now make unique
   std::cout << "shifting duplicates to end with std::unique(beg, end)"
             << std::endl;
-  auto end_unique = std::unique(fill_me.begin(), fill_me.end());
-  for (const auto &word : fill_me) {
+  auto end_unique =
+      std::unique(container_to_fill.begin(), container_to_fill.end());
+  for (const auto &word : container_to_fill) {
     std::cout << word << " ";
   }
   std::cout << std::endl;
-  fill_me.erase(end_unique, end(fill_me));
-  for (const auto &word : fill_me) {
+  container_to_fill.erase(end_unique, end(container_to_fill));
+  for (const auto &word : container_to_fill) {
     std::cout << word << " ";
   }
   std::cout << std::endl;
