@@ -4,36 +4,51 @@
 #include <vector>
 
 int main() {
-  // start with an empty vector
-  std::vector<std::string> container_to_fill;
-  std::string storyTwo = "the quick red fox jumps over the slow red turtle";
+  // Start with an empty vector to hold words
+  std::vector<std::string> words;
+  std::string text = "the quick red fox jumps over the slow red turtle";
+
+  // Parse the string into individual words
   std::string word;
-  std::stringstream ss(storyTwo);
-  // fill vector Container
+  std::stringstream ss(text);
   while (ss >> word) {
-    container_to_fill.emplace_back(word);
+    words.emplace_back(word);
   }
 
-  // std::sort duplicate words to be next to eachother with sort
-  std::sort(begin(container_to_fill), end(container_to_fill));
-  for (const auto &word : container_to_fill) {
-    std::cout << word << "|";
+  std::cout << "Original words: ";
+  for (const auto &w : words) {
+    std::cout << w << " ";
   }
-  std::cout << std::endl;
+  std::cout << "\n\n";
 
-  // now make unique
-  std::cout << "shifting duplicates to end with std::unique(beg, end)"
-            << std::endl;
-  auto end_unique =
-      std::unique(container_to_fill.begin(), container_to_fill.end());
-  for (const auto &word : container_to_fill) {
-    std::cout << word << " ";
+  // Step 1: Sort to group duplicates together
+  std::sort(words.begin(), words.end());
+
+  std::cout << "After sorting: ";
+  for (const auto &w : words) {
+    std::cout << w << " ";
   }
-  std::cout << std::endl;
-  container_to_fill.erase(end_unique, end(container_to_fill));
-  for (const auto &word : container_to_fill) {
-    std::cout << word << " ";
+  std::cout << "\n\n";
+
+  // Step 2: Move duplicates to the end, get iterator to new end
+  std::cout << "After std::unique (duplicates moved to end):\n";
+  auto new_end = std::unique(words.begin(), words.end());
+
+  // Show the full vector (including duplicates at end)
+  std::cout << "Full vector: ";
+  for (const auto &w : words) {
+    std::cout << w << " ";
   }
-  std::cout << std::endl;
+  std::cout << "\n";
+
+  // Step 3: Erase the duplicate elements
+  words.erase(new_end, words.end());
+
+  std::cout << "Final unique words: ";
+  for (const auto &w : words) {
+    std::cout << w << " ";
+  }
+  std::cout << "\n";
+
   return 0;
 }
