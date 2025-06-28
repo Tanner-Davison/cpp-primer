@@ -3,7 +3,10 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
+
 constexpr char ESC_KEY = 27;
+// fixed
+//
 bool writeToFile(const std::string &filename, const Debug &debug) {
   std::ofstream file(filename, std::ios::app);
   std::string buffer;
