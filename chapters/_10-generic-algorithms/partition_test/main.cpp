@@ -3,9 +3,7 @@
 #include <string>
 #include <vector>
 
-bool fiveOrMore(const std::string &str1) {
-  return str1.size() >= 5 ? true : false;
-}
+bool fiveOrMore(const std::string &str1) { return str1.size() >= 5; }
 
 int main() {
   std::vector<std::string> str_vec{"Susan", "Alan",  "Brad",   "Rebecca",
