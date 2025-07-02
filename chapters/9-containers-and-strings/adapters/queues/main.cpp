@@ -2,16 +2,16 @@
 #include <queue>
 
 int main() {
-  std::priority_queue<std::string> strQue;
+  std::priority_queue<std::string> priority_str_que;
   for (size_t i = 0; i < 10; ++i) {
     int count = i;
-    strQue.emplace("String " + std::to_string(++count));
+    priority_str_que.emplace("String " + std::to_string(++count));
   }
-  while (!strQue.empty()) {
-    std::cout << strQue.top() << ", ";
-    strQue.pop();
+  while (!priority_str_que.empty()) {
+    std::cout << priority_str_que.top() << ", ";
+    priority_str_que.pop();
   }
-  if (strQue.empty()) {
+  if (priority_str_que.empty()) {
     std::cout << "\nqueue is empty." << std::endl;
   }
   return 0;
