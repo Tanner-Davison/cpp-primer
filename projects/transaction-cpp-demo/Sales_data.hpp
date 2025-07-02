@@ -14,6 +14,7 @@ public:
   // Member functions
   void printSalesReport(std::ostream &out) const;
   void logTime(std::ostream &out);
+  bool compareIsbn(const std::string other_isbn) const;
   std::string isbn() &;
   Sales_data &combine(Sales_data &other);
 
