@@ -22,6 +22,7 @@ int main(int argc, char *argv[]) {
   std::vector<std::string> sales_isbn;
   Person person;
   if (read(inFile, total)) {
+    sales_isbn.emplace_back(total.isbn());
     Sales_data trans;
 
     while (read(inFile, trans)) {
