@@ -27,6 +27,5 @@ int main() {
   cout << "\nOdd Values: " << count_if(begin(col1), end(col1), isOdd()) << endl;
   cout << "\nEven Values:" << count_if(begin(col1), end(col1), isEven())
        << endl;
-
   return 0;
 }
