@@ -14,7 +14,7 @@ struct isEven {
 };
 
 struct divideByTwo {
-  float operator()(int num) { return (static_cast<float>(num) / 2); }
+  float operator()(int num) { return (static_cast<double>(num) / 2); }
 };
 
 int main() {
