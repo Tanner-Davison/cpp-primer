@@ -14,10 +14,12 @@ void elim_dups(std::vector<std::string> &strs) {
   auto end_unique = std::unique(strs.begin(), strs.end());
   strs.erase(end_unique, strs.end());
 }
+
 auto make_plural(std::size_t sz, const std::string &word,
                  const std::string &ending) {
   return (sz > 1) ? word + ending : word;
 }
+
 void biggies(std::vector<std::string> &words,
              std::vector<std::string>::size_type sz) {
   elim_dups(words);
