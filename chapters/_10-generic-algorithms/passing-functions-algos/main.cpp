@@ -13,9 +13,14 @@ struct isEven {
   bool operator()(int x) { return x % 2 == 0; }
 };
 
+struct divideByTwo {
+  float operator()(int num) { return (static_cast<float>(num) / 2); }
+};
+
 int main() {
   // functor
   isOdd fn;
+  divideByTwo dt;
   cout << "~functor example~ \nfn(5) = " << boolalpha << fn(5) << endl;
 
   // regular function
@@ -27,5 +32,12 @@ int main() {
   cout << "\nOdd Values: " << count_if(begin(col1), end(col1), isOdd()) << endl;
   cout << "\nEven Values:" << count_if(begin(col1), end(col1), isEven())
        << endl;
+
+  cout << "/nDevide by Two: " << endl;
+
+  for (const auto &num : col1) {
+    cout << dt(num) << ", ";
+  };
+  cout << endl;
   return 0;
 }
