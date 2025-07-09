@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <iostream>
 #include <iterator>
-#include <print>
 #include <vector>
 
 int main() {
@@ -15,8 +14,8 @@ int main() {
   for (const auto &str : my_strs) {
     std::cout << str << ", ";
   }
-  std::cout << std::endl;
-  std::println("Hello world");
+  std::cout << "\n" << std::endl;
+  ;
   /* using back_inserter as a way to fill containers */
   std::vector<int> my_ints;
   std::fill_n(std::back_inserter(my_ints), 10, 5);

@@ -4,7 +4,8 @@
 #include <utility>
 
 int main() {
-
+  std::ios_base::sync_with_stdio(false);
+  std::cout.tie(nullptr);
   std::map<std::pair<int, int>, int> grid;
   for (int i = 0; i <= 10; ++i) {
 
@@ -40,4 +41,3 @@ int main() {
 
   return 0;
 }
-

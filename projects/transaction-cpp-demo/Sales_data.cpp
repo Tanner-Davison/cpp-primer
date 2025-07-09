@@ -81,6 +81,9 @@ Sales_data add(const Sales_data &obj1, const Sales_data &obj2) {
   temp.revenue = obj1.revenue + obj2.revenue;
   return temp;
 }
+bool Sales_data::compareIsbn(const std::string other_isbn) const {
+  return other_isbn == item_id;
+}
 
 bool read(std::istream &in, Sales_data &item) {
   double price = 0.0;
