@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/tanner.davison/source/repos/cpp-primer/chapters/_10-generic-algorithms/quizzes/lambdas-test",
+      "program": "/Users/tanner.davison/source/repos/cpp-primer/chapters/_10-generic-algorithms/quizzes/lambdas-test/build/Debug/outDebug"
+    }
+  ]
+}
