@@ -27,6 +27,7 @@ void biggies(std::vector<std::string> &words,
               [](const std::string &str1, const std::string &str2) {
                 return str1.size() < str2.size();
               });
+
   auto wc = partition(words.begin(), words.end(),
                       [sz](const std::string &a) { return a.size() < sz; });
 
@@ -34,6 +35,7 @@ void biggies(std::vector<std::string> &words,
 
   std::cout << count << " " << make_plural(count, "word", "s") << " of length "
             << sz << " or longer" << std::endl;
+
   for_each(wc, words.end(),
            [](const std::string &s) { std::cout << s << ", "; });
 };
