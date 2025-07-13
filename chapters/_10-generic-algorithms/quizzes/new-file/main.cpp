@@ -17,6 +17,7 @@ int main() {
     std::cout << std::endl;
   }
   std::cout << &x << std::endl;
+
   std::cout << &y << std::endl;
 
   return 0;
