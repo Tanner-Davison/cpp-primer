@@ -25,5 +25,20 @@ int main() {
     std::cout << num << ",";
   }
   std::cout << std::endl;
+  std::cout << "\n=========Example using a lambda to back fill squared nums "
+               "=========\n"
+            << std::endl;
+
+  std::vector<int> numbers{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  std::vector<int> squared_nums;
+
+  std::transform(numbers.begin(), numbers.end(),
+                 std::back_inserter(squared_nums),
+                 [](int num) { return num * num; });
+  for (const auto &val : squared_nums) {
+    std::cout << val << ", ";
+  }
+
+  std::cout << std::endl;
   return 0;
 }
