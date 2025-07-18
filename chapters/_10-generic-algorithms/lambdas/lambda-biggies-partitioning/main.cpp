@@ -5,7 +5,7 @@
 #include <vector>
 
 // Lambdas syntax [capture list](parameter list) -> return type {function body};
-
+// updated keymaps for bckspc->ctrl
 bool isShorter(const std::string &str1, const std::string &str2) {
   return str1.size() < str2.size() ? true : false;
 }
