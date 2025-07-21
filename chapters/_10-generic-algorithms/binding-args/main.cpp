@@ -6,9 +6,10 @@
 bool check_size(const std::string &s, std::string::size_type sz) {
   return s.size() >= sz;
 }
+
 int main() {
   // auto newCallable = bind(callable, arg_list);
-  //
+
   auto check6 = std::bind(check_size, std::placeholders::_1, 6);
 
   std::string str = "Hello";
