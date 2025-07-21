@@ -1,10 +1,15 @@
 
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <string>
 #include <vector>
 
 // Lambdas syntax [capture list](parameter list) -> return type {function body};
+
+bool check_size(const std::string &s, std::string::size_type sz) {
+  return s.size() >= sz;
+}
 
 bool isShorter(const std::string &str1, const std::string &str2) {
   return str1.size() < str2.size() ? true : false;
@@ -27,8 +32,13 @@ void biggies(std::vector<std::string> &words,
               [](const std::string &str1, const std::string &str2) {
                 return str1.size() < str2.size();
               });
+  // auto wc = find_if(words.begin(), words.end(),
+  //                   [sz](const std::string &a) { return a.size() >= sz; });
+
+  // NEW implementation using bind
   auto wc = find_if(words.begin(), words.end(),
-                    [sz](const std::string &a) { return a.size() >= sz; });
+                    std::bind(check_size, std::placeholders::_1, sz));
+
   auto count = words.end() - wc;
 
   std::cout << count << " " << make_plural(count, "word", "s") << " of length "
