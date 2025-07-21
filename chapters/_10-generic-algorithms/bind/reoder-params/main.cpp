@@ -1,4 +1,4 @@
-// implementation used in lambdas/lambda-dups-biggies
+
 #include <algorithm>
 #include <functional>
 #include <iostream>
