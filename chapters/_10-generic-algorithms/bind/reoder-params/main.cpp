@@ -1,22 +1,38 @@
 // implementation used in lambdas/lambda-dups-biggies
+#include <algorithm>
 #include <functional>
-#include <ios>
 #include <iostream>
 
 using namespace std::placeholders;
 
-bool check_size(const std::string &s, std::string::size_type sz) {
-  return s.size() >= sz;
+bool isShorter(std::string &str1, std::string &str2) {
+  return str1.size() < str2.size();
 }
 
 int main() {
-  // auto newCallable = bind(callable, arg_list);
 
-  auto check6 = bind(check_size, _1, 6);
+  std::vector<std::string> str_vec{"Sally", "Sarah",    "Joshua", "Tommy",
+                                   "Jacob", "Lindsey",  "Andrew", "Robert",
+                                   "Jake",  "Lancaster"};
 
-  std::string str = "Hello";
-  bool b1 = check6(str);
-  std::cout << "Hello is greater than 6 chars?" << std::boolalpha << b1
-            << std::endl;
+  // regular sort shortest to longest
+  std::cout << "Shortest to longest" << std::endl;
+
+  std::sort(str_vec.begin(), str_vec.end(), isShorter);
+  for (const auto &word : str_vec) {
+    std::cout << word << ", ";
+  }
+
+  std::cout << std::endl;
+
+  // Reversed the param order with bind
+  std::cout << "Longest to shortest" << std::endl;
+
+  std::sort(str_vec.begin(), str_vec.end(), bind(isShorter, _2, _1));
+
+  for (const auto &word : str_vec) {
+    std::cout << word << ", ";
+  }
+  std::cout << std::endl;
   return 0;
 }
