@@ -3,6 +3,8 @@
 #include <ios>
 #include <iostream>
 
+using namespace std::placeholders;
+
 bool check_size(const std::string &s, std::string::size_type sz) {
   return s.size() >= sz;
 }
@@ -10,7 +12,7 @@ bool check_size(const std::string &s, std::string::size_type sz) {
 int main() {
   // auto newCallable = bind(callable, arg_list);
 
-  auto check6 = std::bind(check_size, std::placeholders::_1, 6);
+  auto check6 = bind(check_size, _1, 6);
 
   std::string str = "Hello";
   bool b1 = check6(str);

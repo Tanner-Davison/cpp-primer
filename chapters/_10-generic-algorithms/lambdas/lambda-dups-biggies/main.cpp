@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+using namespace std::placeholders;
 // Lambdas syntax [capture list](parameter list) -> return type {function body};
 
 bool check_size(const std::string &s, std::string::size_type sz) {
@@ -36,8 +36,7 @@ void biggies(std::vector<std::string> &words,
   //                   [sz](const std::string &a) { return a.size() >= sz; });
 
   // NEW implementation using bind
-  auto wc = find_if(words.begin(), words.end(),
-                    std::bind(check_size, std::placeholders::_1, sz));
+  auto wc = find_if(words.begin(), words.end(), bind(check_size, _1, sz));
 
   auto count = words.end() - wc;
 
