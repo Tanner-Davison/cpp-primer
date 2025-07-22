@@ -1,8 +1,11 @@
 
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <string>
 #include <vector>
+
+using namespace std::placeholders;
 
 // Lambdas syntax [capture list](parameter list) -> return type {function body};
 // updated keymaps for bckspc->ctrl
@@ -14,6 +17,10 @@ void elim_dups(std::vector<std::string> &strs) {
   auto end_unique = std::unique(strs.begin(), strs.end());
   strs.erase(end_unique, strs.end());
 }
+
+bool check_size(std::string &s, std::string::size_type sz) {
+  return s.size() < sz;
+};
 
 auto make_plural(std::size_t sz, const std::string &word,
                  const std::string &ending) {
@@ -28,8 +35,7 @@ void biggies(std::vector<std::string> &words,
                 return str1.size() < str2.size();
               });
 
-  auto wc = partition(words.begin(), words.end(),
-                      [sz](const std::string &a) { return a.size() < sz; });
+  auto wc = partition(words.begin(), words.end(), bind(check_size, _1, sz));
 
   auto count = words.end() - wc;
 
