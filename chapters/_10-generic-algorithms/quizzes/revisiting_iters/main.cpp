@@ -15,13 +15,14 @@ int main() {
       {"unique_copy even numbers back_inserter:", &unique_nums},
       {"unique_copy (even nums lamda predicate compare:", &even_nums}};
 
+  // using back inserter to copy the numbers uniquely
   std::unique_copy(number_list.begin(), number_list.end(),
                    std::back_inserter(unique_nums));
+  // using lambda as binary predicate
   std::unique_copy(number_list.begin(), number_list.end(),
                    std::back_inserter(even_nums),
                    [](int a, int b) { return (a % 2) == (b % 2); });
 
-  // Loop through vector of lists
   for (const auto &list : all_lists) {
     std::cout << list.first << std::endl;
     for (const auto &num : *list.second) {
