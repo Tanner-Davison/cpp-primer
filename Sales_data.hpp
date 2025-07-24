@@ -13,7 +13,7 @@ public:
   // Member functions
   void printSalesReport(std::ostream &out) const;
   void logTime(std::ostream &out);
-  std::string isbn() &;
+  std::string isbn() const &;
   Sales_data &combine(Sales_data &other);
 
   // Operators
