@@ -1,99 +1,68 @@
-// Copyright (c) 2025 Tanner Davison. All rights reserved
-
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  * of this software and associated documentation files (the "Software"), to
-//  deal * in the Software without restriction, including without limitation the
-//  rights * to use, copy, modify, merge, publish, distribute, sublicense,
-//  and/or sell * copies of the Software, and to permit persons to whom the
-//  Software is * furnished to do so, subject to the following conditions: * * -
-//  This copyright notice and permission notice shall be included in all *
-//  copies or substantial portions of the Software. * * THE SOFTWARE IS PROVIDED
-//  "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR * IMPLIED, INCLUDING BUT
-//  NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, * FITNESS FOR A PARTICULAR
-//  PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE * AUTHORS OR COPYRIGHT
-//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER * LIABILITY, WHETHER IN AN
-//  ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, * OUT OF OR IN
-//  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN * THE SOFTWARE.
-
+#include "Person.hpp"
+#include "Sales_data_copy.hpp"
 #include <algorithm>
-#include <cctype>
+#include <fstream>
 #include <iostream>
-#include <string>
-// included subjects
-
-int add(int a, int b) { return a + b; }
-int subtract(int a, int b) { return (a - b); }
-int multiply(int a, int b) { return (a * b); }
-int calculate(int a, int b, int (*operation)(int, int)) {
-  return operation(a, b);
+#include <vector>
+bool compareSalesData(const std::string &str1, const std::string &str2) {
+  return str1 < str2;
 }
-int (*getOperation(char op))(int, int) {
-  switch (op) {
-  case '+':
-    return &add;
-  case '-':
-    return &subtract;
-  case '*':
-    return &multiply;
-  default:
-    return nullptr;
+
+int main(int argc, char *argv[]) {
+  std::string input_path = (argc > 1) ? argv[1] : "./input.txt";
+  std::string input_person = (argc > 2) ? argv[2] : "./person.txt";
+  std::fstream inFile(input_path);
+  std::fstream inFile_person(input_person);
+
+  if (!inFile) {
+    throw std::runtime_error("Could not open input file in either location");
   }
-}
 
-bool (*pf)(int &num, int &num2) = [](int &num, int &num2) {
-  return num == num2;
-};
+  Sales_data total;
+  std::vector<std::string> sales_isbn;
+  Person person;
+  if (read(inFile, total)) {
+    sales_isbn.emplace_back(total.isbn());
+    Sales_data trans;
 
-bool isLarger(std::string &str1, std::string &str2) {
-  return str1.size() > str2.size();
-}
-
-bool (*strBool)(const std::string &, const std::string &);
-
-std::string lengthCompare(std::string &str, std::string &str2) {
-  return str.size() > str2.size() ? str : str2;
-}
-
-std::string concatStrings(std::string &str1, std::string &str2,
-                          bool (*pf)(std::string &, std::string &)) {
-
-  return pf(str1, str2) ? (str1 += str2) : str2 += str1;
-}
-
-std::string concatStrings(std::string &str1, std::string &str2) {
-  return (str1 += str2);
-}
-int testme(int num) { return (num * 3); }
-std::string (*strPf)(std::string &str1, std::string &str2);
-
-int main() {
-  int (*func_ptr)(int, int) = getOperation('+');
-  int sum = func_ptr(5, 3);
-  int testNum = 24;
-  int (*ptrtest)(int num) = testme;
-  std::cout << ptrtest(testNum);
-  std::cout << "\nSum: of 5 + 3 = " << sum << std::endl;
-  int num1 = 100;
-  int num2 = 100;
-  bool result = pf(num1, num2);
-  if (result) {
-    std::cout << "They are equal" << std::endl;
+    while (read(inFile, trans)) {
+      sales_isbn.emplace_back(trans.isbn());
+      if (total.compareIsbn(trans.isbn())) {
+        total.combine(trans);
+      } else {
+        print(std::cout, total);
+        total = trans;
+      }
+    }
+    // final trans
+    print(std::cout, total);
+    // log time
+    trans.logTime(std::cout);
+  } else {
+    std::cerr << "No data?!" << std::endl;
   }
-  std::string name = "Tanner";
-  std::string name2 = "Davison";
-  strPf = lengthCompare;
-  std::string strResult = strPf(name, name2);
-  std::cout << strResult << std::endl;
-  strPf = concatStrings;
-  std::string concatted = strPf(name, name2);
-  std::string names = "Longer";
-  std::string names2 = "shorterer";
-  std::string concattedWithBool = concatStrings(names, names2, isLarger);
-  std::cout << concattedWithBool << std::endl;
-  std::transform(concatted.begin(), concatted.end(), concatted.begin(),
-                 ::toupper);
-  std::cout << concatted << std::endl;
 
-  ;
+  inFile.close();
+
+  if (!inFile_person) {
+    throw std::runtime_error("No Person data found!");
+  }
+  std::sort(sales_isbn.begin(), sales_isbn.end(), compareSalesData);
+  auto end_unique = std::unique(sales_isbn.begin(), sales_isbn.end());
+  sales_isbn.erase(end_unique, sales_isbn.end());
+  std::cout << "All Unique Isbn's" << std::endl;
+  for (const auto &isbn : sales_isbn) {
+    std::cout << isbn << ", ";
+  }
+  std::cout << "\n" << std ::endl;
+  std::cout << std::endl;
+  const char *checkmark = " ✓ ";
+  // person data display
+  if (read_person(inFile_person, person)) {
+    std::cout << "---- Person Data Available " << checkmark << "----"
+              << std::endl;
+    print_person(std::cout, person);
+  }
+
   return 0;
 }

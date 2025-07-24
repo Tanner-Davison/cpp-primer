@@ -7,6 +7,7 @@ int main() {
   std::ostream_iterator<Sales_item> out_iter(std::cout, "\n");
 
   Sales_item sum = *item_iter++;
+
   while (item_iter != eof) {
     if (item_iter->isbn() == sum.isbn()) {
       sum += *item_iter++;

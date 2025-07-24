@@ -45,7 +45,7 @@ Sales_data &Sales_data::operator+=(const Sales_data &rhs) {
   return *this;
 }
 
-std::string Sales_data::isbn() & { return this->item_id; }
+std::string Sales_data::isbn() const & { return this->item_id; }
 
 Sales_data &Sales_data::combine(Sales_data &other) {
   this->units_sold += other.units_sold;
