@@ -1,19 +1,21 @@
-
 #include <fstream>
 #include <iostream>
 #include <iterator>
-#include <vector>
 
 int main() {
-  std::istream_iterator<int> str_it(std::cin), eof;
-
-  // std::ifstream in("./sample_text.txt");
-  std::vector<int> saved_string_data(str_it, eof);
-  while (str_it != eof) {
-    saved_string_data.push_back(*str_it++);
+  std::ifstream input_file("./sample_text.txt");
+  if (!input_file.is_open()) {
+    std::cout << "No input file found" << std::endl;
+    return 0;
   }
-  for (const auto &word : saved_string_data) {
-    std::cout << word << " ";
+  std::istream_iterator<std::string> in_file_it(input_file), eof;
+  int word_count{1};
+
+  for (; in_file_it != eof; ++in_file_it) {
+    std::cout << *in_file_it << ", ";
+    if (++word_count % 10 == 0) {
+      std::cout << "\n";
+    }
   }
   std::cout << std::endl;
   return 0;

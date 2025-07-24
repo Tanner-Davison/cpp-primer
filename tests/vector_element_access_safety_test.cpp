@@ -1,7 +1,10 @@
+// Problem:
 // Write a program that Fetches the first element in a vector using at, the
 // subscript operator, front and begin. Test your program on an empty vector;
+//
 #include <iostream>
 #include <vector>
+
 void fetch_first(std::vector<int> &test) {
   // Using []
   try {
