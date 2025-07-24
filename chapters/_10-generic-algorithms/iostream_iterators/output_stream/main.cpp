@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 #include <iterator>
@@ -12,6 +13,13 @@ int main() {
 
   // better implementation
   std::ostream_iterator<int> out_iter_2(std::cout, ", ");
+  std::ostream_iterator<int> out_iter_3(std::cout, ", ");
+  std::ostream_iterator<int> out_iter_4(std::cout, ", ");
   std::copy(random_nums.begin(), random_nums.end(), out_iter_2);
+  std::cout << std::endl;
+  std::unique_copy(random_nums.begin(), random_nums.end(), out_iter_3);
+  std::cout << std::endl;
+  std::unique_copy(random_nums.begin(), random_nums.end(), out_iter_4,
+                   [](int x, int y) { return x > y; });
   return 0;
 }
