@@ -13,9 +13,15 @@ int main() {
   std::istream_iterator<std::string> iter_in(in), eof;
   std::ostream_iterator<std::string> it_out_more(out_1, "\n");
   std::ostream_iterator<std::string> it_out_less(out_2, "\n");
-  std::copy_if(iter_in, eof, it_out_more,
-               [&](std::string str) { return str.size() >= 7 == 1; });
+  std::partition_copy(iter_in, eof, it_out_less, it_out_more,
+                      [](std::string str) { return str.size() <= 7; });
+  // std::copy_if(iter_in, eof, it_out_more,
+  //              [&](std::string str) { return str.size() >= 7 == 1; });
 
-  std::copy_if(iter_in, eof, it_out_less,
-               [&](std::string str) { return str.size() <= 7 == 1; });
+  // std::copy_if(iter_in, eof, it_out_less,
+  //              [&](std::string str) { return str.size() <= 7 == 1; });
+
+  in.close();
+  out_1.close();
+  out_2.close();
 }
