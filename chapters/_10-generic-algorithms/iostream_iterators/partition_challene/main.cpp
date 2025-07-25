@@ -8,8 +8,9 @@ int main() {
   std::ifstream input_file("./input_file.txt");
   std::ofstream output_evens("./output_evens.txt");
   std::ofstream output_odds("./output_odds.txt");
+
   if (!input_file || !output_evens || !output_odds) {
-    std::cout << "missing input or output files" << std::endl;
+    std::cout << "Missing input or output files" << std::endl;
   }
   std::istream_iterator<int> in_iter(input_file), eof;
   std::ostream_iterator<int> out_evens(output_evens, ", ");
