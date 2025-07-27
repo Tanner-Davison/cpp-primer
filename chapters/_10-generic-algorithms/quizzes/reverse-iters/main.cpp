@@ -2,7 +2,9 @@
 #include <iterator>
 #include <list>
 #include <vector>
+
 // list the 5 iterator categories:
+// -------------**----------------- \\
 // 1.Input Iter
 // 2.Output Iter
 // 3.Forward Iter
