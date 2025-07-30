@@ -17,17 +17,16 @@ void setChildren(std::istream &input,
   }
 }
 
-void addChildToFamily(
-    std::map<std::string, std::vector<std::string>> &families) {
-  std::string family_name, child_name;
+void addChildToFamily(auto &families) {
+  std::string last_name, child_name;
 
   std::cout << "Enter family name to add child to: ";
-  std::getline(std::cin, family_name);
+  std::getline(std::cin, last_name);
 
-  if (families.find(family_name) != families.end()) {
+  if (families.find(last_name) != families.end()) {
     std::cout << "Enter child name: ";
     std::getline(std::cin, child_name);
-    families[family_name].push_back(child_name);
+    families[last_name].emplace_back(child_name);
     std::cout << "Child added successfully!\n";
   } else {
     std::cout << "Family not found!\n";
@@ -63,10 +62,10 @@ int main() {
 
     } else if (choice == 3) {
       // Display families
-      for (const auto &[last, child] : families) {
+      for (const auto &[last, children] : families) {
         std::cout << "Family: " << last << std::endl;
-        for (const auto &kid : child) {
-          std::cout << "  Child: " << kid << std::endl;
+        for (const auto &child : children) {
+          std::cout << "  Child: " << child << std::endl;
         }
       }
 
