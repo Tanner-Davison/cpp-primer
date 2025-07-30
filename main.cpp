@@ -6,19 +6,19 @@
 #include <vector>
 
 int main(int argc, char *argv[]) {
-  std::string sales_data_path = (argc > 1) ? argv[1] : "./input.txt";
-  std::string person_data_path = (argc > 2) ? argv[2] : "./person.txt";
+  const std::string SALES_DATA_PATH = (argc > 1) ? argv[1] : "./input.txt";
+  const std::string PERSON_DATA_PATH = (argc > 2) ? argv[2] : "./person.txt";
 
-  std::fstream sales_file(sales_data_path);
-  std::fstream person_file(person_data_path);
+  std::fstream sales_file(SALES_DATA_PATH);
+  std::fstream person_file(PERSON_DATA_PATH);
 
   if (!sales_file) {
     throw std::runtime_error("Could not open sales data file: " +
-                             sales_data_path);
+                             SALES_DATA_PATH);
   }
   if (!person_file) {
     throw std::runtime_error("Could not open person data file: " +
-                             person_data_path);
+                             PERSON_DATA_PATH);
   }
 
   Sales_data total_sales;
@@ -58,8 +58,8 @@ int main(int argc, char *argv[]) {
 
   // Create unique ISBN list while preserving order of first appearance
   std::sort(all_isbns.begin(), all_isbns.end());
-  auto end_of_unique = std::unique(all_isbns.begin(), all_isbns.end());
-  all_isbns.erase(end_of_unique, all_isbns.end());
+  auto beg_duplicates = std::unique(all_isbns.begin(), all_isbns.end());
+  all_isbns.erase(beg_duplicates, all_isbns.end());
 
   // Display all unique ISBNs found
   std::cout << "All Unique ISBN's:\n";
