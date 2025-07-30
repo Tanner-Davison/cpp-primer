@@ -63,10 +63,10 @@ int main() {
 
     } else if (choice == 3) {
       // Display families
-      for (const auto &[last, child] : families) {
-        std::cout << "Family: " << last << std::endl;
-        for (const auto &kid : child) {
-          std::cout << "  Child: " << kid << std::endl;
+      for (const auto &family : families) {
+        std::cout << "Family: " << family.first << std::endl;
+        for (const auto &child : family.second) {
+          std::cout << "  Child: " << child << std::endl;
         }
       }
 
