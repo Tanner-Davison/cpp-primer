@@ -1,10 +1,29 @@
+#include <cstdint>
 #include <iostream>
 #include <iterator>
 #include <map>
 #include <set>
 #include <vector>
 
+struct Sales_data {
+  int isbn;
+};
+
+bool compareIsbn(const Sales_data &lhs, const Sales_data &rhs) {
+  return lhs.isbn < rhs.isbn;
+}
 int main() {
+  Sales_data a, b;
+  a.isbn = 499;
+  b.isbn = 299;
+  std::multiset<Sales_data, decltype(compareIsbn) *> bookstore(compareIsbn);
+  bookstore.insert(a);
+  bookstore.insert(b);
+
+  for (const auto &book : bookstore) {
+    std::cout << book.isbn << "\n";
+  }
+  std::cout << std::endl;
   std::ostream_iterator<std::string> display(std::cout, "\n");
   std::ostream_iterator<int> print_iset(std::cout, " ");
   std::ostream_iterator<int> print_mset(std::cout, " ");
