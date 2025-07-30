@@ -1,0 +1,4 @@
+this is my list of words
+seperated by lines to check 
+if the function works or if maybe one day
+it wont work and we will all call in 

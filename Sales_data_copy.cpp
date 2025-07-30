@@ -2,10 +2,12 @@
 #include <chrono>
 #include <ctime>
 #include <iomanip>
-Sales_data::Sales_data(std::string id, unsigned units_s, double price_p)
+#include <stdexcept>
+
+Sales_data::Sales_data(const std::string id, unsigned units_s, double price_p)
     : item_id(id), units_sold(units_s), price(price_p),
       revenue(price_p * units_s) {}
-Sales_data::Sales_data(std::string id, unsigned units_s)
+Sales_data::Sales_data(const std::string id, unsigned units_s)
     : Sales_data(id, units_s, 0) {};
 Sales_data::Sales_data() : Sales_data(" ", 0, 0) {};
 
@@ -41,13 +43,16 @@ Sales_data &Sales_data::operator=(const Sales_data &rhs) {
 }
 
 Sales_data &Sales_data::operator+=(const Sales_data &rhs) {
+  if (item_id != rhs.item_id) {
+    std::runtime_error("Cannot Combine Sales Data for different Items");
+  }
   item_id += rhs.item_id;
   units_sold += rhs.units_sold;
   revenue += rhs.revenue;
   return *this;
 }
 
-std::string Sales_data::isbn() & { return this->item_id; }
+std::string Sales_data::isbn() const & { return this->item_id; }
 
 Sales_data &Sales_data::combine(Sales_data &other) {
   this->units_sold += other.units_sold;

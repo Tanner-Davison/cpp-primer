@@ -10,6 +10,7 @@ void print_section(const std::string &title) {
 }
 
 int main() {
+
   print_section("OBJECT TRACKING DEMONSTRATION");
 
   // Creating tracker objects

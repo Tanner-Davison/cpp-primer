@@ -5,8 +5,8 @@
 class Sales_data {
 public:
   // Constructors
-  Sales_data(std::string id, unsigned units_s, double avg_p);
-  Sales_data(std::string, unsigned);
+  Sales_data(const std::string id, unsigned units_s, double avg_p);
+  Sales_data(const std::string, unsigned);
   Sales_data();
   explicit Sales_data(std::istream &is);
   Sales_data(const Sales_data &) = default;
@@ -15,7 +15,9 @@ public:
   void printSalesReport(std::ostream &out) const;
   void logTime(std::ostream &out);
   bool compareIsbn(const std::string other_isbn) const;
-  std::string isbn() &;
+  // compare isbn 2 objs CHECK INLINE functions at bottom
+
+  std::string isbn() const &;
   Sales_data &combine(Sales_data &other);
 
   // Operators
@@ -43,8 +45,6 @@ inline double Sales_data::avg_price() const {
   return units_sold ? (revenue / units_sold) : 0.0;
 }
 
-// Forward declarations
-std::istream &operator>>(std::istream &in, Sales_data &data);
-void print(std::ostream &out, const Sales_data &item);
-Sales_data add(const Sales_data &obj1, const Sales_data &obj2);
-bool read(std::istream &in, Sales_data &item);
+inline bool compareIsbn(const Sales_data &lhs, const Sales_data &rhs) {
+  return lhs.isbn() < rhs.isbn();
+};

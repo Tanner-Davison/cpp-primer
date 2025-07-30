@@ -1,11 +1,10 @@
 #include <iostream>
 #include <iterator>
-#include <map>
 #include <set>
 #include <vector>
 
 int main() {
-  std::ostream_iterator<std::string> display(std::cout, "\n");
+  std::ostream_iterator<int> display(std::cout, "\n");
   std::ostream_iterator<int> print_iset(std::cout, " ");
   std::ostream_iterator<int> print_mset(std::cout, " ");
   std::vector<int> ivec;
@@ -16,12 +15,13 @@ int main() {
   std::set<int> iset(ivec.cbegin(), ivec.cend());
   std::multiset<int> mset(ivec.cbegin(), ivec.cend());
 
-  display = "\niset: ";
+  std::cout << "\niset: " << std::endl;
   for (const int &num : iset) {
     print_iset = num;
   }
   std::cout << std::endl;
-  display = "\nmset: ";
+
+  std::cout << "\nmset: " << std::endl;
   for (const int &num : mset) {
     print_mset = num;
   }
