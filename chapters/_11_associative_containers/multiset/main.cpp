@@ -25,6 +25,9 @@ int main() {
 
   std::multiset<Sales_data, decltype(compareIsbn) *> bookstore(
       sales_vec.begin(), sales_vec.end(), compareIsbn);
+  // answer result from exercise 11.19 on page 431;
+  std::multiset<Sales_data, decltype(compareIsbn) *>::iterator book_store_ref =
+      bookstore.begin();
 
   for (const auto &book : bookstore) {
     if (book.isbn % 10 == 0) {
