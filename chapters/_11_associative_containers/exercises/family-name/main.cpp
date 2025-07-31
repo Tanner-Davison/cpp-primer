@@ -7,7 +7,6 @@
 #include <map>
 #include <string>
 #include <vector>
-
 void clearScreen() {
   std::cout << "\033[2J\033[1;1H";
   std::cout.flush();
