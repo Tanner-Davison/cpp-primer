@@ -5,14 +5,14 @@
 #include <iostream>
 #include <vector>
 
-void fetch_first(std::vector<int> &test) {
+void fetch_first(std::vector<int> &test_vec) {
   // Using []
   try {
-    if (!test.empty()) {
-      std::cout << "Using Subscript Operator: " << test[0] << std::endl;
+    if (!test_vec.empty()) {
+      std::cout << "\nUsing Subscript Operator: " << test_vec[0] << std::endl;
     } else {
-      std::cout
-          << "Using Subscript operator []: Undefined Behavior for empty vector";
+      std::cout << "Using Subscript operator []: \n\t--Undefined Behavior for "
+                   "empty vector";
       // no bounds check here ^
     }
   } catch (const std::exception &e) {
@@ -20,8 +20,8 @@ void fetch_first(std::vector<int> &test) {
   }
   // Using front()
   try {
-    if (!test.empty()) {
-      std::cout << "Using front(): " << test.front() << std::endl;
+    if (!test_vec.empty()) {
+      std::cout << "Using front(): " << test_vec.front() << std::endl;
     } else {
       std::cout << "Using front(): Undefined behavior for empty vector!"
                 << std::endl;
@@ -31,14 +31,14 @@ void fetch_first(std::vector<int> &test) {
   }
   // Using at()
   try {
-    std::cout << "Using at(): " << test.at(0) << std::endl;
+    std::cout << "Using at(): \n" << test_vec.at(0) << std::endl;
   } catch (const std::exception &e) {
-    std::cout << "Error with at(): " << e.what() << std::endl;
+    std::cout << "\t--Error with at(): " << e.what() << std::endl;
   }
-  // Using begin
+  // Using begin()
   try {
-    if (!test.empty()) {
-      std::cout << *test.begin() << std::endl;
+    if (!test_vec.empty()) {
+      std::cout << *test_vec.begin() << std::endl;
     }
   } catch (const std::exception &e) {
     std::cout << "Error with iterator begin(): " << e.what() << std::endl;
@@ -49,10 +49,14 @@ void fetch_first(std::vector<int> &test) {
 // main
 int main() {
   std::vector<int> empty;
-  std::cout << "Testing with an empty vector: " << std::endl;
+  std::cout << "Testing with an empty vector: \n" << std::endl;
   fetch_first(empty);
   std::vector<int> non_empty{47, 74, 128};
-  std::cout << "Testing with non-empty vec: " << std::endl;
+  std::cout << "\nTesting with non-empty vec: \n\t Vector: [ ";
+  for (const auto &elem : non_empty) {
+    std::cout << elem << ", ";
+  }
+  std::cout << " ]" << std::endl;
   fetch_first(non_empty);
 
   return 0;
