@@ -10,7 +10,7 @@ void fill_map(auto &mapv, const auto &vec) {
   for (const auto &word : vec) {
     auto [it, success] = mapv.try_emplace(word, word.size());
     if (!success) {
-      std::cout << "[!error] Failed to add " << word << "element to map!"
+      std::cout << "[!error] Failed to add " << word << " element to map!"
                 << std::endl;
     } else {
       ++success_count;
@@ -24,19 +24,23 @@ void fill_map(auto &mapv, const auto &vec) {
 // removes words from static list defined in function
 void remove_words_from_map(auto &map) {
   const static std::set<std::string> remove_list{"eight", "nine"};
+  std::cout << "[remove_words_from_map]:" << std::endl;
 
   for (const auto &word : remove_list) {
     auto it = map.erase(word);
     if (it > 0) {
-      std::cout << "erased: " << word << " from map." << std::endl;
+      std::cout << "\terased: ['" << word << "'] from map." << std::endl;
     } else {
       std::cout << word << " not found" << std::endl;
     }
   }
-  std::cout << std::endl;
+
+  std::cout << "\n====Map's Result=========== \n" << std::endl;
   for (const auto &[key, val] : map) {
-    std::cout << val << "chars in word: " << "'" << key << "'" << std::endl;
+    std::cout << "   [" << val << "] chars in word: '" << key << "'"
+              << std::endl;
   }
+  std::cout << "\n==========================" << std::endl;
 }
 
 int main() {
