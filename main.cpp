@@ -6,8 +6,10 @@
 #include <vector>
 
 int main(int argc, char *argv[]) {
-  const std::string SALES_DATA_PATH = (argc > 1) ? argv[1] : "./input.txt";
-  const std::string PERSON_DATA_PATH = (argc > 2) ? argv[2] : "./person.txt";
+  const std::string SALES_DATA_PATH =
+      (argc > 1) ? argv[1] : "./text-files/input.txt";
+  const std::string PERSON_DATA_PATH =
+      (argc > 2) ? argv[2] : "./text-files/person.txt";
 
   std::fstream sales_file(SALES_DATA_PATH);
   std::fstream person_file(PERSON_DATA_PATH);

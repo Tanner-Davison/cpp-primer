@@ -26,11 +26,12 @@ void process_input(std::istream &in, std::vector<std::string> &lines_container,
 
 int main() {
   std::vector<std::string> all_lines;
-  std::string test = "./test.txt", test2 = "./test2.txt", logs = "./logs.txt";
+  std::string test = "./test.txt", test2 = "./test2.txt",
+              file_operation_logs = "./log.txt";
 
   const std::string err_msg = "Failed to open file";
   std::ifstream file1(test), file2(test2);
-  std::ofstream out("log.txt");
+  std::ofstream out(file_operation_logs);
   std::vector<std::pair<std::ifstream &, std::string>> file_pairs = {
       {file1, test}, {file2, test2}};
 

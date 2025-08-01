@@ -2,18 +2,16 @@
 
 File: 
 	./test.txt
-10:02 PM: 
+08:35 PM: 
 	Message: [ opened! ]
-10:02 PM: 
+08:35 PM: 
 	Message: [ Input File Closed! ]
-[ END ]
 
-=========================
 =========================
 
 File: 
 	./test2.txt
-10:02 PM: 
+08:35 PM: 
 	Message: [ opened! ]
-10:02 PM: 
+08:35 PM: 
 	Message: [ Input File Closed! ]

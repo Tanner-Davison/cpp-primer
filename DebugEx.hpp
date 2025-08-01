@@ -59,7 +59,7 @@ void Debug::log_message(std::ostream &out, const std::string &message,
   // If we're switching to a new file
   if (current_file != filename && !current_file.empty()) {
     // Add END marker for the previous file
-    out << "[ END ]\n\n=========================\n";
+    out << "\n";
   }
 
   // If this is a new file, print the file header
