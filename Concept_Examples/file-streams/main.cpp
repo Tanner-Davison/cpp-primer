@@ -1,5 +1,5 @@
 // MAKE SURE TO SET THIS FILE AS YOUR PWD WHEN COMPILING
-#include "../DebugEx.hpp"
+#include "../Debug-example/DebugEx.hpp"
 #include <fstream>
 #include <iostream>
 #include <stdexcept>
@@ -26,8 +26,9 @@ void process_input(std::istream &in, std::vector<std::string> &lines_container,
 
 int main() {
   std::vector<std::string> all_lines;
-  std::string test = "./test.txt", test2 = "./test2.txt",
-              file_operation_logs = "./log.txt";
+  std::string test = "./text-files/input_file_1.txt",
+              test2 = "./text-files/input_file_2.txt",
+              file_operation_logs = "./text-files/file-error-logger.txt";
 
   const std::string err_msg = "Failed to open file";
   std::ifstream file1(test), file2(test2);

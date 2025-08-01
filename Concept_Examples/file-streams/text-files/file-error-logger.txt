@@ -1,17 +1,17 @@
 =========================
 
 File: 
-	./test.txt
-08:35 PM: 
+	./text-files/input_file_1.txt
+09:54 PM: 
 	Message: [ opened! ]
-08:35 PM: 
+09:54 PM: 
 	Message: [ Input File Closed! ]
 
 =========================
 
 File: 
-	./test2.txt
-08:35 PM: 
+	./text-files/input_file_2.txt
+09:54 PM: 
 	Message: [ opened! ]
-08:35 PM: 
+09:54 PM: 
 	Message: [ Input File Closed! ]
