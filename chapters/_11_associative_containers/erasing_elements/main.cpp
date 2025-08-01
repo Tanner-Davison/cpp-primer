@@ -1,10 +1,12 @@
-// this solution includes C++ 20's abbreviated function templates
+/*
+ * Copyright (c) 2025 Tanner Davison. All Rights Reserved.
+ */
+
 #include <iostream>
 #include <map>
 #include <set>
 #include <vector>
 
-// using auto
 void fill_map(auto &mapv, const auto &vec) {
   int success_count = 0;
   for (const auto &word : vec) {
@@ -21,7 +23,6 @@ void fill_map(auto &mapv, const auto &vec) {
             << std::endl;
 }
 
-// removes words from static list defined in function
 void remove_words_from_map(auto &map) {
   const static std::set<std::string> remove_list{"eight", "nine"};
   std::cout << "[remove_words_from_map]:" << std::endl;
