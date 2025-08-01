@@ -53,4 +53,10 @@ Duplicate(s) Found: hello, cpp,
 - **Case Sensitivity**: Character classification with std::isupper()
 - **User Input**: Interactive program with multiple input phases
 
-This chapter provides a practical example of text processing and duplicate detection algorithms. 
+This chapter provides a practical example of text processing and duplicate detection algorithms.
+
+## 🔗 Related Chapters
+
+**Next Steps:**
+- **[Chapter 6: Functions and Debugging](../6-functions-and-debugging/README.md)** - Apply functions to text processing
+- **[Chapter 9: Containers and Strings](../9-containers-and-strings/README.md)** - Advanced string operations and container usage 

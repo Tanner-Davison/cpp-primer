@@ -103,4 +103,14 @@ g++ -std=c++17 main.cpp Screen.cpp Window_mgr.cpp -o realtime_ticker
 - **Real-time Programming**: Non-blocking input and console manipulation
 - **Class Relationships**: Friend classes and forward declarations
 
-This chapter provides a solid foundation in C++ object-oriented programming, from basic class design to advanced real-time applications. 
+This chapter provides a solid foundation in C++ object-oriented programming, from basic class design to advanced real-time applications.
+
+## 🔗 Related Chapters
+
+**Prerequisites:**
+- **[Chapter 6: Functions and Debugging](../6-functions-and-debugging/README.md)** - Function design and parameter passing
+
+**Next Steps:**
+- **[Chapter 9: Containers and Strings](../9-containers-and-strings/README.md)** - Use classes with STL containers
+- **[Chapter _11: Associative Containers](../_11_associative_containers/)** - Custom comparators and class-based containers
+- **[Chapter _10: Generic Algorithms](../_10_generic_algorithms/)** - Function objects and class-based algorithms 

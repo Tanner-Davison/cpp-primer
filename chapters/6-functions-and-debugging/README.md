@@ -110,4 +110,14 @@ g++ -std=c++17 main.cpp -o recursive_demo
 - **Header Organization**: Proper header file structure and forward declarations
 - **Error Handling**: Exception safety and input validation
 
-This chapter provides a comprehensive foundation in C++ function design, debugging techniques, and recursive programming. 
+This chapter provides a comprehensive foundation in C++ function design, debugging techniques, and recursive programming.
+
+## 🔗 Related Chapters
+
+**Prerequisites:**
+- **[Chapter 5: Duplicate Word Finder](../5-duplicate-word-finder/README.md)** - Text processing and string manipulation
+
+**Next Steps:**
+- **[Chapter 7: Classes and Objects](../7-classes-and-objects/README.md)** - Apply functions within class member functions
+- **[Chapter 9: Containers and Strings](../9-containers-and-strings/README.md)** - Use functions with STL containers
+- **[Chapter _10: Generic Algorithms](../_10_generic_algorithms/)** - Advanced function templates and algorithms 
