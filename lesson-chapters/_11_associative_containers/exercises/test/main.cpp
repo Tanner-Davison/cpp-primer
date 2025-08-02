@@ -4,6 +4,7 @@
 #include <iterator>
 #include <set>
 #include <vector>
+
 int main() {
   std::vector<std::string> str_vec{"One", "Two", "Three", "Four", "Five"};
   std::set<std::string> ms_str;
