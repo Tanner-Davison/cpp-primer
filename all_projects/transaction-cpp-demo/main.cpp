@@ -9,8 +9,11 @@ bool compareSalesData(const std::string &str1, const std::string &str2) {
 }
 
 int main(int argc, char *argv[]) {
-  std::string input_path = (argc > 1) ? argv[1] : "./input.txt";
-  std::string input_person = (argc > 2) ? argv[2] : "./person.txt";
+  std::string input_path =
+      (argc > 1) ? argv[1] : "./input.txt"; // Compiler args defaults if none
+  std::string input_person =
+      (argc > 2) ? argv[2] : "./person.txt"; // Compiler args defaults if none
+
   std::fstream inFile(input_path);
   std::fstream inFile_person(input_person);
 
