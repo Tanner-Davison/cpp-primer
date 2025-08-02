@@ -11,6 +11,7 @@ int main() {
   for (const auto &str : str_vec) {
     map_str.insert({*str.begin(), str});
   }
+
   try {
     auto lower = map_str.lower_bound('T');
     auto upper = map_str.upper_bound('T');
