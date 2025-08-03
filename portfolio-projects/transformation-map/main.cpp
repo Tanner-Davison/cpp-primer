@@ -9,12 +9,23 @@ std::map<std::string, std::string> buildMap(std::ifstream &map_file) {
   std::map<std::string, std::string> trans_map;
   std::string key;
   std::string value;
-
   while (map_file >> key && getline(map_file, value)) {
-    if (value.size() > 1) {
-      trans_map[key] = value.substr(1);
+    if (value.size() > 1 &&
+        value.find_first_not_of(" \t") != std::string::npos) {
+
+      if (!trans_map.insert({key, value.substr(1)}).second) {
+        //  Duplicate key found
+        std::cerr << ANSIColors::CRIMSON() << "[" << "!Error ->]"
+                  << ANSIColors::RESET << ANSIColors::ORANGE()
+                  << " Duplicate key found: " << ANSIColors::BRIGHT_YELLOW
+                  << "[" << key << "]" << ANSIColors::RESET << std::endl;
+      }
     } else {
-      throw std::runtime_error("no rule for " + key);
+      // Rule [key] exists but no value / definition given
+      std::cerr << ANSIColors::CRIMSON() << "[!Error ->] " << ANSIColors::RESET
+                << ANSIColors::ORANGE() << "Rule has been set with NO value: "
+                << ANSIColors::BRIGHT_YELLOW << "[" << key << "]"
+                << ANSIColors::RESET << std::endl;
     }
   }
   return trans_map;

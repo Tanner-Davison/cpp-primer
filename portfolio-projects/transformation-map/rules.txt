@@ -4,12 +4,17 @@ y why
 r are
 u you 
 pic  picture
+pic? picture
 thk thanks!
 l8r later
+gtg got to go
+cu see you 
 od <div>
+od testing
 ocd <div/>
 odc <div class="
 odcc ">
+test_rule_with_blank_value  
 cd </div>
 Cd />
 os <span>
