@@ -4,6 +4,9 @@
 #include <string>
 #include <vector>
 // For Linux/Mac, use: #include <termios.h> and #include <unistd.h>
+//
+// [ RUN ] to run this build
+// g++ -g -O0 -std=c++2b -Wall -Wextra main.cpp -o main -lgdi32 -luser32
 
 #ifdef _WIN32
 #include <windows.h>
