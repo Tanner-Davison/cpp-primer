@@ -13,7 +13,6 @@ struct Sales_data {
 bool compareIsbn(const Sales_data &lhs, const Sales_data &rhs) {
   return lhs.isbn > rhs.isbn;
 }
-
 int main() {
 
   std::vector<Sales_data> sales_vec(29);

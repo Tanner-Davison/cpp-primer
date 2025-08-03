@@ -11,13 +11,17 @@
 // 2nd uses the subscript operator with no check.
 
 int main() {
-
-  /*Endables ANSI*/
+  /*Endables ANSI for windows*/
   HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
   DWORD dwMode = 0;
   GetConsoleMode(hOut, &dwMode);
   dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
   SetConsoleMode(hOut, dwMode);
+
+  std::string white = ANSIColors::BRIGHT_CYAN;
+  std::string black = ANSIColors::BRIGHT_BLACK;
+  std::string red = ANSIColors::BRIGHT_MAGENTA;
+  std::string reset = ANSIColors::RESET;
   std::map<std::string, std::size_t> word_count;
   std::set<std::string> exclude_list{"The", "But", "And", "Or", "An", "A",
                                      "the", "but", "and", "or", "a"};
@@ -32,15 +36,15 @@ int main() {
       // ++word_count[word];
     }
   }
+  std::cout << ANSIColors::CLEAR_SCREEN;
   for (const auto &words : word_count) {
-    std::cout << "'" << ANSIColors::BRIGHT_BLACK << words.first << "'"
-              << " occurs: " << ANSIColors::SILVER() << words.second
-              << ANSIColors::PURPLE()
-              << ((words.second > 1) ? " times.\n" : " time.\n")
-              << ANSIColors::RESET;
+    std::cout << black << "'" << white << words.first << black << "'"
+              << " occurs: " << red << words.second << reset << black
+              << ((words.second > 1) ? " times.\n" : " time.\n") << reset;
   }
-  ANSIColors::printRainbow("SO F**KING COOL");
+
   std::cout << std::endl;
+  ANSIColors::printRainbow("SO F**KING COOL");
 
   return 0;
 }
