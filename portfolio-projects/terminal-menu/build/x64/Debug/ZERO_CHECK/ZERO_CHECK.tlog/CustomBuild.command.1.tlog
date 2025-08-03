@@ -1,0 +1,10 @@
+^E:\SOURCE\REPOS\CPPPRIMER\PORTFOLIO-PROJECTS\TERMINAL-MENU\BUILD\CMAKEFILES\8B911A78C96F7200E804765F8B3AF4B6\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/source/repos/cppPrimer/portfolio-projects/terminal-menu -BE:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/terminal-menu.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

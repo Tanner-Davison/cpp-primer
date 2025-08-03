@@ -1,0 +1,3 @@
+E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/terminal-menu.dir
+E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/ALL_BUILD.dir
+E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/ZERO_CHECK.dir

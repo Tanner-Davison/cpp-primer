@@ -1,4 +1,4 @@
-#include "../../headers/Anscii.hpp"
+#include "Anscii.hpp"
 #include <conio.h> // For Windows (_getch)
 #include <iostream>
 #include <string>

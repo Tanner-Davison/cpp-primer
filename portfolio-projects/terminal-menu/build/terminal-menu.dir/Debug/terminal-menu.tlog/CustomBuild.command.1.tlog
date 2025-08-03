@@ -1,0 +1,10 @@
+^E:\SOURCE\REPOS\CPPPRIMER\PORTFOLIO-PROJECTS\TERMINAL-MENU\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/source/repos/cppPrimer/portfolio-projects/terminal-menu -BE:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build --check-stamp-file E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

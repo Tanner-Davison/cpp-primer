@@ -1,0 +1,4 @@
+CompileFlags:
+  Add:
+    - -I../../headers
+    - -std=c++23

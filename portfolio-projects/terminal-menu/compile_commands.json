@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "E:/source/repos/cppPrimer/path/to/terminal-menu",
+    "command": "g++ -I../../headers -std=c++23 main.cpp",
+    "file": "main.cpp"
+  }
+]
