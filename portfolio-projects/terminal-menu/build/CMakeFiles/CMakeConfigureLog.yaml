@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.14.18+a338add32 for .NET Framework
-      Build started 8/2/2025 11:50:05 PM.
+      Build started 8/3/2025 5:20:04 PM.
       
       Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\4.0.3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -53,7 +53,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.54
+      Time Elapsed 00:00:00.66
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -79,7 +79,7 @@ events:
       The output was:
       0
       MSBuild version 17.14.18+a338add32 for .NET Framework
-      Build started 8/2/2025 11:50:05 PM.
+      Build started 8/3/2025 5:20:05 PM.
       
       Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\4.0.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -108,7 +108,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.52
+      Time Elapsed 00:00:00.48
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -127,8 +127,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-291phc"
-      binary: "E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-291phc"
+      source: "E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-3w2bhz"
+      binary: "E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-3w2bhz"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -137,40 +137,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-291phc'
+        Change Dir: 'E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-3w2bhz'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_78cd0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6de32.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.18+a338add32 for .NET Framework
-        Build started 8/2/2025 11:50:06 PM.
+        Build started 8/3/2025 5:20:06 PM.
         
-        Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-291phc\\cmTC_78cd0.vcxproj" on node 1 (default targets).
+        Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3w2bhz\\cmTC_6de32.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_78cd0.dir\\Debug\\".
+          Creating directory "cmTC_6de32.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-291phc\\Debug\\".
-          Creating directory "cmTC_78cd0.dir\\Debug\\cmTC_78cd0.tlog\\".
+          Creating directory "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3w2bhz\\Debug\\".
+          Creating directory "cmTC_6de32.dir\\Debug\\cmTC_6de32.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_78cd0.dir\\Debug\\cmTC_78cd0.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_78cd0.dir\\Debug\\cmTC_78cd0.tlog\\unsuccessfulbuild".
+          Creating "cmTC_6de32.dir\\Debug\\cmTC_6de32.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_6de32.dir\\Debug\\cmTC_6de32.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_78cd0.dir\\Debug\\\\" /Fd"cmTC_78cd0.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6de32.dir\\Debug\\\\" /Fd"cmTC_6de32.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_78cd0.dir\\Debug\\\\" /Fd"cmTC_78cd0.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6de32.dir\\Debug\\\\" /Fd"cmTC_6de32.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-291phc\\Debug\\cmTC_78cd0.exe" /INCREMENTAL /ILK:"cmTC_78cd0.dir\\Debug\\cmTC_78cd0.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-291phc/Debug/cmTC_78cd0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-291phc/Debug/cmTC_78cd0.lib" /MACHINE:X64  /machine:x64 cmTC_78cd0.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_78cd0.vcxproj -> E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-291phc\\Debug\\cmTC_78cd0.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3w2bhz\\Debug\\cmTC_6de32.exe" /INCREMENTAL /ILK:"cmTC_6de32.dir\\Debug\\cmTC_6de32.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-3w2bhz/Debug/cmTC_6de32.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-3w2bhz/Debug/cmTC_6de32.lib" /MACHINE:X64  /machine:x64 cmTC_6de32.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_6de32.vcxproj -> E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3w2bhz\\Debug\\cmTC_6de32.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_78cd0.dir\\Debug\\cmTC_78cd0.tlog\\unsuccessfulbuild".
-          Touching "cmTC_78cd0.dir\\Debug\\cmTC_78cd0.tlog\\cmTC_78cd0.lastbuildstate".
-        Done Building Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-291phc\\cmTC_78cd0.vcxproj" (default targets).
+          Deleting file "cmTC_6de32.dir\\Debug\\cmTC_6de32.tlog\\unsuccessfulbuild".
+          Touching "cmTC_6de32.dir\\Debug\\cmTC_6de32.tlog\\cmTC_6de32.lastbuildstate".
+        Done Building Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3w2bhz\\cmTC_6de32.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.51
+        Time Elapsed 00:00:00.45
         
       exitCode: 0
   -
@@ -210,8 +210,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-umi0uu"
-      binary: "E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-umi0uu"
+      source: "E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-hpoyto"
+      binary: "E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-hpoyto"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -221,40 +221,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-umi0uu'
+        Change Dir: 'E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-hpoyto'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2b009.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_af92b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.14.18+a338add32 for .NET Framework
-        Build started 8/2/2025 11:50:07 PM.
+        Build started 8/3/2025 5:20:06 PM.
         
-        Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-umi0uu\\cmTC_2b009.vcxproj" on node 1 (default targets).
+        Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hpoyto\\cmTC_af92b.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_2b009.dir\\Debug\\".
+          Creating directory "cmTC_af92b.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-umi0uu\\Debug\\".
-          Creating directory "cmTC_2b009.dir\\Debug\\cmTC_2b009.tlog\\".
+          Creating directory "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hpoyto\\Debug\\".
+          Creating directory "cmTC_af92b.dir\\Debug\\cmTC_af92b.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_2b009.dir\\Debug\\cmTC_2b009.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_2b009.dir\\Debug\\cmTC_2b009.tlog\\unsuccessfulbuild".
+          Creating "cmTC_af92b.dir\\Debug\\cmTC_af92b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_af92b.dir\\Debug\\cmTC_af92b.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_2b009.dir\\Debug\\\\" /Fd"cmTC_2b009.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_af92b.dir\\Debug\\\\" /Fd"cmTC_af92b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35213 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_2b009.dir\\Debug\\\\" /Fd"cmTC_2b009.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_af92b.dir\\Debug\\\\" /Fd"cmTC_af92b.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-umi0uu\\Debug\\cmTC_2b009.exe" /INCREMENTAL /ILK:"cmTC_2b009.dir\\Debug\\cmTC_2b009.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-umi0uu/Debug/cmTC_2b009.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-umi0uu/Debug/cmTC_2b009.lib" /MACHINE:X64  /machine:x64 cmTC_2b009.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_2b009.vcxproj -> E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-umi0uu\\Debug\\cmTC_2b009.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hpoyto\\Debug\\cmTC_af92b.exe" /INCREMENTAL /ILK:"cmTC_af92b.dir\\Debug\\cmTC_af92b.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-hpoyto/Debug/cmTC_af92b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/source/repos/cppPrimer/portfolio-projects/terminal-menu/build/CMakeFiles/CMakeScratch/TryCompile-hpoyto/Debug/cmTC_af92b.lib" /MACHINE:X64  /machine:x64 cmTC_af92b.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_af92b.vcxproj -> E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hpoyto\\Debug\\cmTC_af92b.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_2b009.dir\\Debug\\cmTC_2b009.tlog\\unsuccessfulbuild".
-          Touching "cmTC_2b009.dir\\Debug\\cmTC_2b009.tlog\\cmTC_2b009.lastbuildstate".
-        Done Building Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-umi0uu\\cmTC_2b009.vcxproj" (default targets).
+          Deleting file "cmTC_af92b.dir\\Debug\\cmTC_af92b.tlog\\unsuccessfulbuild".
+          Touching "cmTC_af92b.dir\\Debug\\cmTC_af92b.tlog\\cmTC_af92b.lastbuildstate".
+        Done Building Project "E:\\source\\repos\\cppPrimer\\portfolio-projects\\terminal-menu\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hpoyto\\cmTC_af92b.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.50
+        Time Elapsed 00:00:00.44
         
       exitCode: 0
   -
