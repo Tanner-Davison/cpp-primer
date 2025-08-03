@@ -1,3 +1,5 @@
+#ifndef ANSCII_HPP
+#define ANSCII_HPP
 
 #include <iostream>
 #include <string>
@@ -6,14 +8,9 @@
 #ifdef _WIN32
 #include <windows.h> // Required for Windows console functions
 #endif
-
-/*      //Add this in your project to enable ANSI colors on Windows
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    DWORD dwMode = 0;
-    GetConsoleMode(hOut, &dwMode);
-    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-    SetConsoleMode(hOut, dwMode);
- * */
+//
+// REMEMBER TO CALL enableANSI();
+//
 class ANSIColors {
 public:
   // Text Colors (30-37)
@@ -51,6 +48,7 @@ public:
   static const std::string UNDERLINE;
   static const std::string ITALIC;
   static const std::string STRIKETHROUGH;
+  static const std::string HIGHLIGHT; // Fixed: Added semicolon
 
   // Reset
   static const std::string RESET;
@@ -169,7 +167,7 @@ const std::string ANSIColors::BOLD = "\033[1m";
 const std::string ANSIColors::UNDERLINE = "\033[4m";
 const std::string ANSIColors::ITALIC = "\033[3m";
 const std::string ANSIColors::STRIKETHROUGH = "\033[9m";
-
+const std::string ANSIColors::HIGHLIGHT = "\033[47m\033[30m";
 const std::string ANSIColors::RESET = "\033[0m";
 
 const std::string ANSIColors::CLEAR_SCREEN = "\033[2J\033[H";
@@ -177,8 +175,23 @@ const std::string ANSIColors::CLEAR_LINE = "\033[2K";
 const std::string ANSIColors::SAVE_CURSOR = "\033[s";
 const std::string ANSIColors::RESTORE_CURSOR = "\033[u";
 
+// Cross-platform ANSI enable function
+inline void enableANSI() {
+#ifdef _WIN32
+  HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+  DWORD dwMode = 0;
+  GetConsoleMode(hOut, &dwMode);
+  dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+  SetConsoleMode(hOut, dwMode);
+#else
+  // Nothing needed on Mac/Linux - ANSI works natively!
+#endif
+}
+
 // Demo function to show all colors
 void demonstrateColors() {
+  enableANSI(); // Make sure ANSI is enabled
+
   std::cout << "=== Text Colors ===" << std::endl;
   std::cout << ANSIColors::RED << "Red text" << ANSIColors::RESET << std::endl;
   std::cout << ANSIColors::GREEN << "Green text" << ANSIColors::RESET
@@ -202,6 +215,8 @@ void demonstrateColors() {
   std::cout << ANSIColors::UNDERLINE << "Underlined text" << ANSIColors::RESET
             << std::endl;
   std::cout << ANSIColors::ITALIC << "Italic text" << ANSIColors::RESET
+            << std::endl;
+  std::cout << ANSIColors::HIGHLIGHT << "Highlighted text" << ANSIColors::RESET
             << std::endl;
 
   std::cout << "\n=== RGB Colors ===" << std::endl;
@@ -257,4 +272,14 @@ void demonstrateColors() {
   std::cout << ANSIColors::BOLD << ANSIColors::rgb(255, 20, 147)
             << ANSIColors::bgRgb(0, 0, 0) << " Bold Pink on Black "
             << ANSIColors::RESET << std::endl;
+
+  std::cout << "\n=== Raw Code Examples ===" << std::endl;
+  std::cout << "Red text: \\033[31m" << std::endl;
+  std::cout << "White background: \\033[47m" << std::endl;
+  std::cout << "Bold: \\033[1m" << std::endl;
+  std::cout << "Reset: \\033[0m" << std::endl;
+  std::cout << "RGB text: \\033[38;2;R;G;Bm" << std::endl;
+  std::cout << "RGB background: \\033[48;2;R;G;Bm" << std::endl;
 }
+
+#endif // ANSCII_HPP

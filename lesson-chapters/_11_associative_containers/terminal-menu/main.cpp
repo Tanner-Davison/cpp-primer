@@ -1,3 +1,4 @@
+#include "../../../headers/Anscii.hpp"
 #include <conio.h> // For Windows (_getch)
 #include <iostream>
 #include <string>
@@ -11,13 +12,6 @@
 #define KEY_DOWN 80
 #define KEY_ENTER 13
 
-void enableANSI() {
-  HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-  DWORD dwMode = 0;
-  GetConsoleMode(hOut, &dwMode);
-  dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-  SetConsoleMode(hOut, dwMode);
-}
 #else
 #include <termios.h>
 #include <unistd.h>
@@ -34,12 +28,10 @@ private:
   size_t selectedIndex;
 
   // ANSI color codes
-  const std::string HIGHLIGHT =
-      "\033[47m\033[30m";               // White background, black text
-  const std::string RESET = "\033[0m";  // Reset to normal
-  const std::string BLUE = "\033[34m";  // Blue text
-  const std::string GREEN = "\033[32m"; // Green text
-
+  const std::string RESET = ANSIColors::RESET;
+  const std::string BLUE = ANSIColors::BLUE;
+  const std::string GREEN = ANSIColors::GREEN;
+  const std::string HIGHLIGHT = ANSIColors::HIGHLIGHT;
 #ifndef _WIN32
   // Linux/Mac terminal setup
   struct termios old_termios;
@@ -69,6 +61,7 @@ public:
       : title(menuTitle), options(menuOptions), selectedIndex(0) {}
 
   void displayMenu() {
+    enableANSI();
     system(CLEAR_SCREEN);
     std::cout.flush(); // Force the clear to happen immediately
 
