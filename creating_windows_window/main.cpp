@@ -1,7 +1,8 @@
 #include <iostream>
 #include <windows.h>
-/*in order to compile this code use the following command:
+/* COMPILE COMMAND
 *
+
 g++ -g -O0 -std=c++2b -Wall -Wextra main.cpp -o main -lgdi32 -luser32
 
 **/
