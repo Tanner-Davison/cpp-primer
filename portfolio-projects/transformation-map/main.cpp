@@ -56,7 +56,7 @@ void word_transform(std::ifstream &map_file, std::ifstream &text_input) {
       } else {
         std::cout << " ";
       }
-      std::cout << ANSIColors::LIME() << transform(word, trans_map)
+      std::cout << ANSIColors::ROYAL_BLUE() << transform(word, trans_map)
                 << ANSIColors::RESET;
     }
     std::cout << std::endl;
@@ -72,5 +72,6 @@ int main() {
   if (!text_input)
     throw std::runtime_error("No text file found");
   word_transform(rules_input, text_input);
+  demonstrateColors();
   return 0;
 }

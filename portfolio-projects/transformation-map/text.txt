@@ -1,10 +1,9 @@
-odc div name odcc 
-od
-os "hello world" cs
-od
-how r u can you sen me a
-pic?
+
+
+html processing Example 
+odc div name odcc cd
+od os "hello world" cs cd
+
+example of text rendering:
+how r u can you send me a pic?
 i gtg but i will cu l&r
-cd
-od
-od test test ocd
