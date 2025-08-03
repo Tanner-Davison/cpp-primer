@@ -1,8 +1,7 @@
 
-
-html processing Example 
+html processing example 
 odc div name odcc cd
-od os "hello world" cs cd
+od os "HELLO WORLD" cs cd
 
 example of text rendering:
 how r u can you send me a pic?

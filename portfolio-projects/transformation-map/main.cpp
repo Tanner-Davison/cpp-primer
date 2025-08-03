@@ -72,6 +72,5 @@ int main() {
   if (!text_input)
     throw std::runtime_error("No text file found");
   word_transform(rules_input, text_input);
-  demonstrateColors();
   return 0;
 }
