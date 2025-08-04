@@ -44,7 +44,6 @@ private:
   }
 
   void disableRawMode() { tcsetattr(STDIN_FILENO, TCSAFLUSH, &old_termios); }
-
   int getch() {
     int ch = getchar();
     if (ch == 27) { // ESC sequence
