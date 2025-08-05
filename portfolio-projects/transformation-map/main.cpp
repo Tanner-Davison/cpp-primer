@@ -4,12 +4,23 @@
 #include <map>
 #include <sstream>
 #include <stdexcept>
-const std::string crimson = ANSIColors::CRIMSON();
-const std::string orange  = ANSIColors::ORANGE();
-const std::string yellow  = ANSIColors::SUNSET_YELLOW();
-const std::string white   = ANSIColors::WHITE;
-const std::string bold    = ANSIColors::BOLD;
-const std::string reset   = ANSIColors::RESET;
+
+const std::string& orange() {
+   static const std::string c = ANSIColors::ORANGE();
+   return c;
+}
+const std::string& crimson() {
+   static const std::string c = ANSIColors::CRIMSON();
+   return c;
+}
+const std::string& yellow() {
+   static const std::string c = ANSIColors::SUNSET_YELLOW();
+   return c;
+}
+
+static const std::string white = ANSIColors::WHITE;
+static const std::string bold  = ANSIColors::BOLD;
+static const std::string reset = ANSIColors::RESET;
 
 std::map<std::string, std::string> buildMap(std::ifstream& map_file) {
    std::map<std::string, std::string> trans_map;
@@ -18,21 +29,21 @@ std::map<std::string, std::string> buildMap(std::ifstream& map_file) {
 
    while (map_file >> key && getline(map_file, value)) {
       auto print_error = [&](const std::string& e_msg) {
-         std::cerr << crimson << "[!Error] " << orange << e_msg << yellow << "[" << key << "]" << reset << std::endl;
+         std::cerr << crimson() << "[!Error] ";
+         std::cerr << orange() << e_msg;
+         std::cerr << yellow() << "[" << key << "]";
+         std::cerr << reset << std::endl;
       };
 
       if (value.size() > 1 && value.find_first_not_of(" \t") != std::string::npos) {
          if (!trans_map.insert({key, value.substr(1)}).second) {
-            // Duplicate key found
             print_error("Duplicate key found: ");
          }
-         /* <---[ Success No Errors] ---> */
+         //  <---[ Success No Errors] ---> */
       } else {
-         // Rule exists but no value/definition given
          print_error("Rule has been set with NO value: ");
       }
    }
-
    return trans_map;
 }
 
@@ -55,11 +66,11 @@ void word_transform(std::ifstream& map_file, std::ifstream& text_input) {
 
       bool firstword = true;
       while (stream >> word) {
-         if (firstword) {
+         if (firstword)
             firstword = false;
-         } else {
+         else
             std::cout << " ";
-         }
+
          std::cout << bold << transform(word, trans_map) << reset;
       }
       std::cout << std::endl;
