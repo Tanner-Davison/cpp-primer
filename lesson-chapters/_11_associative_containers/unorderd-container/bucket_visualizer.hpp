@@ -18,7 +18,7 @@ inline void visualize_buckets(const std::unordered_map<Key, Value>& map, const s
       if (i < 10) {
          std::cout << " " << i << "  "; // " 1  " = 4 chars, number more centered
       } else {
-         std::cout << " " << i << " "; // " 10 " = 4 chars
+         std::cout << "" << i << "  "; // " 10 " = 4 chars
       }
    }
    std::cout << "\n";
