@@ -22,11 +22,14 @@ int main() {
    std::string reset = ANSIColors::RESET;
 
    std::unordered_map<std::string, std::size_t> word_count;
-   std::set<std::string> exclude_list{"The", "But", "And", "Or", "An", "A", "the", "but", "and", "or", "a"};
-   std::vector<std::string> read_words{"hello", "world", "hello", "word", "word", "doing", "doing",
+   // clang-format off
+   std::set<std::string> exclude_list{"The","But","And","Or","An","A","the","but","and","or","a"};
+   // clang-format on
+   std::vector<std::string> input_list{"hello", "world", "hello", "word", "word", "doing", "doing",
                                        "I",     "I",     "I",     "I",    "so",   "word"};
-   auto word = read_words.begin();
-   while (word != read_words.end()) {
+   auto word = input_list.begin();
+
+   while (word != input_list.end()) {
       if (exclude_list.find(*word) == exclude_list.end()) {
          auto word_it = word_count.insert({*word, 1});
          if (!word_it.second) {
@@ -41,8 +44,8 @@ int main() {
                 << " occurs: " << red << words.second << reset << black
                 << ((words.second > 1) ? " times.\n" : " time.\n") << reset;
    }
-
    std::cout << std::endl;
+
    ANSIColors::printRainbow("SO F**KING COOL");
 
    return 0;
