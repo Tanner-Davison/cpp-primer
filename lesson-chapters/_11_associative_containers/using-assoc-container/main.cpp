@@ -3,17 +3,18 @@
 #include <map>
 #include <set>
 #include <windows.h>
-// Shows two ways of word_count (UPDATED TO INCLUDE ANSIColors)
-
-// 1. uses insert with the check from the pointer to the position and the
-// boolean whether it passed or failed
-
-// 2nd uses the subscript operator with no check.
+/*
+    1. Uses insert with the check from the pointer
+         to the position and the boolean whether it
+         passed or failed.
+    2. Uses the subscript operator with no check.
+    3. Custom ASNIColor class usage.
+*/
 int main() {
-   std::string white = ANSIColors::BRIGHT_CYAN;
-   std::string black = ANSIColors::BRIGHT_BLACK;
-   std::string red   = ANSIColors::BRIGHT_MAGENTA;
-   std::string reset = ANSIColors::RESET;
+   static const std::string white = ANSIColors::BRIGHT_CYAN;
+   static const std::string black = ANSIColors::BRIGHT_BLACK;
+   static const std::string red   = ANSIColors::BRIGHT_MAGENTA;
+   static const std::string reset = ANSIColors::RESET;
 
    std::map<std::string, std::size_t> word_count;
    std::set<std::string> exclude_list{"The", "But", "And", "Or", "An", "A",
@@ -36,9 +37,7 @@ int main() {
                 << " occurs: " << red << words.second << reset << black
                 << ((words.second > 1) ? " times.\n" : " time.\n") << reset;
    }
-
+   ANSIColors::printFire("\nEnd Program------->");
    std::cout << std::endl;
-   ANSIColors::printRainbow("SO F**KING COOL");
-
    return 0;
 }
