@@ -9,7 +9,6 @@
 // boolean whether it passed or failed
 
 // 2nd uses the subscript operator with no check.
-
 int main() {
    std::string white = ANSIColors::BRIGHT_CYAN;
    std::string black = ANSIColors::BRIGHT_BLACK;

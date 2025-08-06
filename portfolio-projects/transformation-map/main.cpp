@@ -4,7 +4,7 @@
 #include <map>
 #include <sstream>
 #include <stdexcept>
-
+// color with initialization defaults color [static function load(like lazy load)]
 const std::string& orange() {
    static const std::string c = ANSIColors::ORANGE();
    return c;

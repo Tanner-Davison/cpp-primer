@@ -62,8 +62,8 @@ void read_stats_hash_once(std::unordered_map<std::string, std::size_t>& word_cou
 int main() {
    std::unordered_map<std::string, std::size_t> word_count;
    std::set<std::string> exclude_list{"The", "But", "And", "Or", "An", "A", "the", "but", "and", "or", "a"};
-   std::vector<std::string> input_list{"hello",   "hello", "hate", "hate",  "warrior", "warrior", "warning",
-                                       "warning", "Int",   "Int",  "Inner", "warning", "Inner",   "Inner"};
+   std::vector<std::string> input_list{"hello",   "hello",   "bello", "hello", "hate",  "hate",    "warrior", "warrior",
+                                       "warning", "warning", "Int",   "Int",   "Inner", "warning", "Inner",   "Inner"};
 
    auto word = input_list.begin();
    while (word != input_list.end()) {
