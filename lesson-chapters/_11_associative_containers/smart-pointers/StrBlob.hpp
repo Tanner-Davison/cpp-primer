@@ -11,9 +11,12 @@ public:
   bool empty() const { return data->empty(); }
   // Add and remove elements
   void push_back(const std::string &t) { data->push_back(t); }
+  long use_count() const { return data.use_count(); }
   void pop_back();
   std::string &front();
   std::string &back();
+  const std::string &back() const;
+  const std::string &front() const;
 
 private:
   std::shared_ptr<std::vector<std::string>> data;
