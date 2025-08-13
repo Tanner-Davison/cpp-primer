@@ -1,7 +1,7 @@
 #include <iostream>
 #include <map>
+#include <string>
 #include <utility>
-
 int main() {
   std::map<size_t, std::map<std::string, size_t>> mapofmap;
   std::string str = "hello world";
