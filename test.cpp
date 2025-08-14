@@ -1,4 +1,6 @@
-int x           = 5;
-int longname    = 10;
-double y        = 3.14;
-const char* str = "hello";
+#include <iostream>
+
+int main() {
+   std::cout << __cplusplus << std::endl;
+   return 0;
+}
