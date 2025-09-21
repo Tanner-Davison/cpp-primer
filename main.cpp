@@ -4,7 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
-
+// testing
 std::map<std::string, std::string> buildMap(std::ifstream& codes) {
    std::map<std::string, std::string> transmap;
 
