@@ -53,10 +53,16 @@ void manage_translation(std::ifstream& codes, std::ifstream& text) {
 int main() {
    std::ifstream codes("./out1.txt");
    std::ifstream message("./out2.txt");
-   if (!codes || !message) {
-      std::cout << "cannot read input files" << std::endl;
-      throw std::runtime_error("cannot open Input files");
-   }
+
+   try {
+      if (!codes) {
+         throw std::runtime_error("ERROR: Failed to open file. ['./out1.txt']");
+      } else if (!message) {
+         throw std::runtime_error("ERROR: Failed to open file. '[./out2.txt']");
+      }
+   } catch (std::runtime_error& e) {
+      std::cout << e.what() << std::endl;
+   };
    manage_translation(codes, message);
    return 0;
 }
